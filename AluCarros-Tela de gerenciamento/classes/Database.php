@@ -1,12 +1,19 @@
 <?php 
-     $conexao= mysqli_connect("localhost", "root", "aluguel@carros5", "aluguelcarrobd");
+    $server = "localhost";
+    $username = "root";
+    $password = "aluguel@carros5";
+    $dbname = "aluguelcarrobd";
     
-     if ($conexao) {
-         echo "Conexão bem-sucedida!";
-     }
-else{
-    echo "deu pau";
-}
+    // Criar conexão
+    $conexao = mysqli_connect($server, $username, $password, $dbname);
+    
+    // Verificar conexão
+    if (!$conexao) {
+        die("Falha na conexão: " . mysqli_connect_error());
+    }
+    
+    // Mensagem de sucesso opcional
+    echo "Conexão bem-sucedida!";
 
 
-mysqli_close($conexao);
+
