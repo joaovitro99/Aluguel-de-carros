@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Veículos</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/veiculos.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/veiculos.css">
+
+
 </head>
 <body>
     <div class="sidebar">
@@ -14,9 +16,9 @@
             <h1>Alucarros</h1>
         </div>
         <ul class="menu">
-            <li><a href="usuarios.html">Usuários</a></li>
-            <li><a href="veiculos.html" class="active">Veículos</a></li>
-            <li><a href="rendimento.html">Rendimento</a></li>
+            <li><a href="usuarios.php">Usuários</a></li>
+            <li><a href="veiculos.php" class="active">Veículos</a></li>
+            <li><a href="rendimento.php">Rendimento</a></li>
         </ul>
     </div>
 

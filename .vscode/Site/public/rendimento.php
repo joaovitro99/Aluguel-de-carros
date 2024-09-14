@@ -1,13 +1,16 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualização de Vendas</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/rendimento.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="../assets/css/rendimento.css">
+
+    
 </head>
 <body>
     <div class="sidebar">
@@ -15,9 +18,9 @@
             <h1>Alucarros</h1>
         </div>
         <ul class="menu">
-            <li><a href="usuarios.html">Usuários</a></li>
-            <li><a href="veiculos.html">Veículos</a></li>
-            <li><a href="rendimento.html" class="active">Rendimento</a></li>
+            <li><a href="usuarios.php">Usuários</a></li>
+            <li><a href="veiculos.php">Veículos</a></li>
+            <li><a href="rendimento.php" class="active">Rendimento</a></li>
         </ul>
     </div>
 
