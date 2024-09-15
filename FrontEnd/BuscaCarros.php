@@ -4,7 +4,7 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="initial-scale=1, width=device-width">
   	
-  	<link rel="stylesheet"  href="./BuscaCarros.css" />
+  	<link rel="stylesheet"  href="Aluguel-de-carros\FrontEnd\assets\css\BuscaCarros.css" />
   	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" />
   	
   	
