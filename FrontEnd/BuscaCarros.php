@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets\css\BuscaCarros.css">
+    <link rel="stylesheet" href="assets/css/BuscaCarros.css">
 </head>
 
 <body>
@@ -105,7 +105,43 @@
                 </div>
             </div>
         </div>   
-    </div>
+
     <script src="script.js"></script>
+    <div id="grid">
+    
+        
+        <?php
+        include("../BackEnd/data/mySqlDataProvider.php"); // Certifique-se que o caminho está correto
+        include("../BackEnd/repositories/CarRepository.php");
+        include("../BackEnd/app/config.php");
+
+         // Chama a função para obter a conexão com o banco de dados
+         $conn = new MySqlDataProvider($config);
+
+         // Consulta SQL para obter os dados dos clientes
+         $sql = "SELECT marca, modelo, ano,valor_diaria FROM veiculos ";
+
+         // Preparação e execução da consulta
+         $stmt = $conn->query($sql);
+
+        // Verificação se existem registros
+        if ($stmt->num_rows >0) {
+            // Loop pelos resultados da consulta e exibição na tabela
+            while ($row = $stmt->fetch_assoc()) {
+                echo '<div id="car-card">';
+                echo '<h3>Marca: ' . $row['marca'] . "</h3>";
+                echo '<p>Modelo: ' . $row['modelo'] . "</p>";
+                echo '<p>Ano: ' . $row['ano'] . "</p>";
+                echo '<p>Diária: R$ ' . $row['valor_diaria'] . "</p>";
+                echo '<button>Alugar</button>';
+                echo '</div>';
+            }
+        } else {
+            echo "<tr><td colspan='6'>Nenhum veiculo encontrado</td></tr>";
+        }
+        ?>
+
+    </div>
+    </div>
 </body>
 </html>
