@@ -1,8 +1,8 @@
 <?php
-
-const CONFIG=[
-    "host" => "localhost",
-        "username" => "root",
-        "password" => "",
-        "dbname" => "carrobd"
+$config = [
+    'host' => 'localhost',
+    'username' => 'root',
+    'password' => '',  
+    'dbname' => 'carrobd'
 ];
+?>

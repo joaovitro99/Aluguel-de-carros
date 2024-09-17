@@ -1,0 +1,142 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+
+.sidebar {
+    background: #1AB5D5;
+    width: 186px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar .logo {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.sidebar .menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar .menu li {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 5px;
+}
+
+.sidebar .menu li a.active {
+    background: #FF6B6B;
+    width: 80px;  
+    padding: 10px 20px; 
+    text-align: center; 
+    display: inline-block; 
+    border-radius: 5px;  
+}
+
+
+.main-content {
+    margin-left: 200px; 
+    padding: 20px;
+    width: calc(100% - 200px); 
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+
+
+.search-bar {
+    width: 80%;        
+    height: 100%;       
+    padding: 10px;      
+    font-size: 16px;    
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1); 
+    outline: none;      
+}
+.search-bar-container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.delete-btn {
+    background-color: #FF6B6B;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
