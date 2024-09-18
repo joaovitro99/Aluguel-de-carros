@@ -119,16 +119,21 @@
          $conn = new MySqlDataProvider($config);
 
          // Consulta SQL para obter os dados dos clientes
-         $sql = "SELECT marca, modelo, ano,valor_diaria FROM veiculos ";
+         $sql = "SELECT v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem FROM veiculos v INNER JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
+
 
          // Preparação e execução da consulta
          $stmt = $conn->query($sql);
 
-        // Verificação se existem registros
+        
+         
+         
         if ($stmt->num_rows >0) {
-            // Loop pelos resultados da consulta e exibição na tabela
-            while ($row = $stmt->fetch_assoc()) {
+
+            while (($row = $stmt->fetch_assoc())){
+
                 echo '<div id="car-card">';
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['imagem']) . '" alt="Imagem do Veículo">';
                 echo '<h3>Marca: ' . $row['marca'] . "</h3>";
                 echo '<p>Modelo: ' . $row['modelo'] . "</p>";
                 echo '<p>Ano: ' . $row['ano'] . "</p>";
