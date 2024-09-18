@@ -29,6 +29,11 @@ class MySqlDataProvider{
         return $this->db_conection->prepare($query);
     }
 
+        // Método para consultas diretas (sem parâmetros)
+     public function query($sql) {
+        return $this->db_conection->query($sql);
+    }
+
     public function __destruct() {
         $this->db_conection->close();
     }
