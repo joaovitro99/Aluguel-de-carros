@@ -1,0 +1,333 @@
+
+
+.retangulo-azul{
+    position: fixed;
+    top: 0px; /* Ajuste a distância do topo conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1331px;
+    height: 88px;
+    border-radius: 16px;
+    border: 1px solid #747171;
+    background-color: #007b95;
+}
+/* Estilo do retângulo laranja */
+.retangulo-laranja {
+    top: 17px;
+    left: 1000px;
+    width: 266px;
+    height: 44px;
+    border-radius: 48px;
+    position :absolute;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    background-color: #e67e22;
+    border-radius: 48px;
+    padding: 5px 20px;
+    gap: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilo do link Inscrever-se */
+.inscrever-se {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Ícone para Inscrever-se */
+.icon-person {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Barra entre os links */
+.barra-vertical {
+    background-color: white;
+    width: 1px;
+    height: 30px;
+}
+
+/* Estilo do link Entrar */
+
+.home {
+    width: 100px;
+    height: 39px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position:absolute;
+    top: 30px;
+    left: 100px;
+    gap: 0px;
+    opacity: 0px;
+
+}
+.nossos-veiculos{
+    width: 206px;
+    height: 39px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position:relative;
+    top: 30px;
+    left: 300px;
+    gap: 0px;
+    opacity: 0px;
+}
+.entrar {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.sobre-nos{
+    width: 206px;
+    height: 39px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position:absolute;
+    top: 30px;
+    left: 600px;
+    gap: 0px;
+    opacity: 0px;
+}
+.image-container {
+    width: 344px;
+    height: 331px;
+    border: 1px solid #8B4242;
+    border-radius: 5px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+    top: 140px;
+    left:180px;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.car-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.carousel {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+.retangulo-status{
+    width: 290px;
+    height: auto;
+    top: 500px;
+    left: 8px;
+    padding: 20px;
+    flex-shrink: 0;
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 2px solid #0066cc; /* Azul chamativo para o contorno */
+    background: rgba(255, 255, 255, 0.90); /* Fundo branco com leve transparência */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidade */
+    position: absolute;
+    color: #333; /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 1; /* Visível */
+    transition: all 0.3s ease-in-out; /* Transição suave para animações */
+}
+@keyframes lights {
+    0% {
+      color: hsl(240, 8%, 5%);
+      text-shadow:
+        0 0 1em hsla(239, 100%, 50%, 0.2),    
+        0 0 0.125em hsla(241, 100%, 50%, 0.3),
+        -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+    
+    30% { 
+      color: hsl(251, 99%, 35%);
+      text-shadow:
+       0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 0.125em hsla(216, 100%, 50%, 0.5),
+        -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    40% { 
+      color: hsl(239, 100%, 50%);
+      text-shadow:
+        0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 0.125em hsla(0, 0%, 0%, 0.5),
+        -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+        0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    70% {
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 0.125em hsla(0, 0%, 0%, 0.5),
+        0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    100% {
+      color: hsl(231, 100%, 36%);
+      text-shadow:
+        0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 0.125em hsla(0, 0%, 0%, 0.5),
+        1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+    
+  }
+  
+.retangulo-status p {
+    margin: auto;
+    font-size:16px ;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+  }
+.retangulo-status h2 {
+    color: #ff6600; /* Laranja chamativo para o título */
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    
+    
+}
+
+/* Destaque das informações chave 
+.retangulo-status p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+*/
+.retangulo-status strong {
+    color: #0066cc; /* Azul para o texto em negrito */
+}
+
+.retangulo-status:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.retangulo-info{
+    width: 313px;
+    height: 74px;
+    top: 500px;
+    left: 410px;
+    gap: 0px;
+    border-radius: 24px 0px 0px 0px;
+    opacity: 0px;
+    position: absolute;
+    border-radius: 24px;
+    background: #007B95;
+
+}
+
+.retangulo-dados {
+    width: 360px;
+    height: auto; /* Permite que o conteúdo se ajuste automaticamente */
+    top: 140px;
+    left: 400px;
+    padding: 20px;
+    flex-shrink: 0;
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 2px solid #0066cc; /* Azul chamativo para o contorno */
+    background: rgba(255, 255, 255, 0.90); /* Fundo branco com leve transparência */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidade */
+    position: absolute;
+    color: #333; /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 1; /* Visível */
+    transition: all 0.3s ease-in-out; /* Transição suave para animações */
+}
+
+/* Títulos para destacar seções */
+.retangulo-dados h2 {
+    color: #ff6600; /* Laranja chamativo para o título */
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    position: center;
+}
+
+/* Destaque das informações chave */
+.retangulo-dados p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.retangulo-dados strong {
+    color: #0066cc; /* Azul para o texto em negrito */
+}
+
+/* Adiciona um pequeno efeito hover */
+.retangulo-dados:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
