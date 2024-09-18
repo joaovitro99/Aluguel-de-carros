@@ -1,14 +1,7 @@
 <?php
 // Inclua o arquivo que contém a classe MySqlDataProvider
 require_once '../data/mySqlDataProvider.php';
-
-// Configurações do banco de dados
-$config = [
-    'host' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'dbname' => 'carrobd'
-];
+require_once '../app/config.php';
 
 // Crie uma instância do MySqlDataProvider
 $db = new MySqlDataProvider($config);

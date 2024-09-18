@@ -44,14 +44,7 @@
                 <tbody id="users-body">
                     <?php
                     require_once '../BackEnd/data/mySqlDataProvider.php';
-
-                    // Configurações do banco de dados
-                    $config = [
-                        'host' => 'localhost',
-                        'username' => 'root',
-                        'password' => '',
-                        'dbname' => 'carrobd'
-                    ];
+                    require_once '../BackEnd/app/config.php';
 
                     // Instancia a conexão
                     $db = new MySqlDataProvider($config);
