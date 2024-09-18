@@ -1,5 +1,7 @@
+<?php
 
-
+require("AdicionarVeiculo.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -78,7 +80,7 @@ button:hover {
 <body>
     <div class="container">
         <h2>Cadastro de Veículo</h2>
-        <form action="AdicionarVeiculo.php" method="POST">
+        <form action="AdicionarVeiculo.php" method="POST" id="carForm">
             <div class="form-group">
                 <label for="marca">Marca:</label>
                 <input type="text" id="marca" name="marca" required>
@@ -93,7 +95,7 @@ button:hover {
             </div>
             <div class="form-group">
                 <label for="placa">Placa:</label>
-                <input type="text" id="placa" name="placa" required>
+                <input type="text" id="placa" name="placa" required placeholder="AAA-0000" required pattern="[A-Z]{3}-\d{4}">
             </div>
             <div class="form-group">
                 <label for="valorDiaria">Valor da Diária (R$):</label>
@@ -110,7 +112,33 @@ button:hover {
             <div class="form-group">
                 <button type="submit">Cadastrar Veículo</button>
             </div>
+            <p id="response"></p> <!-- Para exibir a resposta -->
+
+
         </form>
     </div>
+
+    <script>
+    document.getElementById('carForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita o envio padrão do formulário
+
+        // Cria um objeto FormData para capturar os dados do formulário
+        const formData = new FormData(this);
+
+        // Envia os dados com Fetch API
+        fetch('AdicionarVeiculo.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text()) // Converte a resposta para texto
+        .then(data => {
+            document.getElementById('response').textContent = data; // Exibe a resposta
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            document.getElementById('response').textContent = 'Ocorreu um erro.';
+        });
+    });
+</script>
 </body>
 </html>
