@@ -57,7 +57,7 @@
             <div class="filter-header" id="filter-header">
                 <h2>Filtros de busca</h2>
                 <div class="toggle-icon" id="toggle-icon">
-                    <img src="images/icons/arrow-icon.svg" alt="Toggle Icon">
+                    <img src="assets/images/icons/arrow-icon.svg" alt="Toggle Icon">
                 </div>
             </div>
             <div class="filter-panel" id="filter-panel">
@@ -106,7 +106,7 @@
             </div>
         </div>   
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
     <div id="grid">
     
         
