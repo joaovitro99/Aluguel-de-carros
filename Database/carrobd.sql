@@ -6,7 +6,7 @@
 -- Tempo de geração: 18/09/2024 às 01:50
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
-CREATEDATABASE carrobd; -- Voce pode escolher o nome que quiser
+CREATE DATABASE carrobd; -- Voce pode escolher o nome que quiser
 USE carrobd;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
