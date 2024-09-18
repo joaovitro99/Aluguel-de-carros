@@ -138,7 +138,7 @@
                 echo '<p>Modelo: ' . $row['modelo'] . "</p>";
                 echo '<p>Ano: ' . $row['ano'] . "</p>";
                 echo '<p>Diária: R$ ' . $row['valor_diaria'] . "</p>";
-                echo '<button>Alugar</button>';
+                echo '<button class="btn-alugar">Alugar</button>';
                 echo '</div>';
             }
         } else {

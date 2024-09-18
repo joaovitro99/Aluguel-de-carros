@@ -626,9 +626,9 @@ body {
 }
 
 #car-card {
-    background-color: #f1f1f1; /* Cor de fundo do cartão */
+    background-color: #ffffff; /* Cor de fundo do cartão */
     padding: 15px;
-    border: 2px solid black;
+    border: 2px solid #e67e22;
     border-radius: 8px; /* Bordas arredondadas */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
     text-align: center;
@@ -646,4 +646,23 @@ body {
 #car-card p {
     margin: 5px 0;
     color: #555;
+}
+
+/* Estilo do botão "Alugar" dentro do cartão de carro */
+.btn-alugar {
+    background-color: #e67e22; /* Cor de fundo verde */
+    color: #fff; /* Cor do texto branco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover para o botão "Alugar" */
+.car-card .btn-alugar:hover {
+    background-color: #218838; /* Cor de fundo verde escuro ao passar o mouse */
 }
