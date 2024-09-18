@@ -1,5 +1,16 @@
 
+body,html{
+    background: #93E2F3;
+    
+        height: 100%; /* Garante que o body ocupe 100% da altura da janela */
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
 
+}
+body{
+    line-height: 1.6;
+}
 .retangulo-azul{
     position: fixed;
     top: 0px; /* Ajuste a distância do topo conforme necessário */
@@ -11,6 +22,7 @@
     border: 1px solid #747171;
     background-color: #007b95;
 }
+
 /* Estilo do retângulo laranja */
 .retangulo-laranja {
     top: 17px;
@@ -62,7 +74,7 @@
     width: 100px;
     height: 39px;
     flex-shrink: 0;
-    color: #000;
+    color: #ffffff;
     font-family: Poppins;
     font-size: 24px;
     font-style: normal;
@@ -79,7 +91,7 @@
     width: 206px;
     height: 39px;
     flex-shrink: 0;
-    color: #000;
+    color: #ffffff;
     font-family: Poppins;
     font-size: 24px;
     font-style: normal;
@@ -101,7 +113,7 @@
     width: 206px;
     height: 39px;
     flex-shrink: 0;
-    color: #000;
+    color: #ffffff;
     font-family: Poppins;
     font-size: 24px;
     font-style: normal;
@@ -114,18 +126,18 @@
     opacity: 0px;
 }
 .image-container {
-    width: 344px;
+    width: 910px;
     height: 331px;
-    border: 1px solid #8B4242;
+    border: 1px solid #0066cc;
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: #007c9500;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     backdrop-filter: blur(2px);
-    top: 140px;
-    left:180px;
+    top: 111px;
+    left:50%;
     position: absolute;
     transform: translateX(-50%);
 }
@@ -171,17 +183,17 @@
 }
 
 .prev {
-    left: 10px;
+    left: 1px;
 }
 
 .next {
-    right: 10px;
+    right: 1px;
 }
 .retangulo-status{
-    width: 290px;
+    width: 360px;
     height: auto;
-    top: 500px;
-    left: 8px;
+    top: 460px;
+    left: 48%;
     padding: 20px;
     flex-shrink: 0;
     border-radius: 20px; /* Bordas arredondadas */
@@ -198,48 +210,48 @@
 }
 @keyframes lights {
     0% {
-      color: hsl(240, 8%, 5%);
+      color: hsl(39, 100%, 49%);
       text-shadow:
-        0 0 1em hsla(239, 100%, 50%, 0.2),    
-        0 0 0.125em hsla(241, 100%, 50%, 0.3),
-        -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
-        1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+        0 0 1em hsla(39, 100%, 50%, 0.842),    
+        0 0 0.125em hsla(39, 100%, 51%, 0.842),    
+        -1em -0.125em 0.5em hsla(39, 100%, 52%, 0.842),    
+        1em 0.125em 0.5em hsla(39, 100%, 53%, 0.842),    
     }
     
     30% { 
-      color: hsl(251, 99%, 35%);
+      color: hsla(39, 100%, 50%, 0.842),    ;
       text-shadow:
-       0 0 1em hsla(239, 100%, 50%, 0.2),
+       0 0 1em hsla(39, 100%, 50%, 0.842),  
         0 0 0.125em hsla(216, 100%, 50%, 0.5),
         -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
         0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
     }
     
     40% { 
-      color: hsl(239, 100%, 50%);
+      color: hsla(39, 100%, 50%, 0.842),  ;
       text-shadow:
-        0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 1em hsla(39, 100%, 50%, 0.842),  
         0 0 0.125em hsla(0, 0%, 0%, 0.5),
         -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
         0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
     }
     
     70% {
-      color: hsl(230, 80%, 90%);
+      color: hsla(39, 100%, 50%, 0.842)  ;
       text-shadow:
-        0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 1em hsla(39, 100%, 50%, 0.842),  
         0 0 0.125em hsla(0, 0%, 0%, 0.5),
         0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
         -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
     }
     
     100% {
-      color: hsl(231, 100%, 36%);
+      color: hsla(39, 100%, 48%);  
       text-shadow:
-        0 0 1em hsla(239, 100%, 50%, 0.2),
+        0 0 1em hsla(39, 100%, 50%, 0.842),  
         0 0 0.125em hsla(0, 0%, 0%, 0.5),
         1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
-        -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+        -1em 0.125em 0.5em hsla(39, 100%, 61%, 0),  ;
     }
     
   }
@@ -250,14 +262,22 @@
     font-weight: 300;
     animation: lights 5s 750ms linear infinite;
   }
+.retangulo-status p2 {
+    margin: auto;
+    font-size:22px ;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+}
 .retangulo-status h2 {
     color: #ff6600; /* Laranja chamativo para o título */
     font-size: 20px;
     text-align: center;
-    margin-bottom: 15px;
-    
+    margin-bottom: 1px;
+    position:left;
     
 }
+
+
 
 /* Destaque das informações chave 
 .retangulo-status p {
@@ -265,33 +285,24 @@
     margin: 10px 0;
 }
 */
+.retangulo-status strong2{
+    color: #141318fd;
+}
 .retangulo-status strong {
-    color: #0066cc; /* Azul para o texto em negrito */
+    color: #ff6600; /* Laranja chamativo para o título */
+    font-size:18px ;
+  
 }
 
 .retangulo-status:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
-.retangulo-info{
-    width: 313px;
-    height: 74px;
-    top: 500px;
-    left: 410px;
-    gap: 0px;
-    border-radius: 24px 0px 0px 0px;
-    opacity: 0px;
-    position: absolute;
-    border-radius: 24px;
-    background: #007B95;
-
-}
-
 .retangulo-dados {
     width: 360px;
     height: auto; /* Permite que o conteúdo se ajuste automaticamente */
-    top: 140px;
-    left: 400px;
+    top: 460px;
+    left: 15%;
     padding: 20px;
     flex-shrink: 0;
     border-radius: 20px; /* Bordas arredondadas */
@@ -318,16 +329,76 @@
 
 /* Destaque das informações chave */
 .retangulo-dados p {
-    font-size: 16px;
-    margin: 10px 0;
+    font-size: 22px;
+    color: #000000;
+    margin: auto;
+    
 }
 
 .retangulo-dados strong {
-    color: #0066cc; /* Azul para o texto em negrito */
+    color: #ff6600; /* Laranja chamativo para o título */
+
+}
+.retangulo-dados strong2 {
+    color: #002bff;
 }
 
 /* Adiciona um pequeno efeito hover */
 .retangulo-dados:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background: #ff6600;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: block; /* Centraliza o botão dentro do retângulo */
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: ff6600;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }

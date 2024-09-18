@@ -6,7 +6,7 @@ try {
     $id_veiculo = 1; // Você pode alterar conforme necessário
 
     // Caminho absoluto da imagem no seu sistema local
-    $imagePath = 'C:/xampp/htdocs/img/carro1.png'; // Substitua pelo caminho correto da imagem
+    $imagePath = 'C:/xampp/htdocs/img/rafacarro.png'; // Substitua pelo caminho correto da imagem
 
     // Verifica se a imagem existe no caminho
     if (file_exists($imagePath)) {

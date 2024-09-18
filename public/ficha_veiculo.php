@@ -67,19 +67,27 @@
         </script>
         <div class="retangulo-status">
             <?php 
-                $sql_info = "SELECT status FROM veiculos WHERE id_veiculo = :id_veiculo";
+                $sql_info = "SELECT status,valor_diaria,cambio,capacidade_bagageiro,capacidade_pessoas,combustivel FROM veiculos WHERE id_veiculo = :id_veiculo";
                 $stmt_info = $conn->prepare($sql_info);
                 $stmt_info->bindParam(':id_veiculo', $id_veiculo, PDO::PARAM_INT);
                 $stmt_info->execute();
                 $vehicle = $stmt_info->fetch(PDO::FETCH_ASSOC);
                 if ($vehicle) {
                     echo "<h2>Status</h2>";
-                    echo "<p><strong> Disponibilidade: </strong> " . htmlspecialchars($vehicle['status']) . "</p>";
-        
+                    echo "<strong> Disponibilidade : </strong><p2> " . htmlspecialchars($vehicle['status']) . "</p2>";
+                    
+                    echo "<h2>Valor Diário: </h2> <p2>R$ " . htmlspecialchars($vehicle['valor_diaria']) . "</p2>";
+                    echo "<h2>Informações adicionais</h2>";
+                    echo "<strong> Cambio: </strong> <p>" . htmlspecialchars($vehicle['cambio']) . "</p>";
+                    echo "<strong> Passageiros: </strong><p> " . htmlspecialchars($vehicle['capacidade_pessoas']) . "</p>";
+                    echo "<strong> Combustível: </strong><p> " . htmlspecialchars($vehicle['combustivel']) . "</p>";
+                    echo "<strong> Bagageiro: </strong> <p>" . htmlspecialchars($vehicle['capacidade_bagageiro']) .  " Litros </p>";
                 } else {
                     echo "<p>Informações do veículo não encontradas.</p>";
                 }
             ?>
+             
+            
         </div>
         <div class="retangulo-info">
 
@@ -96,14 +104,21 @@
                     // Exibe os dados importantes do veículo
                     if ($vehicle) {
                         echo "<h2>Informações do Veículo</h2>";
-                        echo "<p><strong>Marca:</strong> " . htmlspecialchars($vehicle['marca']) . "</p>";
-                        echo "<p><strong>Modelo:</strong> " . htmlspecialchars($vehicle['modelo']) . "</p>";
-                        echo "<p><strong>Ano:</strong> " . htmlspecialchars($vehicle['ano']) . "</p>";
-                        echo "<p><strong>Placa:</strong> " . htmlspecialchars($vehicle['placa']) . "</p>";
+                        echo "<p><strong2>Marca:</strong2> " . htmlspecialchars($vehicle['marca']) . "</p>";
+                        echo "<p><strong2>Modelo:</strong2> " . htmlspecialchars($vehicle['modelo']) . "</p>";
+                        echo "<p><strong2>Ano:</strong2> " . htmlspecialchars($vehicle['ano']) . "</p>";
+                        echo "<p><strong2>Placa:</strong2> " . htmlspecialchars($vehicle['placa']) . "</p>";
                     } else {
                         echo "<p>Informações do veículo não encontradas.</p>";
                     }
                 ?>
+                <h2>Alugar</h2>
+                    <button class="glow-on-hover">Clique Aqui</button>
+                
         </div>
+        <div class = "retangulo-footer">
+
+        </div>
+
 </body>
 </html>
