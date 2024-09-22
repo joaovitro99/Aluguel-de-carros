@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Veículos</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/veiculos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/veiculos.css">
 
 
 </head>
@@ -21,11 +24,12 @@
             <li><a href="rendimento.php">Rendimento</a></li>
         </ul>
     </div>
+    
 
     <div class="main-content">
         <div class="header">
             <input type="text" class="search-bar" placeholder="Buscar...">
-            <button class="btn-novo-item">+ Novo Item</button>
+            <button class="btn-novo-item"><a href="../../BackEnd/admin/FormularioVeiculo.php">+ Novo Item</a></button>
         </div>
 
         <div class="content">
@@ -60,7 +64,7 @@
                             <button class="btn-delete">Excluir</button>
                         </td>
                     </tr>
-                    <!-- Mais linhas -->
+                   
                 </tbody>
             </table>
         </div>

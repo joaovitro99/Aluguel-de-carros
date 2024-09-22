@@ -1,6 +1,6 @@
 <?php
 
-require("../app/app.php");
+require(__DIR__."/../app/app.php");
 
 
 $marca = '';
@@ -9,8 +9,14 @@ $ano = null;
 $placa = '';
 $valor_diaria = null;
 $status = null;
+$capacidade_pessoas=null;
+$capacidade_bagageiro=null;
+$cambio='';
+$combustivel='';
+
 
 $errors = [];
+$status_bag;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
@@ -67,10 +73,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "O status é obrigatório.";
     }
 
-    
+    if (!empty($_POST['capacidade_pessoas'])) {
+        $capacidade_pessoas= filter_var($_POST['capacidade_pessoas'],FILTER_VALIDATE_INT);
+    } else {
+        $errors[] = "Numero de passageiros inválido ou não informado";
+    }
+
+    if (!empty($_POST['capacidade_bagageiro'])) {
+        $capacidade_bagageiro= filter_var($_POST['capacidade_bagageiro'],FILTER_VALIDATE_FLOAT);
+    } else {
+        $errors[] = "Capacidade do bagageiro inválida ou não informada";
+    }
+
+    if (!empty($_POST['cambio'])) {
+        $cambio= $_POST['cambio'];
+    } else {
+        $errors[] = "Tipo de câmbio não informado";
+    }
+
+    if (!empty($_POST['combustivel'])) {
+        $combustivel= $_POST['combustivel'];
+    } else {
+        $errors[] = "Tipo de combustivel não informado";
+    }
+
     if (empty($errors)) {
-        $car_repository->insertCar($marca, $modelo, $ano, $placa, $valor_diaria, $status);
-        echo "Carro inserido com sucesso!";
+        $car_repository->insertCar($marca,$modelo,$ano,$placa,$valor_diaria,$status,$capacidade_pessoas,$capacidade_bagageiro,$cambio,$combustivel);
+        echo "<script>
+            alert('Carro inserido com sucesso!');
+            window.location.href = '../../FrontEnd/public/veiculos.php';
+          </script>";
+          exit(); 
     } 
+
+    
 }
 ?>

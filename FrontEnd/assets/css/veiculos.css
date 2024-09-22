@@ -56,6 +56,10 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+.btn-novo-item>a{
+    text-decoration: none;
+    color: white;
+}
 
 .btn-novo-item:hover {
     background-color: #0056b3;
