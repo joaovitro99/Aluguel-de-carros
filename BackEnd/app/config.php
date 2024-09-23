@@ -2,7 +2,7 @@
 const CONFIG = [
     'host' => 'localhost',
     'username' => 'root',
-    'password' => '',  
+    'password' => "",  
     'dbname' => 'carrobd'
 ];
 ?>
