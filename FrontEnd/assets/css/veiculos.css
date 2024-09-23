@@ -56,6 +56,10 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+.btn-novo-item>a{
+    text-decoration: none;
+    color: white;
+}
 
 .btn-novo-item:hover {
     background-color: #0056b3;
@@ -91,4 +95,22 @@ body {
 
 .vehicles-table tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+.btn-edit {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
