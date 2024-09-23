@@ -8,7 +8,7 @@ include(APP_NAME."../repositories/CarRepository.php");
 include("config.php");
 
 
-$data_provider= new MySqlDataProvider(CONFIG);
+$data_provider= new MySqlDataProvider($config);
 $user_repository= new UserRepository($data_provider);
 $car_repository= new CarRepository($data_provider);
 // .....

@@ -1,6 +1,6 @@
 <?php
 
-$config = [
+$config= [
     "host" => "localhost",
         "username" => "root",
         "password" => "",
