@@ -28,6 +28,15 @@ class CarRepository{
         
     }
     public function getCar(){
+        $sql_getCar = "SELECT marca, modelo, ano,valor_diaria FROM veiculos ";
+        $result = $this->data_provider->query($sql_getCar);
+
+        if (!$result) {
+            // Lidar com erro de consulta
+            throw new Exception("Erro na execução da consulta: " . $this->data_provider->error);
+        }
+        return $result;
+
 
     }
     public function getAll()

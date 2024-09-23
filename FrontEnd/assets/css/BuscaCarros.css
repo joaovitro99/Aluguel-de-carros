@@ -1,1341 +1,668 @@
-.fluent-mdl2contact {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 2048px;
-    height: 2048px;
+.desktop {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.header {
+    background-color: #007a94;
+    border-radius: 16px;
+    border: 1px solid #747171;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1331px;
+    height: 65px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header .logo {
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.header .nav-buttons {
+    display: flex;
+    gap: 80px;
+}
+
+/* Estilos para os botões "Home", "Nossos veículos", "Sobre nós" */
+.header .nav-buttons a {
+    background-color: transparent; /* Remove o fundo */
+    color: #000000; /* Muda a cor do texto para preto */
+    text-decoration: none;
+    border-radius: 0; /* Remove o arredondamento */
+    padding: 10px 0; /* Ajusta o espaçamento do texto */
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 23px;
+    letter-spacing: 0;
+    text-shadow: none; /* Remove a sombra do texto */
+    box-shadow: none; /* Remove a sombra do botão */
+    transition: color 0.3s ease; /* Faz a transição de cor suave */
+    margin-top: 12px;
+}
+
+.header .nav-buttons a:hover {
+    color: #d65b00; /* Muda a cor do texto ao passar o mouse */
+    background-color: transparent; /* Mantém o fundo transparente no hover */
+}
+
+/* Estilos para o contêiner dos botões "Inscrever-se" e "Entrar" */
+.header .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0; /* Remove qualquer espaçamento entre os botões */
+    border-radius: 48px;
     overflow: hidden;
 }
-.desktop-10-child {
-    position: absolute;
-    top: -21px;
-    left: 54px;
-    border-radius: 16px;
-    background-color: #007b95;
-    border: 1px solid #747171;
-    box-sizing: border-box;
-    width: 1331px;
-    height: 88px;
+
+/* Estilos para o botão "Inscrever-se" e "Entrar" */
+.header .auth-buttons .button {
+    background-color: #e67e22;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0;
+    text-shadow: 0px 4px 4px #00000040;
+    box-shadow: 0px 4px 4px #00000040;
+    transition: background-color 0.3s ease;
 }
-.home {
-    position: absolute;
-    top: 21px;
-    left: 447px;
-    font-size: 24px;
-    display: inline-block;
-    width: 88px;
-    height: 39px;
+
+.header .auth-buttons .button:hover {
+    background-color: #d65b00;
 }
-.nossos-veculos {
-    position: absolute;
-    top: 21px;
-    left: 564px;
-    font-size: 24px;
-    display: inline-block;
-    width: 206px;
-    height: 39px;
+
+.desktop .overlap-wrapper {
+display: flex;
 }
-.sobre-ns {
-    position: absolute;
-    top: 21px;
-    left: 790px;
-    font-size: 24px;
-    display: inline-block;
-    width: 146px;
-    height: 39px;
+
+.desktop .overlap {
+position: relative;
+width: 973px;
+height: 331px;
+top: 0px;
+background-color: #44b5cd;
+border-radius: 0px 0px 12px 12px;
+border: 1px solid;
+border-color: #717174;
 }
-.desktop-10-item {
-    position: absolute;
-    top: 14px;
-    left: 69px;
-    background-color: #fff;
-    width: 91px;
+
+.desktop .overlap-group {
+position: absolute;
+width: 657px;
+height: 36px;
+top: 28px;
+left: 98px;
+background-color: #ffffff;
+border-radius: 12px;
+border: 1px solid;
+border-color: #000000;
+}
+
+.desktop .text-wrapper {
+position: absolute;
+width: 260px;
+top: 2px;
+left: 78px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #0000007d;
+font-size: 16px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+.desktop .mdi-location {
+position: absolute;
+width: 20px;
+height: 19px;
+top: 6px;
+left: 28px;
+}
+
+.desktop .div {
+position: absolute;
+width: 764px;
+height: 47px;
+top: 106px;
+left: 98px;
+}
+
+.desktop .rectangle {
+position: absolute;
+width: 764px;
+height: 40px;
+top: 0;
+left: 0;
+background-color: #ffffff;
+border-radius: 12px;
+border: 1px solid;
+border-color: #000000;
+}
+
+.desktop .rectangle-2 {
+position: absolute;
+width: 3px;
+height: 39px;
+top: 1px;
+left: 377px;
+background-color: #000000;
+}
+
+.desktop .text-wrapper-2 {
+width: 402px;
+top: 6px;
+position: absolute;
+left: 79px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #00000080;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+.desktop .text-wrapper-3 {
+width: 237px;
+top: 6px;
+position: absolute;
+left: 448px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #00000080;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+.desktop .img {
+position: absolute;
+width: 19px;
+height: 16px;
+top: 10px;
+left: 31px;
+}
+
+.desktop .img-2 {
+height: 17px;
+top: 11px;
+left: 403px;
+position: absolute;
+width: 18px;
+}
+
+.desktop .overlap-2 {
+position: absolute;
+width: 764px;
+height: 48px;
+top: 191px;
+left: 98px;
+}
+
+.desktop .rectangle-3 {
+position: absolute;
+width: 764px;
+height: 39px;
+top: 0;
+left: 0;
+background-color: #ffffff;
+border-radius: 12px;
+border: 1px solid;
+border-color: #000000;
+}
+
+.desktop .rectangle-4 {
+position: absolute;
+width: 3px;
+height: 37px;
+top: 1px;
+left: 376px;
+background-color: #000000;
+}
+
+.desktop .text-wrapper-4 {
+width: 264px;
+top: 5px;
+position: absolute;
+left: 79px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #00000080;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+.desktop .text-wrapper-5 {
+width: 273px;
+top: 7px;
+position: absolute;
+left: 448px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #00000080;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+.desktop .img-3 {
+height: 18px;
+top: 9px;
+left: 30px;
+position: absolute;
+width: 18px;
+}
+
+.desktop .div-2 {
+height: 17px;
+top: 12px;
+left: 401px;
+overflow: hidden;
+position: absolute;
+width: 18px;
+}
+
+.desktop .overlap-group-2 {
+position: absolute;
+width: 68px;
+height: 34px;
+top: 2px;
+left: 2px;
+}
+
+.desktop .vector {
+position: absolute;
+width: 15px;
+height: 14px;
+top: 0;
+left: 0;
+}
+
+.desktop .text-wrapper-6 {
+position: absolute;
+width: 64px;
+top: 11px;
+left: 4px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #f25d3b;
+font-size: 18px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+.desktop .rectangle-5 {
+position: absolute;
+width: 164px;
+height: 156px;
+top: -47px;
+left: -175px;
+background-color: #f25d3b;
+}
+
+.desktop .div-wrapper {
+position: absolute;
+width: 207px;
+height: 38px;
+top: 267px;
+left: 638px;
+background-color: #e67e22;
+border-radius: 12px;
+border: 1px solid;
+border-color: #000000;
+}
+
+.desktop .text-wrapper-7 {
+position: absolute;
+width: 94px;
+top: 6px;
+left: 64px;
+font-family: "Poppins-Regular", Helvetica;
+font-weight: 400;
+color: #000000;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+}
+
+
+/* Estilos para a barra de separação */
+.header .auth-buttons .separator {
+    width: 2px;
+    height: 41px; /* Altura igual à dos botões */
+    background-color: #000000; /* Cor da barra de separação preta */
+    margin: 0; /* Remove o espaço ao redor da barra */
+}
+
+.header .logo img {
+    width: 73px;
     height: 53px;
 }
-.logo {
-    position: absolute;
-    top: 21px;
-    left: 87px;
-    font-size: 24px;
-    display: inline-block;
-    width: 73px;
-    height: 39px;
-}
-.desktop-10-inner {
-    position: absolute;
-    top: 493px;
-    left: 126px;
-    border-radius: 12px;
-    background-color: #fdf9f9;
-    border: 1.5px solid #838080;
-    box-sizing: border-box;
-    width: 1190px;
-    height: 178px;
-}
-.rectangle-div {
-    position: absolute;
-    top: 594px;
-    left: 143px;
-    border-radius: 2px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-}
-.desktop-10-child1 {
-    position: absolute;
-    top: 618px;
-    left: 143px;
-    border-radius: 2px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-}
-.escolha-o-grupo {
-    position: absolute;
-    top: 435px;
-    left: 126px;
-    font-size: 26px;
-    display: inline-block;
-    color: #2c3e50;
-    white-space: pre-wrap;
-    width: 800px;
-    height: 41px;
-}
-.desktop-10-child2 {
-    position: absolute;
-    top: 493px;
-    left: 127px;
-    border-radius: 12px;
-    background-color: #3a98ac;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 1189px;
-    height: 58px;
-}
-.weuiarrow-filled-icon {
-    position: absolute;
-    top: 515px;
-    left: 282px;
-    width: 23px;
-    height: 15px;
-    overflow: hidden;
-    object-fit: contain;
-}
-.filtros-de-busca {
-    position: absolute;
-    top: 508px;
-    left: 146px;
-    font-size: 16px;
-    display: inline-block;
-    width: 136px;
-    height: 34px;
-}
-.tipo-de-veiculo {
-    position: absolute;
-    top: 557px;
-    left: 146px;
-    font-size: 15px;
-    display: inline-block;
-    width: 204px;
-    height: 28px;
-}
-.sedan {
-    position: absolute;
-    top: 591px;
-    left: 165px;
-    font-size: 13px;
-    display: inline-block;
-    width: 51px;
-    height: 19px;
-}
-.hatch {
-    position: absolute;
-    top: 616px;
-    left: 165px;
-    font-size: 13px;
-    display: inline-block;
-    width: 79px;
-    height: 19px;
-}
-.desktop-10-child3 {
-    position: absolute;
-    top: 597px;
-    left: 368px;
-    border-radius: 2px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-}
-.desktop-10-child4 {
-    position: absolute;
-    top: 621px;
-    left: 368px;
-    border-radius: 2px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-}
-.picapes {
-    position: absolute;
-    top: 594px;
-    left: 390px;
-    font-size: 13px;
-    display: inline-block;
-    width: 59px;
-    height: 19px;
-}
-.esportivo {
-    position: absolute;
-    top: 619px;
-    left: 390px;
-    font-size: 13px;
-    display: inline-block;
-    width: 79px;
-    height: 19px;
-}
-.desktop-10-child5 {
-    position: absolute;
-    top: 594px;
-    left: 259px;
-    border-radius: 2px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-}
-.desktop-10-child6 {
-    position: absolute;
-    top: 618px;
-    left: 259px;
-    border-radius: 2px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-}
-.minivan {
-    position: absolute;
-    top: 591px;
-    left: 281px;
-    font-size: 13px;
-    display: inline-block;
-    width: 51px;
-    height: 19px;
-}
-.suv {
-    position: absolute;
-    top: 616px;
-    left: 281px;
-    font-size: 13px;
-    display: inline-block;
-    width: 79px;
-    height: 19px;
-}
-.desktop-10-child7 {
-    position: absolute;
-    top: 603px;
-    left: 903px;
-    border-radius: 8px;
-    background-color: #fdf9f9;
-    border: 1px solid #32484d;
-    box-sizing: border-box;
-    width: 187px;
-    height: 36px;
-}
-.weuiarrow-filled-icon1 {
-    position: absolute;
-    top: 615px;
-    left: 1058px;
-    width: 16px;
-    height: 11px;
-    overflow: hidden;
-    object-fit: contain;
-}
-.bagageiro {
-    position: absolute;
-    top: 571px;
-    left: 903px;
-    font-size: 15px;
-    display: inline-block;
-    width: 104px;
-    height: 29px;
-}
-.nmero-de-malas {
-    position: absolute;
-    top: 613px;
-    left: 910px;
-    font-size: 11px;
-    display: inline-block;
-    width: 112px;
-    height: 20px;
-}
-.desktop-10-child8 {
-    position: absolute;
-    top: 597px;
-    left: 1144px;
-    border-radius: 8px;
-    background-color: #e67e22;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    width: 117px;
-    height: 47px;
-}
-.filtrar {
-    position: absolute;
-    top: 608px;
-    left: 1168px;
-    font-size: 20px;
-    display: inline-block;
-    width: 80px;
-    height: 37px;
-}
-.desktop-10-child9 {
-    position: absolute;
-    top: 769px;
-    left: 181px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 305px;
-    height: 294px;
-}
-.desktop-10-child10 {
-    position: absolute;
-    top: 1017px;
-    left: 340px;
-    border-radius: 6px;
-    background-color: #e67e22;
-    width: 133px;
-    height: 31px;
-}
-.alugar-agora {
-    position: absolute;
-    top: 1023px;
-    left: 360px;
-    font-size: 14px;
-    display: inline-block;
-    width: 102px;
-    height: 21px;
-}
-.dia {
-    font-size: 16px;
-}
-.r-110dia {
-    position: absolute;
-    top: 1018px;
-    left: 194px;
-    display: inline-block;
-    width: 106px;
-    height: 35px;
-    font-size: 20px;
-}
-.tablermanual-gearbox-filled-icon {
-    position: absolute;
-    top: 996px;
-    left: 306px;
-    width: 17px;
-    height: 16px;
-    overflow: hidden;
-}
-.material-symbols-lighttravel-icon {
-    position: absolute;
-    top: 994px;
-    left: 229px;
-    width: 31px;
-    height: 18px;
-    overflow: hidden;
-}
-.div {
-    position: absolute;
-    top: 996px;
-    left: 215px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.m {
-    position: absolute;
-    top: 996px;
-    left: 325px;
-    display: inline-block;
-    width: 11px;
-    height: 18px;
-}
-.div1 {
-    position: absolute;
-    top: 996px;
-    left: 257px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.s {
-    position: absolute;
-    top: 996px;
-    left: 292px;
-    display: inline-block;
-    width: 7px;
-    height: 18px;
-}
-.material-symbols-lightperson-icon {
-    position: absolute;
-    top: 991px;
-    left: 190px;
-    width: 25px;
-    height: 23px;
-    overflow: hidden;
-}
-.unsplashr-i6y3efrxe-icon {
-    position: absolute;
-    top: 769px;
-    left: 181px;
-    border-radius: 12px 12px 0px 0px;
-    width: 305px;
-    height: 185px;
-    object-fit: cover;
-}
-.resultados {
-    position: absolute;
-    top: 684px;
-    left: 1144px;
-    font-size: 18px;
-    color: #4d4b4b;
-}
-.rectangle-icon {
-    position: absolute;
-    top: 883px;
-    left: 269px;
-    width: 26px;
-    height: 13px;
-}
-.mitsubishi-pajero {
-    position: absolute;
-    top: 965px;
-    left: 190px;
-    font-size: 14px;
-    display: inline-block;
-    width: 158px;
-    height: 26px;
-}
-.hugeiconssnow {
-    position: absolute;
-    top: 997px;
-    left: 272px;
-    width: 16px;
-    height: 13px;
-    overflow: hidden;
-}
-.desktop-10-child11 {
-    position: absolute;
-    top: 769px;
-    left: 560px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 304px;
-    height: 294px;
-}
-.desktop-10-child12 {
-    position: absolute;
-    top: 1017px;
-    left: 718px;
-    border-radius: 6px;
-    background-color: #e67e22;
-    width: 133px;
-    height: 31px;
-}
-.alugar-agora1 {
-    position: absolute;
-    top: 1023px;
-    left: 738px;
-    font-size: 14px;
-    display: inline-block;
-    width: 103px;
-    height: 21px;
-}
-.r-60dia {
-    position: absolute;
-    top: 1018px;
-    left: 573px;
-    display: inline-block;
-    width: 105px;
-    height: 35px;
-    font-size: 20px;
-}
-.tablermanual-gearbox-filled-icon1 {
-    position: absolute;
-    top: 996px;
-    left: 685px;
-    width: 17px;
-    height: 16px;
-    overflow: hidden;
-}
-.material-symbols-lighttravel-icon1 {
-    position: absolute;
-    top: 994px;
-    left: 607px;
-    width: 32px;
-    height: 18px;
-    overflow: hidden;
-}
-.div2 {
-    position: absolute;
-    top: 996px;
-    left: 594px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.m1 {
-    position: absolute;
-    top: 996px;
-    left: 704px;
-    display: inline-block;
-    width: 10px;
-    height: 18px;
-}
-.div3 {
-    position: absolute;
-    top: 996px;
-    left: 636px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.s1 {
-    position: absolute;
-    top: 996px;
-    left: 670px;
-    display: inline-block;
-    width: 7px;
-    height: 18px;
-}
-.material-symbols-lightperson-icon1 {
-    position: absolute;
-    top: 991px;
-    left: 568px;
-    width: 26px;
-    height: 23px;
-    overflow: hidden;
-}
-.desktop-10-child13 {
-    position: absolute;
-    top: 889px;
-    left: 647px;
-    width: 26px;
-    height: 13px;
-}
-.volkswagen-gol {
-    position: absolute;
-    top: 965px;
-    left: 568px;
-    font-size: 14px;
-    display: inline-block;
-    width: 159px;
-    height: 26px;
-}
-.hugeiconssnow1 {
-    position: absolute;
-    top: 997px;
-    left: 650px;
-    width: 17px;
-    height: 13px;
-    overflow: hidden;
-}
-.desktop-10-child14 {
-    position: absolute;
-    top: 769px;
-    left: 938px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 305px;
-    height: 294px;
-}
-.desktop-10-child15 {
-    position: absolute;
-    top: 1017px;
-    left: 1097px;
-    border-radius: 6px;
-    background-color: #e67e22;
-    width: 133px;
-    height: 31px;
-}
-.alugar-agora2 {
-    position: absolute;
-    top: 1023px;
-    left: 1117px;
-    font-size: 14px;
-    display: inline-block;
-    width: 102px;
-    height: 21px;
-}
-.r-115dia {
-    position: absolute;
-    top: 1018px;
-    left: 951px;
-    display: inline-block;
-    width: 106px;
-    height: 35px;
-    font-size: 20px;
-}
-.tablermanual-gearbox-filled-icon2 {
-    position: absolute;
-    top: 996px;
-    left: 1063px;
-    width: 17px;
-    height: 16px;
-    overflow: hidden;
-}
-.material-symbols-lighttravel-icon2 {
-    position: absolute;
-    top: 994px;
-    left: 986px;
-    width: 31px;
-    height: 18px;
-    overflow: hidden;
-}
-.div4 {
-    position: absolute;
-    top: 996px;
-    left: 972px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.a {
-    position: absolute;
-    top: 996px;
-    left: 1082px;
-    display: inline-block;
-    width: 11px;
-    height: 18px;
-}
-.div5 {
-    position: absolute;
-    top: 996px;
-    left: 1015px;
-    display: inline-block;
-    width: 8px;
-    height: 18px;
-}
-.s2 {
-    position: absolute;
-    top: 996px;
-    left: 1049px;
-    display: inline-block;
-    width: 7px;
-    height: 18px;
-}
-.material-symbols-lightperson-icon2 {
-    position: absolute;
-    top: 991px;
-    left: 947px;
-    width: 25px;
-    height: 23px;
-    overflow: hidden;
-}
-.toyota-corolla {
-    position: absolute;
-    top: 965px;
-    left: 947px;
-    font-size: 14px;
-    display: inline-block;
-    width: 158px;
-    height: 26px;
-}
-.hugeiconssnow2 {
-    position: absolute;
-    top: 997px;
-    left: 1029px;
-    width: 16px;
-    height: 13px;
-    overflow: hidden;
-}
-.desktop-10-child16 {
-    position: absolute;
-    top: 1121px;
-    left: 181px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 305px;
-    height: 294px;
-}
-.desktop-10-child17 {
-    position: absolute;
-    top: 1369px;
-    left: 340px;
-    border-radius: 6px;
-    background-color: #e67e22;
-    width: 133px;
-    height: 31px;
-}
-.alugar-agora3 {
-    position: absolute;
-    top: 1374px;
-    left: 360px;
-    font-size: 14px;
-    display: inline-block;
-    width: 102px;
-    height: 22px;
-}
-.r-220dia {
-    position: absolute;
-    top: 1370px;
-    left: 194px;
-    display: inline-block;
-    width: 106px;
-    height: 34px;
-    font-size: 20px;
-}
-.tablermanual-gearbox-filled-icon3 {
-    position: absolute;
-    top: 1347px;
-    left: 306px;
-    width: 17px;
-    height: 16px;
-    overflow: hidden;
-}
-.material-symbols-lighttravel-icon3 {
-    position: absolute;
-    top: 1345px;
-    left: 229px;
-    width: 31px;
-    height: 19px;
-    overflow: hidden;
-}
-.div6 {
-    position: absolute;
-    top: 1348px;
-    left: 215px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.a1 {
-    position: absolute;
-    top: 1348px;
-    left: 325px;
-    display: inline-block;
-    width: 11px;
-    height: 18px;
-}
-.div7 {
-    position: absolute;
-    top: 1348px;
-    left: 257px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.s3 {
-    position: absolute;
-    top: 1348px;
-    left: 292px;
-    display: inline-block;
-    width: 7px;
-    height: 18px;
-}
-.material-symbols-lightperson-icon3 {
-    position: absolute;
-    top: 1342px;
-    left: 190px;
-    width: 25px;
-    height: 24px;
-    overflow: hidden;
-}
-.bmw-m3 {
-    position: absolute;
-    top: 1317px;
-    left: 190px;
-    font-size: 14px;
-    display: inline-block;
-    width: 158px;
-    height: 25px;
-}
-.hugeiconssnow3 {
-    position: absolute;
-    top: 1349px;
-    left: 272px;
-    width: 16px;
-    height: 12px;
-    overflow: hidden;
-}
-.desktop-10-child18 {
-    position: absolute;
-    top: 1121px;
-    left: 560px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 304px;
-    height: 294px;
-}
-.desktop-10-child19 {
-    position: absolute;
-    top: 1369px;
-    left: 718px;
-    border-radius: 6px;
-    background-color: #e67e22;
-    width: 133px;
-    height: 31px;
-}
-.alugar-agora4 {
-    position: absolute;
-    top: 1374px;
-    left: 738px;
-    font-size: 14px;
-    display: inline-block;
-    width: 103px;
-    height: 22px;
-}
-.r-125dia {
-    position: absolute;
-    top: 1370px;
-    left: 573px;
-    display: inline-block;
-    width: 105px;
-    height: 34px;
-    font-size: 20px;
-}
-.tablermanual-gearbox-filled-icon4 {
-    position: absolute;
-    top: 1347px;
-    left: 685px;
-    width: 17px;
-    height: 16px;
-    overflow: hidden;
-}
-.material-symbols-lighttravel-icon4 {
-    position: absolute;
-    top: 1345px;
-    left: 607px;
-    width: 32px;
-    height: 19px;
-    overflow: hidden;
-}
-.div8 {
-    position: absolute;
-    top: 1348px;
-    left: 594px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.a2 {
-    position: absolute;
-    top: 1348px;
-    left: 704px;
-    display: inline-block;
-    width: 10px;
-    height: 18px;
-}
-.div9 {
-    position: absolute;
-    top: 1348px;
-    left: 636px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.s4 {
-    position: absolute;
-    top: 1348px;
-    left: 670px;
-    display: inline-block;
-    width: 7px;
-    height: 18px;
-}
-.material-symbols-lightperson-icon4 {
-    position: absolute;
-    top: 1342px;
-    left: 568px;
-    width: 26px;
-    height: 24px;
-    overflow: hidden;
-}
-.honda-civic {
-    position: absolute;
-    top: 1317px;
-    left: 568px;
-    font-size: 14px;
-    display: inline-block;
-    width: 159px;
-    height: 25px;
-}
-.hugeiconssnow4 {
-    position: absolute;
-    top: 1349px;
-    left: 650px;
-    width: 17px;
-    height: 12px;
-    overflow: hidden;
-}
-.desktop-10-child20 {
-    position: absolute;
-    top: 1121px;
-    left: 938px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #838080;
-    box-sizing: border-box;
-    width: 305px;
-    height: 294px;
-}
-.desktop-10-child21 {
-    position: absolute;
-    top: 1369px;
-    left: 1097px;
-    border-radius: 6px;
-    background-color: #e67e22;
-    width: 133px;
-    height: 31px;
-}
-.alugar-agora5 {
-    position: absolute;
-    top: 1374px;
-    left: 1117px;
-    font-size: 14px;
-    display: inline-block;
-    width: 102px;
-    height: 22px;
-}
-.r-140dia {
-    position: absolute;
-    top: 1370px;
-    left: 951px;
-    display: inline-block;
-    width: 106px;
-    height: 34px;
-    font-size: 20px;
-}
-.tablermanual-gearbox-filled-icon5 {
-    position: absolute;
-    top: 1347px;
-    left: 1063px;
-    width: 17px;
-    height: 16px;
-    overflow: hidden;
-}
-.material-symbols-lighttravel-icon5 {
-    position: absolute;
-    top: 1345px;
-    left: 986px;
-    width: 31px;
-    height: 19px;
-    overflow: hidden;
-}
-.div10 {
-    position: absolute;
-    top: 1348px;
-    left: 972px;
-    display: inline-block;
-    width: 9px;
-    height: 18px;
-}
-.a3 {
-    position: absolute;
-    top: 1348px;
-    left: 1082px;
-    display: inline-block;
-    width: 11px;
-    height: 18px;
-}
-.div11 {
-    position: absolute;
-    top: 1348px;
-    left: 1015px;
-    display: inline-block;
-    width: 8px;
-    height: 18px;
-}
-.s5 {
-    position: absolute;
-    top: 1348px;
-    left: 1049px;
-    display: inline-block;
-    width: 7px;
-    height: 18px;
-}
-.material-symbols-lightperson-icon5 {
-    position: absolute;
-    top: 1342px;
-    left: 947px;
-    width: 25px;
-    height: 24px;
-    overflow: hidden;
-}
-.ford-fusion {
-    position: absolute;
-    top: 1317px;
-    left: 947px;
-    font-size: 14px;
-    display: inline-block;
-    width: 158px;
-    height: 25px;
-}
-.hugeiconssnow5 {
-    position: absolute;
-    top: 1349px;
-    left: 1029px;
-    width: 16px;
-    height: 12px;
-    overflow: hidden;
-}
-.unsplash8xyki0bqvgw-icon {
-    position: absolute;
-    top: 769px;
-    left: 561px;
-    border-radius: 8px 8px 0px 0px;
-    width: 302px;
-    height: 185px;
-    object-fit: cover;
-}
-.desktop-10-child22 {
-    position: absolute;
-    top: 880px;
-    left: 801px;
-    width: 16.5px;
-    height: 13.5px;
-}
-.unsplashdwnmxurb1tk-icon {
-    position: absolute;
-    top: 769px;
-    left: 939px;
-    border-radius: 8px 8px 0px 0px;
-    width: 303px;
-    height: 187px;
-    object-fit: cover;
-}
-.desktop-10-child23 {
-    position: absolute;
-    top: 66px;
-    left: 233px;
-    border-radius: 0px 0px 12px 12px;
-    background-color: #44b6cd;
-    border: 1px solid #717174;
-    box-sizing: border-box;
-    width: 973px;
-    height: 331px;
-}
-.desktop-10-child24 {
-    position: absolute;
-    top: 94px;
-    left: 331px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    width: 657px;
-    height: 36px;
-}
-.local-de-retirada {
-    position: absolute;
-    top: 98px;
-    left: 410px;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.49);
-    display: inline-block;
-    width: 260px;
-    height: 26px;
-}
-.unsplashz6rvfpkqvqg-icon {
-    position: absolute;
-    top: 1121px;
-    left: 560px;
-    width: 303px;
-    height: 189px;
-    object-fit: cover;
-}
-.desktop-10-child25 {
-    position: absolute;
-    top: 172px;
-    left: 331px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    width: 764px;
-    height: 40px;
-}
-.desktop-10-child26 {
-    position: absolute;
-    top: 173px;
-    left: 708px;
-    background-color: #000;
-    width: 3px;
-    height: 39px;
-}
-.data-de-retirada {
-    position: absolute;
-    top: 179px;
-    left: 410px;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    width: 402px;
-    height: 41px;
-}
-.hora-de-retirada {
-    position: absolute;
-    top: 179px;
-    left: 779px;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    width: 237px;
-    height: 22px;
-}
-.icon {
-    position: absolute;
-    top: 182px;
-    left: 362px;
-    width: 19px;
-    height: 16px;
-    overflow: hidden;
-}
-.icon1 {
-    position: absolute;
-    top: 183px;
-    left: 734px;
-    width: 18px;
-    height: 17px;
-    overflow: hidden;
-}
-.desktop-10-child27 {
-    position: absolute;
-    top: 257px;
-    left: 331px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    width: 764px;
-    height: 39px;
-}
-.desktop-10-child28 {
-    position: absolute;
-    top: 258px;
-    left: 707px;
-    background-color: #000;
-    width: 3px;
-    height: 37px;
-}
-.data-de-devoluo {
-    position: absolute;
-    top: 263px;
-    left: 410px;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    width: 264px;
-    height: 43px;
-}
-.hora-de-devoluo {
-    position: absolute;
-    top: 265px;
-    left: 779px;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    width: 273px;
-    height: 23px;
-}
-.icon2 {
-    position: absolute;
-    top: 266px;
-    left: 361px;
-    width: 18px;
-    height: 18px;
-    overflow: hidden;
-}
-.vector-icon {
-    position: absolute;
-    height: 81.18%;
-    width: 81.11%;
-    top: 9.38%;
-    right: 9.51%;
-    bottom: 9.45%;
-    left: 9.37%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-}
-.child {
-    position: absolute;
-    height: 914.71%;
-    width: 910%;
-    top: -275%;
-    right: 160%;
-    bottom: -539.71%;
-    left: -970%;
-    background-color: #f25d3b;
-}
-.aasdas {
-    position: absolute;
-    height: 134.71%;
-    width: 355%;
-    top: 80%;
-    left: 30%;
-    display: inline-block;
-}
-.div12 {
-    position: absolute;
-    top: 269px;
-    left: 732px;
-    width: 18px;
-    height: 17px;
-    overflow: hidden;
-    font-size: 18px;
-    color: #f25d3b;
-}
-.desktop-10-child29 {
-    position: absolute;
-    top: 333px;
-    left: 871px;
-    border-radius: 12px;
-    background-color: #e67e22;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    width: 207px;
-    height: 38px;
-}
-.continuar {
-    position: absolute;
-    top: 341px;
-    left: 936px;
-    font-size: 15px;
-    display: inline-block;
-    width: 94px;
-    height: 20px;
-}
-.unsplash27cpg3pdoue-icon {
-    position: absolute;
-    top: 1122px;
-    left: 180px;
-    border-radius: 8px 8px 0px 0px;
-    width: 305px;
-    height: 187px;
-    object-fit: cover;
-}
-.desktop-10-child30 {
-    position: absolute;
-    top: 1228px;
-    left: 379px;
-    width: 33px;
-    height: 10px;
-}
-.desktop-10-child31 {
-    position: absolute;
-    top: 894px;
-    left: 1126px;
-    width: 35.6px;
-    height: 15.9px;
-    object-fit: contain;
-}
-.desktop-10-child32 {
-    position: absolute;
-    top: 1236.5px;
-    left: 620.19px;
-    width: 12.6px;
-    height: 7.5px;
-}
-.unsplashmf7olmgnzee-icon {
-    position: absolute;
-    top: 1121px;
-    left: 938px;
-    border-radius: 8px 8px 0px 0px;
-    width: 305px;
-    height: 192px;
-    object-fit: cover;
-}
-.desktop-10-child33 {
-    position: absolute;
-    top: 1246px;
-    left: 1152px;
-    width: 25px;
-    height: 11px;
-}
-.mdilocation-icon {
-    position: absolute;
-    top: 101px;
-    left: 360px;
-    width: 20px;
-    height: 19px;
-    overflow: hidden;
-}
-.desktop-10-child34 {
-    position: absolute;
-    top: 13px;
-    left: 1095px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 48px;
-    background-color: #e67e22;
-    width: 266px;
-    height: 44px;
-}
-.inscrever-se {
-    position: absolute;
-    top: 21px;
-    left: 1131px;
-    font-size: 20px;
-    color: #fff;
-    display: inline-block;
-    width: 166px;
-    height: 39px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.desktop-10-child35 {
-    position: absolute;
-    top: 13px;
-    left: 1265px;
-    background-color: #000;
-    width: 1px;
-    height: 44px;
-}
-.entrar {
-    position: absolute;
-    top: 21px;
-    left: 1278px;
-    font-size: 20px;
-    color: #fff;
-    display: inline-block;
-    width: 96px;
-    height: 39px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.pepicons-popperson {
-    position: absolute;
-    top: 23px;
-    left: 1100px;
+
+.header .auth-buttons img {
     width: 24px;
     height: 24px;
-    overflow: hidden;
 }
-.desktop-10 {
-    width: 100%;
-    position: relative;
-    background-color: #fff;
-    height: 1489px;
-    overflow: hidden;
-    text-align: left;
-    font-size: 12px;
+
+/* Estilos para os campos de input */
+.input-field, .input-field-local {
+    height: 40px;
+    padding: 0px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 15px;
     color: #000;
-    font-family: Poppins;
+    border: 1px solid #000;
+    border-radius: 12px;
+    background-color: #ffffff;
+    outline: none;
+    box-sizing: border-box; /* Inclui a borda e o padding na largura total do elemento */
+    line-height: 40px; /* Ajusta a altura da linha para centralizar o texto verticalmente */
+}
+
+.input-field-local {
+    width: 100%; /* Define a largura para preencher o espaço disponível */
+    max-width: 665px; /* Ajuste este valor conforme necessário para o comprimento desejado */
+}
+
+.input-field-local:focus::placeholder {
+    color: transparent;
+}
+
+.input-field::placeholder {
+    color: #00000080;
+    font-size: 15px;
+}
+
+
+
+.input-field:focus::placeholder {
+    transition: color 0.3s ease;
+    color: transparent;
+}
+
+/* Layout de grupo dos campos de input */
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-field.left {
+    flex: 1;
+    border-radius: 12px 0 0 12px;
+}
+
+.input-field.right {
+    flex: 1;
+    border-radius: 0 12px 12px 0;
+}
+
+/* Barras verticais */
+.rectangle-2, .rectangle-4 {
+    width: 3px;
+    height: 40px;
+    background-color: #000;
+}
+
+/* Botão Continuar */
+.continue-button {
+    width: 213px;
+    height: 42px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    color: #000000;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.continue-button:hover {
+    background-color: #d65b00;
+}
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.filters {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.filter-group label {
+    margin-right: 10px;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 2px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+    padding-left: 12px; /* Ajuste esse valor conforme necessário */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total do campo */
+}
+
+
+.filter-group select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.car-card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+}
+
+.car-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.car-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.car-card p {
+    margin-bottom: 10px;
+}
+
+.car-card .price {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.car-card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.filter-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filter-header {
+    background-color: #3A98AC;
+    color: #000000;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.filter-header h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.filter-header .toggle-icon {
+    margin-left: auto;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.filter-panel {
+    display: none; /* Inicialmente oculto */
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1.5px solid #828080;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.filter-group-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Ajuste o espaçamento entre os elementos conforme necessário */
+    margin-bottom: 5px; /* Espaçamento entre as linhas de filtros */
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-checkbox {
+    margin-right: 5px;
+}
+
+.filter-button {
+    background-color: #e67e22;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.filter-button:hover {
+    background-color: #d35400;
+}
+
+.group-selection {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 17px;
+    margin-bottom: 10px;
+    color: #2C3E50;
+}
+
+#grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
+    gap: 20px; /* Espaçamento entre os itens */
+    padding: 20px;
+    width: 80%; /* Ocupa 80% da largura do body */
+    margin: 0 auto; /* Centraliza a grid horizontalmente */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+    align-items: center;
+}
+
+#car-card {
+    background-color: #ffffff; /* Cor de fundo do cartão */
+    padding: 15px;
+    border: 2px solid #e67e22;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#car-card h3 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #333;
+}
+
+#car-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Estilo do botão "Alugar" dentro do cartão de carro */
+.btn-alugar {
+    background-color: #e67e22; /* Cor de fundo verde */
+    color: #fff; /* Cor do texto branco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover para o botão "Alugar" */
+.car-card .btn-alugar:hover {
+    background-color: #218838; /* Cor de fundo verde escuro ao passar o mouse */
 }

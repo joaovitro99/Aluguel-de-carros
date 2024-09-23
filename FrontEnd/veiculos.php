@@ -7,6 +7,8 @@
     <title>Gerenciamento de Veículos</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/veiculos.css">
+
+
 </head>
 <body>
     <div class="sidebar">
@@ -23,7 +25,7 @@
     <div class="main-content">
         <div class="header">
             <input type="text" class="search-bar" placeholder="Buscar...">
-            <button class="btn-novo-item"><a href="../BackEnd/admin/FormularioVeiculo.php">+ Novo Item</a></button>
+            <button class="btn-novo-item">+ Novo Item</button>
         </div>
 
         <div class="content">
@@ -34,78 +36,63 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Marca</th>
+                        <th>Concessionária</th>
                         <th>Modelo</th>
                         <th>Ano</th>
                         <th>Placa</th>
-                        <th>Valor Diário</th>
-                        <th>Status</th>
+                        <th>Preço diaria</th>
+                        <th>Disponível</th>
                         <th>Operações</th>
+                        <th>Capacidade Pessoas</th>
+                        <th>Capacidade Bagageiro</th>
+                        <th>Combustivel</th>
+                        <th>Cambio</th>
                     </tr>
                 </thead>
-                <tbody id="vehicles-body">
+                <tbody>
+                    <!-- Linhas de exemplo -->
+                    <!-- Mais linhas -->
                     <?php
-                    require_once '../BackEnd/data/mySqlDataProvider.php';
-                    require_once '../BackEnd/app/config.php';
+                        include("../BackEnd/data/mySqlDataProvider.php"); // Certifique-se que o caminho está correto
+                        include("../BackEnd/repositories/CarRepository.php");
+                        include("../BackEnd/app/config.php");
 
-                    // Instancia a conexão
-                    $db = new MySqlDataProvider($config);
+                        // Chama a função para obter a conexão com o banco de dados
+                        $conn = new MySqlDataProvider($config);
 
-                    // Consulta para buscar os veículos
-                    $sql = "SELECT * FROM veiculos";
-                    $stmt = $db->prepare($sql);
-                    
-                    if ($stmt) {
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        while ($veiculo = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>{$veiculo['id_veiculo']}</td>";
-                            echo "<td>{$veiculo['marca']}</td>";
-                            echo "<td>{$veiculo['modelo']}</td>";
-                            echo "<td>{$veiculo['ano']}</td>";
-                            echo "<td>{$veiculo['placa']}</td>";
-                            echo "<td>R$ {$veiculo['valor_diaria']}</td>";
-                            echo "<td>{$veiculo['status']}</td>";
-                            echo "<td>
-                                    <a href='editveiculo.php?id={$veiculo['id_veiculo']}' class='btn-edit'>Editar</a>
-                                    <form class='delete-form' data-id='{$veiculo['id_veiculo']}' style='display:inline;'>
-                                        <input type='hidden' name='id_veiculo' value='{$veiculo['id_veiculo']}'>
-                                        <button type='submit' class='btn-delete' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</button>
-                                    </form>
-                                  </td>";
-                            echo "</tr>";
+                        // Consulta SQL para obter os dados dos clientes
+                        $sql = "SELECT id_veiculo,marca, modelo, ano,placa,valor_diaria,status,capacidade_pessoas,capacidade_bagageiro,combustivel,cambio FROM veiculos ";
+
+                        // Preparação e execução da consulta
+                        $stmt = $conn->query($sql);
+
+                        // Verificação se existem registros
+                        if ($stmt->num_rows >0) {
+                            // Loop pelos resultados da consulta e exibição na tabela
+                            while ($row = $stmt->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row['id_veiculo'] . "</td>";
+                                echo "<td>" . $row['marca'] . "</td>";
+                                echo "<td>" . $row['modelo'] . "</td>";
+                                echo "<td>" . $row['ano'] . "</td>";
+                                echo "<td>" . $row['placa'] . "</td>";
+                                echo "<td>" . $row['valor_diaria'] . "</td>";
+                                echo "<td>" . $row['status'] . "</td>";
+                                echo "<td>" . $row['capacidade_pessoas'] . "</td>";
+                                echo "<td>" . $row['capacidade_bagageiro'] . "</td>";
+                                echo "<td>" . $row['combustivel'] . "</td>";
+                                echo "<td>" . $row['cambio'] . "</td>";
+                                echo "<td><button class='edit-btn'>Editar</button> <button class='delete-btn'>Excluir</button></td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='6'>Nenhum cliente encontrado</td></tr>";
                         }
-                        $stmt->close();
-                    } else {
-                        echo "Erro ao preparar a consulta ";
-                    }
-                    ?>
+                ?>
+
                 </tbody>
             </table>
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
-                fetch('../BackEnd/admin/DeleteVeiculo.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(() => {
-                    // Remove a linha da tabela
-                    this.closest('tr').remove();
-                })
-                .catch(error => {
-                    console.error('Erro ao processar a solicitação:', error);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
-
-
