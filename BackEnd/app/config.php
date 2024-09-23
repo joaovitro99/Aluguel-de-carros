@@ -6,3 +6,4 @@ $config= [
         "password" => "",
         "dbname" => "carrobd"
 ];
+?>
