@@ -1,0 +1,300 @@
+/* Corpo da página */
+body {
+    position: relative;
+    width: 1440px;
+    height: 1024px;
+    background: rgba(147, 226, 243, 0.4);
+}
+
+/* Container principal */
+.container {
+    position: relative;
+}
+
+/* Retângulo inferior direito (área de valores) */
+.rectangle-26 {
+    position: absolute;
+    width: 514px;
+    height: 453px;
+    left: 833px;
+    top: 547px;
+    background: rgba(0, 31, 63, 0.3);
+    border-radius: 30px;
+}
+
+/* Retângulo amarelo (valores) */
+.rectangle-29 {
+    position: absolute;
+    width: 213px;
+    height: 380px;
+    left: 849px;
+    top: 133px;
+    background: #FFD700;
+    border-radius: 30px;
+}
+
+/* Imagem principal do carro */
+.rectangle-18 {
+    position: absolute;
+    width: 344px;
+    height: 331px;
+    left: 109px;
+    top: 142px;
+    background: rgba(0, 31, 63, 0.3);
+    border: 1px solid #8B4242;
+    backdrop-filter: blur(2px);
+    border-radius: 5px;
+}
+
+/* Container de fotos */
+.rectangle-17 {
+    position: absolute;
+    width: 706px;
+    height: 453px;
+    left: 105px;
+    top: 547px;
+    background: rgba(0, 31, 63, 0.3);
+    border-radius: 30px;
+}
+
+/* Texto do cabeçalho */
+.header-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+}
+
+/* Menu de navegação */
+.menu-item {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+}
+
+.mudar-conta {
+    position: absolute;
+    width: 196px;
+    height: 39px;
+    left: 1035px;
+    top: 28px;
+}
+
+.sobre-nos {
+    position: absolute;
+    width: 146px;
+    height: 39px;
+    left: 785px;
+    top: 28px;
+}
+
+.nossos-veiculos {
+    position: absolute;
+    width: 206px;
+    height: 39px;
+    left: 559px;
+    top: 28px;
+}
+
+.home {
+    position: absolute;
+    width: 88px;
+    height: 39px;
+    left: 442px;
+    top: 28px;
+}
+
+/* Texto da imagem do carro */
+.rectangle-30 {
+    position: absolute;
+    width: 130px;
+    height: 46px;
+    left: 894px;
+    top: 148px;
+    background: #FFFFFF;
+    border: 1px solid #B3F911;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+/* Texto da descrição */
+.text {
+    position: absolute;
+    width: 54px;
+    height: 36px;
+    left: 517px;
+    top: 147px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+}
+
+/* Sessões de texto descritivo */
+.rectangle-4, .rectangle-5, .rectangle-6, .rectangle-7, .rectangle-8 {
+    position: absolute;
+    width: 205px;
+    height: 39px;
+    background: #D9D9D9;
+    border-radius: 20px;
+}
+
+.rectangle-4 { top: 142px; left: 482px; }
+.rectangle-5 { top: 218px; left: 482px; }
+.rectangle-6 { top: 290px; left: 482px; }
+.rectangle-7 { top: 362px; left: 482px; }
+.rectangle-8 { top: 434px; left: 482px; }
+
+/* Galeria de fotos */
+.photo-gallery {
+    position: absolute;
+    top: 576px;
+    left: 129px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.photo-item {
+    width: 172px;
+    height: 128px;
+    background: rgba(0, 31, 63, 0.3);
+    border-radius: 12px;
+}
+
+/* Informações adicionais */
+.additional-info {
+    position: absolute;
+    top: 594px;
+    left: 874px;
+    width: 205px;
+    height: 43px;
+    background: #000000;
+    border-radius: 20px;
+}
+
+.additional-info-text {
+    position: absolute;
+    width: 189px;
+    height: 24px;
+    left: 882px;
+    top: 604px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+/* Sessões de informações adicionais */
+.rectangle-27, .rectangle-31, .rectangle-32, .rectangle-33, .rectangle-34 {
+    position: absolute;
+    width: 459px;
+    height: 33px;
+    background: #007B7F;
+    border-radius: 22px;
+}
+
+.rectangle-27 { top: 682px; left: 860px; }
+.rectangle-31 { top: 723px; left: 860px; }
+.rectangle-32 { top: 767px; left: 860px; }
+.rectangle-33 { top: 812px; left: 860px; }
+.rectangle-34 { top: 857px; left: 860px; }
+
+/* Texto dentro dos retângulos */
+.additional-info-item {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.cambio { top: 687px; left: 898px; }
+.combustivel { top: 729px; left: 898px; }
+.freio { top: 770px; left: 898px; }
+.motor { top: 817px; left: 898px; }
+.descricao { top: 879px; left: 892px; }
+/* Estilo do header azul */
+header {
+    background-color: #007b95; /* Azul do header */
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    background-color: white;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px 0 0 5px;
+    color: black;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin-left: 50px;
+}
+
+.nav-links li {
+    font-size: 24px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.nav-options {
+    display: flex;
+    align-items: center;
+    background-color: #e67e22;
+    border-radius: 48px;
+    padding: 5px 15px;
+    gap: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav-options a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.inscrever-se {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon-person {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.divider {
+    background-color: black;
+    width: 1px;
+    height: 30px;
+}
