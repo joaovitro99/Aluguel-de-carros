@@ -43,23 +43,14 @@
                         <th>Preço diaria</th>
                         <th>Disponível</th>
                         <th>Operações</th>
+                        <th>Capacidade Pessoas</th>
+                        <th>Capacidade Bagageiro</th>
+                        <th>Combustivel</th>
+                        <th>Cambio</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Linhas de exemplo -->
-                    <tr>
-                        <td>1</td>
-                        <td>Fiat </td>
-                        <td>Fiat Uno</td>
-                        <td>2007</td>
-                        <td>AHS2345</td>
-                        <td>110.00  </td>
-                        <td>não disponível</td>
-                        <td>
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Excluir</button>
-                        </td>
-                    </tr>
                     <!-- Mais linhas -->
                     <?php
                         include("../BackEnd/data/mySqlDataProvider.php"); // Certifique-se que o caminho está correto
@@ -70,7 +61,7 @@
                         $conn = new MySqlDataProvider($config);
 
                         // Consulta SQL para obter os dados dos clientes
-                        $sql = "SELECT id_veiculo,marca, modelo, ano,placa,valor_diaria,status FROM veiculos ";
+                        $sql = "SELECT id_veiculo,marca, modelo, ano,placa,valor_diaria,status,capacidade_pessoas,capacidade_bagageiro,combustivel,cambio FROM veiculos ";
 
                         // Preparação e execução da consulta
                         $stmt = $conn->query($sql);
@@ -87,6 +78,10 @@
                                 echo "<td>" . $row['placa'] . "</td>";
                                 echo "<td>" . $row['valor_diaria'] . "</td>";
                                 echo "<td>" . $row['status'] . "</td>";
+                                echo "<td>" . $row['capacidade_pessoas'] . "</td>";
+                                echo "<td>" . $row['capacidade_bagageiro'] . "</td>";
+                                echo "<td>" . $row['combustivel'] . "</td>";
+                                echo "<td>" . $row['cambio'] . "</td>";
                                 echo "<td><button class='edit-btn'>Editar</button> <button class='delete-btn'>Excluir</button></td>";
                                 echo "</tr>";
                             }
