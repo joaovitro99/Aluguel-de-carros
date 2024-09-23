@@ -1,5 +1,5 @@
 <?php
-const config = [
+const CONFIG = [
     'host' => 'localhost',
     'username' => 'root',
     'password' => '',  
