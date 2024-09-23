@@ -5,5 +5,4 @@ $config= [
         "username" => "root",
         "password" => "",
         "dbname" => "carrobd"
-];
-?>
+]; 
