@@ -96,12 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $errors[] = "Tipo de combustivel não informado";
     }
-
+   
     if (empty($errors)) {
         $car_repository->insertCar($marca,$modelo,$ano,$placa,$valor_diaria,$status,$capacidade_pessoas,$capacidade_bagageiro,$cambio,$combustivel);
         echo "<script>
             alert('Carro inserido com sucesso!');
-            window.location.href = '../../FrontEnd/public/veiculos.php';
+            window.location.href = '../../FrontEnd/veiculos.php';
           </script>";
           exit(); 
     } 

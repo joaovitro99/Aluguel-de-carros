@@ -29,7 +29,7 @@
     <div class="main-content">
         <div class="header">
             <input type="text" class="search-bar" placeholder="Buscar...">
-            <button class="btn-novo-item"><a href="../../BackEnd/admin/FormularioVeiculo.php">+ Novo Item</a></button>
+            <button class="btn-novo-item"><a href="../BackEnd/admin/FormularioVeiculo.php">+ Novo Item</a></button>
         </div>
 
         <div class="content">
