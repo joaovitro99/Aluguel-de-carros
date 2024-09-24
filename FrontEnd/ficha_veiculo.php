@@ -4,7 +4,7 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="initial-scale=1, width=device-width">
   	
-  	<link rel="stylesheet"  href="ficha.css" />
+  	<link rel="stylesheet"  href="assets/css/ficha.css" />
   	
   	
   	
@@ -30,8 +30,8 @@
             <div class="carousel">
                 <div class="slides">
                     <?php
-                            include("MySqlDataProvider.php");
-                            include("config.php");
+                            include(__DIR__."/"."../BackEnd/data/MySqlDataProvider.php");
+                            include(__DIR__."/"."../BackEnd/app/config.php");
                             
                             // Cria uma nova instância da classe MySqlDataProvider com a configuração
                             $conn = new MySqlDataProvider($config);
