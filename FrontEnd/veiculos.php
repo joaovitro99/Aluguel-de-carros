@@ -58,35 +58,40 @@
                         include("../BackEnd/app/config.php");
 
                         // Chama a função para obter a conexão com o banco de dados
-                        $conn = new MySqlDataProvider($config);
+                        $db = new MySqlDataProvider($config);
 
-                        // Consulta SQL para obter os dados dos clientes
-                        $sql = "SELECT id_veiculo,marca, modelo, ano,placa,valor_diaria,status,capacidade_pessoas,capacidade_bagageiro,combustivel,cambio FROM veiculos ";
-
-                        // Preparação e execução da consulta
-                        $stmt = $conn->query($sql);
-
-                        // Verificação se existem registros
-                        if ($stmt->num_rows >0) {
-                            // Loop pelos resultados da consulta e exibição na tabela
-                            while ($row = $stmt->fetch_assoc()) {
+                        // Consulta para buscar os veículos
+                        $sql = "SELECT * FROM veiculos";
+                        $stmt = $db->prepare($sql);
+                        
+                        if ($stmt) {
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            while ($veiculo = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row['id_veiculo'] . "</td>";
-                                echo "<td>" . $row['marca'] . "</td>";
-                                echo "<td>" . $row['modelo'] . "</td>";
-                                echo "<td>" . $row['ano'] . "</td>";
-                                echo "<td>" . $row['placa'] . "</td>";
-                                echo "<td>" . $row['valor_diaria'] . "</td>";
-                                echo "<td>" . $row['status'] . "</td>";
-                                echo "<td>" . $row['capacidade_pessoas'] . "</td>";
-                                echo "<td>" . $row['capacidade_bagageiro'] . "</td>";
-                                echo "<td>" . $row['combustivel'] . "</td>";
-                                echo "<td>" . $row['cambio'] . "</td>";
-                                echo "<td><button class='edit-btn'>Editar</button> <button class='delete-btn'>Excluir</button></td>";
+                                echo "<td>{$veiculo['id_veiculo']}</td>";
+                                echo "<td>{$veiculo['marca']}</td>";
+                                echo "<td>{$veiculo['modelo']}</td>";
+                                echo "<td>{$veiculo['ano']}</td>";
+                                echo "<td>{$veiculo['placa']}</td>";
+                                echo "<td>R$ {$veiculo['valor_diaria']}</td>";
+                                echo "<td>{$veiculo['status']}</td>";
+                                echo "<td>" . $veiculo['capacidade_pessoas'] . "</td>";
+                                echo "<td>" . $veiculo['capacidade_bagageiro'] . "</td>";
+                                echo "<td>" . $veiculo['combustivel'] . "</td>";
+                                echo "<td>" . $veiculo['cambio'] . "</td>";
+                                echo "<td>
+                                        <a href='editveiculo.php?id={$veiculo['id_veiculo']}' class='btn-edit'>Editar</a>
+                                        <form class='delete-form' data-id='{$veiculo['id_veiculo']}' style='display:inline;'>
+                                            <input type='hidden' name='id_veiculo' value='{$veiculo['id_veiculo']}'>
+                                            <button type='submit' class='btn-delete' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</button>
+                                        </form>
+                                      </td>";
                                 echo "</tr>";
                             }
+                            $stmt->close();
                         } else {
-                            echo "<tr><td colspan='6'>Nenhum cliente encontrado</td></tr>";
+                            echo "Erro ao preparar a consulta ";
                         }
                 ?>
 
@@ -94,5 +99,24 @@
             </table>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                fetch('../BackEnd/admin/DeleteVeiculo.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(() => {
+                    // Remove a linha da tabela
+                    this.closest('tr').remove();
+                })
+                .catch(error => {
+                    console.error('Erro ao processar a solicitação:', error);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
