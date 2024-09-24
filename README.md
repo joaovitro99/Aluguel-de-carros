@@ -14,6 +14,18 @@ Link do protótipo no Figma : https://www.figma.com/design/LAUzSqEJZcZTE5R8dfeaJ
 # Sobre o Projeto
 Este projeto é um site de aluguel de carros desenvolvido para uma empresa que deseja oferecer aos seus clientes a possibilidade de alugar veículos de forma fácil, rápida e segura. O sistema é voltado tanto para clientes que buscam alugar carros, quanto para os funcionários da empresa que irão gerenciar o catálogo de veículos disponíveis, processos de reserva, e o histórico de transações, também existe o papel de administrador que gerencia funcionários, carros e rendimentos.
 
+# Sprint 2
+
+ ### Permitir acesso de usuários e  busca avançada de veículos 
+
+ ### Valor : Possibilitar que o usuário acesse as funcionalidades do site através da página inicial. Assim como fazer cadastro e login. Além de conseguir fazer buscas de veículos com filtros de seu interesse.
+
+ Features : 
+-  Implementar pagina inicial 
+- Implementação da funcionalidade de Login de usuários( administradores, funcionários e clientes)
+- Implementação da funcionalidade de Cadastro de usuários( administradores, funcionários e clientes)
+- Busca com filtros
+
 # User Stories
 ![User Stories Inicial](user_story/user%20stories%20inicial.png) 
 
