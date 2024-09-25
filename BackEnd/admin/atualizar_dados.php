@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Atualiza as informações do veículo
     $sql = "UPDATE veiculos SET marca = ?, modelo = ?, ano = ?, placa = ?, status = ?, valor_diaria = ?, cambio = ?, capacidade_bagageiro = ?, capacidade_pessoas = ?, combustivel = ? WHERE id_veiculo = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssisssiiii", $marca, $modelo, $ano, $placa, $status, $valor_diaria, $cambio, $capacidade_bagageiro, $capacidade_pessoas, $combustivel, $id_veiculo);
+    $stmt->bind_param("ssissssdisi", $marca, $modelo, $ano, $placa, $status, $valor_diaria, $cambio, $capacidade_bagageiro, $capacidade_pessoas, $combustivel, $id_veiculo);
 
     if (!$stmt->execute()) {
         $atualizacaoSucesso = false; // Marca como falha

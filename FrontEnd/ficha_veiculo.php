@@ -64,7 +64,7 @@
                                 $stmt->close();
                             } else {
                                 
-                                echo "Erro ao preparar a consulta: " . $conn->error;
+                               // echo "Erro ao preparar a consulta: " . $conn->error;
                             }
                   ?>
                 </div>
@@ -123,7 +123,7 @@
                     $stmt_info->close();
                 } else {
                   
-                    echo "Erro ao preparar a consulta: " . $conn->error;
+                    //echo "Erro ao preparar a consulta: " . $conn->error;
                 }
             ?>
              
@@ -164,7 +164,7 @@
                     $stmt_info->close();
                 } else {
                    
-                    echo "Erro ao preparar a consulta: " . $conn->error;
+                    //echo "Erro ao preparar a consulta: " . $conn->error;
                 }
                 ?>
                 <h2>Alugar</h2>

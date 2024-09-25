@@ -41,12 +41,12 @@
                         <th>Ano</th>
                         <th>Placa</th>
                         <th>Preço diaria</th>
-                        <th>Disponível</th>
-                        <th>Operações</th>
+                        <th>Status</th>
                         <th>Capacidade Pessoas</th>
                         <th>Capacidade Bagageiro</th>
                         <th>Combustivel</th>
                         <th>Cambio</th>
+                        <th>Operações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,10 +76,10 @@
                                 echo "<td>{$veiculo['placa']}</td>";
                                 echo "<td>R$ {$veiculo['valor_diaria']}</td>";
                                 echo "<td>{$veiculo['status']}</td>";
-                                echo "<td>" . $veiculo['capacidade_pessoas'] . "</td>";
-                                echo "<td>" . $veiculo['capacidade_bagageiro'] . "</td>";
-                                echo "<td>" . $veiculo['combustivel'] . "</td>";
-                                echo "<td>" . $veiculo['cambio'] . "</td>";
+                                echo "<td>{$veiculo['capacidade_pessoas'] } </td>";
+                                echo "<td>{$veiculo['capacidade_bagageiro'] } </td>";
+                                echo "<td>{$veiculo['combustivel'] } </td>";
+                                echo "<td>{$veiculo['cambio']}</td>";
                                 echo "<td>
                                         <a href='editor.php?id={$veiculo['id_veiculo']}' class='btn-edit'>Editar</a>
                                         <form class='delete-form' data-id='{$veiculo['id_veiculo']}' style='display:inline;'>
