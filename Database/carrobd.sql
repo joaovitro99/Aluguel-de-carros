@@ -6,7 +6,8 @@
 -- Tempo de geração: 18/09/2024 às 01:50
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
-
+CREATE DATABASE carrobd;
+USE carrobd;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -197,32 +198,7 @@ INSERT INTO `usuarios` (`id_usuario`, `nome_usuario`, `senha`, `tipo_usuario`) V
 -- Estrutura para tabela `veiculos`
 --
 
-CREATE TABLE `veiculos` (
-  `id_veiculo` int(11) NOT NULL,
-  `marca` varchar(50) NOT NULL,
-  `modelo` varchar(50) NOT NULL,
-  `ano` int(11) NOT NULL,
-  `placa` varchar(7) NOT NULL,
-  `valor_diaria` decimal(10,2) NOT NULL,
-  `status` enum('disponível','alugado','manutenção') DEFAULT 'disponível',
-  `imagem` longblob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `veiculos`
---
-
-INSERT INTO `veiculos` (`id_veiculo`, `marca`, `modelo`, `ano`, `placa`, `valor_diaria`, `status`, `imagem`) VALUES
-(1, 'Honda', 'Civic', 2020, 'ABC1234', 200.00, 'disponível', NULL),
-(2, 'Toyota', 'Corolla', 2021, 'DEF5678', 250.00, 'disponível', NULL),
-(3, 'Ford', 'Focus', 2019, 'GHI9012', 180.00, 'disponível', NULL),
-(4, 'Chevrolet', 'Onix', 2020, 'JKL3456', 150.00, 'disponível', NULL),
-(5, 'Volkswagen', 'Golf', 2018, 'MNO7890', 220.00, 'disponível', NULL),
-(6, 'Hyundai', 'HB20', 2022, 'PQR1234', 160.00, 'disponível', NULL),
-(7, 'Renault', 'Sandero', 2019, 'STU5678', 140.00, 'disponível', NULL),
-(8, 'Fiat', 'Argo', 2021, 'VWX9012', 170.00, 'disponível', NULL),
-(9, 'Peugeot', '208', 2020, 'YZA3456', 190.00, 'disponível', NULL),
-(10, 'Nissan', 'Kicks', 2022, 'BCD7890', 260.00, 'disponível', NULL);
 
 --
 -- Índices para tabelas despejadas

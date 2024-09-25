@@ -125,7 +125,7 @@
                 </div>
                 <div class="form-group half">
                     <label for="placa">Placa:</label>
-                    <input type="text" id="placa" name="placa" required placeholder="AAA-0000" required pattern="[A-Z]{3}-\d{4}">
+                    <input type="text" id="placa" name="placa" required placeholder="AAA0000" required pattern="[A-Z]{3}\d{4}">
                 </div>
             </div>
             <div class="form-row">

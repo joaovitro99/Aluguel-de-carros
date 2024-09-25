@@ -105,7 +105,48 @@
                 </div>
             </div>
         </div>   
+
+    <script src="assets/js/script.js"></script>
+    <div id="grid">
+    
+        
+        <?php
+        include("../BackEnd/data/mySqlDataProvider.php"); // Certifique-se que o caminho está correto
+        include("../BackEnd/repositories/CarRepository.php");
+        include("../BackEnd/app/config.php");
+
+         // Chama a função para obter a conexão com o banco de dados
+         $conn = new MySqlDataProvider($config);
+
+         // Consulta SQL para obter os dados dos clientes
+         $sql = "SELECT v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem FROM veiculos v INNER JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
+
+
+         // Preparação e execução da consulta
+         $stmt = $conn->query($sql);
+
+        
+         
+         
+        if ($stmt->num_rows >0) {
+
+            while (($row = $stmt->fetch_assoc())){
+
+                echo '<div id="car-card">';
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['imagem']) . '" alt="Imagem do Veículo">';
+                echo '<h3>Marca: ' . $row['marca'] . "</h3>";
+                echo '<p>Modelo: ' . $row['modelo'] . "</p>";
+                echo '<p>Ano: ' . $row['ano'] . "</p>";
+                echo '<p>Diária: R$ ' . $row['valor_diaria'] . "</p>";
+                echo '<button class="btn-alugar">Alugar</button>';
+                echo '</div>';
+            }
+        } else {
+            echo "<tr><td colspan='6'>Nenhum veiculo encontrado</td></tr>";
+        }
+        ?>
+
     </div>
-    <script src="assets/js/scriptCarros.js"></script>
+    </div>
 </body>
 </html>
