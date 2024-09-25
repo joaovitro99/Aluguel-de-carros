@@ -1,11 +1,11 @@
 <?php
 // Inclui a classe de conexão e o arquivo de configuração
-include("MySqlDataProvider.php");
-include("config.php");
+include(__DIR__."/../BackEnd/data/MySqlDataProvider.php");
+include(__DIR__."/../BackEnd/app/config.php");
 
 // Instancia a conexão com o banco de dados
 $conn = new MySqlDataProvider($config);
-$id_veiculo = 1;
+$id_veiculo = $_GET['id'];
 // Verifica se o id_veiculo foi passado via GET para buscar os dados
 if ($id_veiculo != 0) {
 
@@ -42,7 +42,7 @@ if ($id_veiculo != 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Usuários</title>
-    <link rel="stylesheet" href="editor.css">
+    <link rel="stylesheet" href="assets/css/editor.css">
 </head>
 <body>
     <div class="sidebar">
@@ -63,7 +63,7 @@ if ($id_veiculo != 0) {
         </div>
         <div class="content">
         <h2>Olá, admin!</h2>
-        <form action="atualizar_dados.php" method="post" enctype="multipart/form-data">
+        <form action="../BackEnd/admin/atualizar_dados.php" method="post" enctype="multipart/form-data">
    
             <div class="imagem-veiculo">
                 <?php

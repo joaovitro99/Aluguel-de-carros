@@ -1,15 +1,15 @@
 <?php
 
 // Inclui a classe de conexão e o arquivo de configuração
-include(__DIR__."/"."../BackEnd/data/MySqlDataProvider.php");
-include(__DIR__."/"."../BackEnd/app/config.php");
+include(__DIR__."/"."../data/MySqlDataProvider.php");
+include(__DIR__."/"."../app/config.php");
 
 $conn = new MySqlDataProvider($config);
 
 // Função para exibir mensagens de erro
 function exibirMensagemErro($mensagem) {
     echo "<p style='color:red;'>Erro: $mensagem</p>";
-    echo "<a href='veiculos.php'>Voltar para a lista de veículos</a>";
+    echo "<a href='../../FrontEnd/veiculos.php'>Voltar para a lista de veículos</a>";
     exit;
 }
 
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se todas as operações foram bem-sucedidas
     if ($atualizacaoSucesso) {
         echo "<p style='color:green;'>Informações do veículo e imagem atualizadas com sucesso!</p>";
-        echo "<a href='veiculos.php'>Voltar para a lista de veículos</a>";
+        echo "<a href='../../FrontEnd/veiculos.php'>Voltar para a lista de veículos</a>";
     }
 } else {
     exibirMensagemErro("Método de requisição inválido.");

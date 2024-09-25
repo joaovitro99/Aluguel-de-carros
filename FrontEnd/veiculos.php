@@ -81,7 +81,7 @@
                                 echo "<td>" . $veiculo['combustivel'] . "</td>";
                                 echo "<td>" . $veiculo['cambio'] . "</td>";
                                 echo "<td>
-                                        <a href='editveiculo.php?id={$veiculo['id_veiculo']}' class='btn-edit'>Editar</a>
+                                        <a href='editor.php?id={$veiculo['id_veiculo']}' class='btn-edit'>Editar</a>
                                         <form class='delete-form' data-id='{$veiculo['id_veiculo']}' style='display:inline;'>
                                             <input type='hidden' name='id_veiculo' value='{$veiculo['id_veiculo']}'>
                                             <button type='submit' class='btn-delete' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</button>
