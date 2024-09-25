@@ -21,10 +21,10 @@ Este projeto é um site de aluguel de carros desenvolvido para uma empresa que d
  ### Valor : Possibilitar que o usuário acesse as funcionalidades do site através da página inicial. Assim como fazer cadastro e login. Além de conseguir fazer buscas de veículos com filtros de seu interesse.
 
  Features : 
--  Implementar pagina inicial 
-- Implementação da funcionalidade de Login de usuários( administradores, funcionários e clientes)
-- Implementação da funcionalidade de Cadastro de usuários( administradores, funcionários e clientes)
-- Busca com filtros
+-  Implementar pagina inicial (Victhor)
+- Implementação da funcionalidade de Login de usuários( administradores, funcionários e clientes) (João Vitor)
+- Implementação da funcionalidade de Cadastro de usuários( administradores, funcionários e clientes) (Pedro)
+- Busca com filtros (Mayconn)
 
 # User Stories
 ![User Stories Inicial](user_story/user%20stories%20inicial.png) 
