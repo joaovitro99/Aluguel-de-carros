@@ -1,0 +1,49 @@
+body{
+    width:100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#container{
+    margin:10%;
+    background-color: #ffffff; /* Cor de fundo do cartão */
+    height: 60%;
+    width: 50%;
+    padding: 15px;
+    border: 2px solid #2291e6;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_login{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-radius: 12%;
+}
+
+button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#entrar{
+    border-radius: 3px;
+    color: white;
+    background-color: #2291e6;
+    border-radius: 3px;
+}
+#cadastro{
+    border-radius: 3px;
+    color: #2291e6;
+    background-color: white;
+    border: 3px solid #2291e6;
+}
