@@ -52,101 +52,139 @@
             </div>
         </div>
         <div class="filter-container">
-            <!-- Novo texto adicionado -->
             <div class="group-selection">Escolha o grupo de carros que melhor te atende</div>
-            <div class="filter-header" id="filter-header">
-                <h2>Filtros de busca</h2>
-                <div class="toggle-icon" id="toggle-icon">
-                    <img src="assets/images/icons/arrow-icon.svg" alt="Toggle Icon">
-                </div>
-            </div>
-            <div class="filter-panel" id="filter-panel">
-            <div class="filter-group-container">
-                <div class="filter-group">
-                    <div class="filter-label">Tipo de Veículo:</div>
-                    <div class="filter-options">
-                        <label>
-                            <input type="checkbox" class="filter-checkbox">
-                            Sedan
-                        </label>
-                        <label>
-                            <input type="checkbox" class="filter-checkbox">
-                            Hatch
-                        </label>
-                        <label>
-                            <input type="checkbox" class="filter-checkbox">
-                            Minivan
-                        </label>
-                        <label>
-                            <input type="checkbox" class="filter-checkbox">
-                            SUV
-                        </label>
-                        <label>
-                            <input type="checkbox" class="filter-checkbox">
-                            Picapes
-                        </label>
-                        <label>
-                            <input type="checkbox" class="filter-checkbox">
-                            Esportivo
-                        </label>
+                <div class="filter-header" id="filter-header">
+                    <h2>Filtros de busca</h2>
+                    <div class="toggle-icon" id="toggle-icon">
+                        <img src="assets/images/icons/arrow-icon.svg" alt="Toggle Icon">
                     </div>
                 </div>
-                <div class="filter-group">
-                    <div class="filter-label">Bagageiro:</div>
-                    <select>
-                        <option value="">Número de malas</option>
-                        <option value="1">1 mala</option>
-                        <option value="2">2 malas</option>
-                        <option value="3">3 malas</option>
-                        <option value="4">4 malas</option>
-                        <option value="5">5 malas</option>
-                    </select>
-                    <button class="filter-button">FILTRAR</button>
-                </div>
+                <form method="POST" id="filter-form">
+                    <div class="filter-panel" id="filter-panel">
+                        <div class="filter-group-labels">
+                            <div class="filter-label1">Tipo de Concessionária:</div>
+                            <div class="filter-label2">Bagageiro:</div>
+                            <div class="filter-label3">Preço:</div>
+                        </div> 
+                        <div class="filter-group-container">
+                            <div class="filter-group">
+                                <div class="filter-options">
+                                    <label>
+                                        <input type="checkbox" name="concessionarias[]" value="Honda" class="filter-checkbox"> Honda
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="concessionarias[]" value="Toyota" class="filter-checkbox"> Toyota
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="concessionarias[]" value="Ford" class="filter-checkbox"> Ford
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="concessionarias[]" value="Chevrolet" class="filter-checkbox"> Chevrolet
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="concessionarias[]" value="Volkswagen" class="filter-checkbox"> Volkswagen
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="concessionarias[]" value="Hyundai" class="filter-checkbox"> Hyundai
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <select name="num_malas">
+                                    <option value="">Número de malas</option>
+                                    <option value="1-2">1 a 2 malas</option>
+                                    <option value="3-4">3 a 4 malas</option>
+                                    <option value="5-6">5 a 6 malas</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <div class="price-filter">
+                                    <input type="text" name="min_price" class="input-price" placeholder="Mínimo" />
+                                    <span>-</span>
+                                    <input type="text" name="max_price" class="input-price" placeholder="Máximo" />
+                                </div>
+                                <button type="submit" class="filter-button">FILTRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-        </div>   
 
-    <script src="assets/js/script.js"></script>
-    <div id="grid">
-    
-        
-        <?php
-        include("../BackEnd/data/mySqlDataProvider.php"); // Certifique-se que o caminho está correto
-        include("../BackEnd/repositories/CarRepository.php");
-        include("../BackEnd/app/config.php");
+            <script src="assets/js/script.js"></script>
+            <div id="grid">
+            <?php
+                include("../BackEnd/data/mySqlDataProvider.php"); // Certifique-se que o caminho está correto
+                include("../BackEnd/repositories/CarRepository.php");
+                include("../BackEnd/app/config.php");
 
-         // Chama a função para obter a conexão com o banco de dados
-         $conn = new MySqlDataProvider($config);
+                // Chama a função para obter a conexão com o banco de dados
+                $conn = new MySqlDataProvider($config);
 
-         // Consulta SQL para obter os dados dos clientes
-         $sql = "SELECT v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem FROM veiculos v INNER JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
+                // Inicializa os filtros
+                $concessionarias = isset($_POST['concessionarias']) ? $_POST['concessionarias'] : [];
+                $num_malas = isset($_POST['num_malas']) ? $_POST['num_malas'] : '';
+                $min_price = isset($_POST['min_price']) ? $_POST['min_price'] : '';
+                $max_price = isset($_POST['max_price']) ? $_POST['max_price'] : '';
 
+                // Cria um array para armazenar as condições da consulta
+                $conditions = [];
+                if (!empty($concessionarias)) {
+                    $concessionariasList = "'" . implode("', '", $concessionarias) . "'";
+                    $conditions[] = "v.marca IN ($concessionariasList)";
+                }
+                // Lógica para lidar com o número de malas
+                if (!empty($num_malas)) {
+                    // Separar o intervalo em dois valores
+                    list($min_malas, $max_malas) = explode('-', $num_malas);
+                    $litros_por_mala = 70; // Cada mala ocupa 70 litros
+                    $capacidade_necessaria_min = $min_malas * $litros_por_mala;
+                    $capacidade_necessaria_max = $max_malas * $litros_por_mala;
 
-         // Preparação e execução da consulta
-         $stmt = $conn->query($sql);
+                    // Adiciona as condições ao array
+                    $conditions[] = "v.capacidade_bagageiro BETWEEN $capacidade_necessaria_min AND $capacidade_necessaria_max";
+                }
 
-        
-         
-         
-        if ($stmt->num_rows >0) {
+                if (!empty($min_price)) {
+                    $conditions[] = "v.valor_diaria >= $min_price";
+                }
+                if (!empty($max_price)) {
+                    $conditions[] = "v.valor_diaria <= $max_price";
+                }
 
-            while (($row = $stmt->fetch_assoc())){
+                // Monta a consulta SQL
+                $sql = "SELECT v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem 
+                        FROM veiculos v 
+                        LEFT JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
 
-                echo '<div id="car-card">';
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['imagem']) . '" alt="Imagem do Veículo">';
-                echo '<h3>Marca: ' . $row['marca'] . "</h3>";
-                echo '<p>Modelo: ' . $row['modelo'] . "</p>";
-                echo '<p>Ano: ' . $row['ano'] . "</p>";
-                echo '<p>Diária: R$ ' . $row['valor_diaria'] . "</p>";
-                echo '<button class="btn-alugar">Alugar</button>';
-                echo '</div>';
-            }
-        } else {
-            echo "<tr><td colspan='6'>Nenhum veiculo encontrado</td></tr>";
-        }
-        ?>
+                if (!empty($conditions)) {
+                    $sql .= " WHERE " . implode(" AND ", $conditions);
+                }
 
-    </div>
+                // Preparação e execução da consulta
+                $stmt = $conn->query($sql);
+
+                if ($stmt->num_rows > 0) {
+                    while ($row = $stmt->fetch_assoc()) {
+                        echo '<div id="car-card">';
+                        if ($row['imagem']) { // Verifica se a imagem existe
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($row['imagem']) . '" alt="Imagem do Veículo">';
+                        }
+                        echo '<h3>Marca: ' . $row['marca'] . "</h3>";
+                        echo '<p>Modelo: ' . $row['modelo'] . "</p>";
+                        echo '<p>Ano: ' . $row['ano'] . "</p>";
+                        echo '<p>Diária: R$ ' . $row['valor_diaria'] . "</p>";
+                        echo '<button class="btn-alugar">Alugar</button>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "<p>Nenhum veículo encontrado.</p>";
+                }
+                ?>
+
+            </div>
+        </div>
     </div>
 </body>
 </html>

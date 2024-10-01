@@ -30,7 +30,7 @@ if (isset($_GET['id_veiculo'])) {
         $stmt->close();
     } else {
         // Se a preparação da consulta falhar
-        echo "Erro ao preparar a consulta: " . $dbProvider->error;
+        echo "Erro ao preparar a consulta: " . $dbProvider->$error;
     }
 } else {
     // Caso o ID do veículo não tenha sido fornecido

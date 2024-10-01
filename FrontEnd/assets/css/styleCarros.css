@@ -450,7 +450,22 @@ line-height: normal;
 .filter-group {
     display: flex;
     align-items: center;
+    margin-top: 20px;
+    margin-right: 20px;
     margin-bottom: 15px;
+}
+
+.price-filter {
+    display: flex;
+    align-items: center;
+}
+
+/* Definir um tamanho menor para os campos de preço */
+.input-price {
+    width: 100px; /* Ajuste a largura conforme necessário */
+    padding: 7px; /* Ajuste o preenchimento para um visual mais compacto */
+    border: 1px solid #ddd;
+    border-radius: 6px;
 }
 
 .filter-group label {
@@ -470,9 +485,10 @@ input[type="time"] {
 
 
 .filter-group select {
+    color: #333232;
     padding: 8px;
     border: 1px solid #ddd;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .cars-grid {
@@ -563,26 +579,44 @@ body {
 }
 
 .filter-group-container {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px; /* Ajuste o espaçamento entre os elementos conforme necessário */
-    margin-bottom: 5px; /* Espaçamento entre as linhas de filtros */
+    gap: 10px; /* Ajuste o espaçamento entre os elementos conforme necessário */
 }
 
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.filter-label {
+.filter-group-labels {
+    display:flex;
     font-weight: bold;
-    margin-right: 10px;
+}
+
+.filter-label1 {
+    display: inline-block;
+    margin-right: 455px; /* Valor específico para label 1 */
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 16px;
+    color: #000;
+}
+
+.filter-label2 {
+    display: inline-block;
+    margin-right: 95px; /* Valor específico para label 2 */
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 16px;
+    color: #000;
+}
+
+.filter-label3 {
+    display: inline-block;
+    margin-right: 20px; /* Valor específico para label 3 */
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 16px;
+    color: #000;
 }
 
 .filter-options {
     display: flex;
+    margin-right: 10px;
     gap: 10px;
 }
 
