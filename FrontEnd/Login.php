@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="assets/css/Login.css">
 </head>
 
 <body>
@@ -24,7 +24,6 @@
                 <label for="senha">Senha:</label>
                 <input type="text" id="senha_mail" name="senha" required>
             </div>
-            <button id="senha">Esqueci minha senha</button>
 
             <button type="submit">Entrar</button>
         </form>

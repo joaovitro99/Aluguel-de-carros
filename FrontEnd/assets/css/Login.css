@@ -1,49 +1,121 @@
-body{
-    width:100%;
-    text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-
+    height: 100vh;
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
 }
 
-#container{
-    margin:10%;
-    background-color: #ffffff; /* Cor de fundo do cartão */
-    height: 60%;
-    width: 50%;
-    padding: 15px;
-    border: 2px solid #2291e6;
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form_login{
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    border-radius: 12%;
-}
-
-button{
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-#entrar{
-    border-radius: 3px;
-    color: white;
-    background-color: #2291e6;
-    border-radius: 3px;
-}
-#cadastro{
-    border-radius: 3px;
-    color: #2291e6;
+/* Estilos para o container principal */
+#container {
     background-color: white;
-    border: 3px solid #2291e6;
+    padding: 40px;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #27a8e9;
+    position: relative;
+    text-align: center;
+}
+
+/* Estilos para o título */
+h2 {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o botão "Voltar" */
+button:first-of-type {
+    
+    top: 20px;
+    left: 20px;
+    background-color: #58a7b9;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para os campos de input */
+.form_login {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #ffa8a8;
+    background-color: #fff;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #58a7b9;
+}
+
+/* Estilo para o botão de senha */
+#senha {
+    background-color: white;
+    border: none;
+    color: #58a7b9;
+    font-size: 14px;
+    text-align: right;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* Estilos para o botão "Entrar" */
+form button[type="submit"] {
+    background-color: #58a7b9;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilo para o botão de cadastro */
+#cadastro {
+    margin-top: 20px;
+    background-color: white;
+    border: 2px solid #ffa8a8;
+    color: #ffa8a8;
+    padding: 10px;
+    border-radius: 30px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#cadastro:hover {
+    background-color: #ffa8a8;
+    color: white;
 }
