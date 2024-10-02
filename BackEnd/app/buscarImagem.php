@@ -36,4 +36,3 @@ if (isset($_GET['id_veiculo'])) {
     // Caso o ID do veículo não tenha sido fornecido
     echo "ID do veículo não fornecido.";
 }
-?>
