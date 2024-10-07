@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require(__DIR__."/../app/app.php");
 
 $nome_usuario = '';
@@ -26,11 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         $user = $user_repository->getUserLogin($nome_usuario, $senha);
+        $_SESSION['id_usuario'] = $user['id_usuario'];
         
         if ($user) {
             $direcao = '';
             if ($user['tipo_usuario'] == 'cliente') {
-                $direcao = '../../FrontEnd/BuscaCarros.php';
+                $direcao = '../../FrontEnd/perfil.php';
             } else {
                 $direcao = '../../FrontEnd/veiculos.php';
             }
@@ -48,4 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<p style='color:red;'>$error</p>";
         }
     }
+
+
+
+
+
+// Redirecionar para o próximo arquivo
+header('Location: ../../FrontEnd/perfil.php');
+exit();
 }

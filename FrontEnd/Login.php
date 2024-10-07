@@ -11,9 +11,6 @@
 <body>
     <div id="container">
         <h2>Login</h2>
-        <button>
-            Voltar
-        </button>
         <form action="../BackEnd/admin/VerificarLogin.php" method="POST" id="Login">
             <div class="form_login">
                 <label for="nome_usuario">Nome do usuário:</label>
