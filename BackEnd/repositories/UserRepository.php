@@ -36,15 +36,30 @@ class UserRepository{
         
         if (!$result) {
             // Lidar com erro de consulta
-            throw new Exception("Usuário não encontrado: " . $this->data_provider->error);
+            echo "<script>
+            alert('Usuário incorreto');
+            window.location.href = '../../FrontEnd/Login.php';
+          </script>";
+            exit();
         }
         
         $user = $result->fetch_assoc();
         
-
+        if(!$user){
+            
+            echo "<script>
+                alert('Senha incorreta');
+                window.location.href = '../../FrontEnd/Login.php';
+              </script>";
+            exit();
+        }
         if($user['senha'] != $senha) {
             // Lidar com erro de consulta
-            throw new Exception("Senha incorreta: " . $this->data_provider->error);
+            echo "<script>
+            alert('Senha incorreta');
+            window.location.href = '../../FrontEnd/Login.php';
+          </script>";
+            exit();
         }
         return $user;
 

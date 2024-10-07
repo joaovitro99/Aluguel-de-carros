@@ -8,9 +8,7 @@ $errors = [];
 $status_bag;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    
 
     if (!empty($_POST['nome_usuario'])) {
         $nome_usuario = trim($_POST['nome_usuario']);
@@ -27,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $user = $user_repository->getUserLogin($nome_usuario, $senha);
         $_SESSION['id_usuario'] = $user['id_usuario'];
-        
+    
         if ($user) {
             $direcao = '';
             if ($user['tipo_usuario'] == 'cliente') {
@@ -41,12 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </script>";
             exit();
         } else {
-            echo "<script>alert('Usuário ou senha incorretos');</script>";
+            echo "<script>
+                alert('Usuário ou senha incorretos');
+                window.location.href = '../../FrontEnd/Login.php';
+              </script>";
+            exit();
         }
     } else {
         // Exibir erros
         foreach ($errors as $error) {
-            echo "<p style='color:red;'>$error</p>";
+            echo "<script>
+                alert($error);
+                window.location.href = '../../FrontEnd/Login.php';
+              </script>";
+            exit();
         }
     }
 

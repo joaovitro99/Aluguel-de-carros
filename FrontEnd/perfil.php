@@ -50,9 +50,9 @@ $result = $stmt->get_result();
 $cliente = $result->fetch_assoc();
 
 
-echo '<h2>' . $cliente['nome'] . "</h2>";
-echo '<h2>' . $cliente['email'] . "</h2>";
-echo '<h2>' . $cliente['telefone'] . "</h2>";
+echo '<h2>Nome: ' . $cliente['nome'] . "</h2>";
+echo '<h2>Email: ' . $cliente['email'] . "</h2>";
+echo '<h2>Telefone: ' . $cliente['telefone'] . "</h2>";
 ?>
 
 </div>

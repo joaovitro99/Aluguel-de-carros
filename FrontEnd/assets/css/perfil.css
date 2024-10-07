@@ -3,21 +3,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+
+html, body {
+    height: 100%; /* Garante que o html e o body ocupem 100% da altura */
+    margin: 0; /* Remove margens padrão */
 }
 
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    height: 100%;
+    
 }
 
 .header {
-    background-color: blue; /* Cor do cabeçalho */
+    
     color: white; /* Cor do texto do cabeçalho */
     padding: 20px; /* Espaçamento interno */
     text-align: center; /* Centralizar texto */
-    height: 30%;
+    height: 20vh;
+    
 }
 
 .container {
@@ -25,12 +32,14 @@ body {
     display: flex;
     flex-direction: column; /* Alinhar os elementos em colunas */
     align-items: center; /* Centralizar elementos horizontalmente */
-
-    height: 70%;
+    height: 80vh;
+    border-radius: 20%;
+   
 }
 
 .retangulo-azul {
-    background-color: #007bff;
+    border: 1px solid #747171;
+    background-color: #007b95;
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -97,6 +106,7 @@ button {
     width: 80%; /* Largura dos elementos */
     text-align: center; /* Centralizar texto */
     margin: 0 auto;
+    align-items: center;
 }
 
 #car-card {
