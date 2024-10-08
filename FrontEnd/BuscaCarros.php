@@ -16,12 +16,12 @@
             <div class="nav-buttons">
                 <a href="pagina_inicial.php">Home</a>
                 <a href="#vehicles">Nossos veículos</a>
-                <a href="#about">Sobre nós</a>
+                <a href="pagina_inicial.php">Sobre nós</a>
             </div>
             <div class="auth-buttons">
-                <a href="#signup" class="button">Inscrever-se</a>
+                <a href="Cadastro.php" class="button">Inscrever-se</a>
                 <div class="separator"></div>
-                <a href="#login" class="button">Entrar</a>
+                <a href="Login.php" class="button">Entrar</a>
             </div>
         </div>
         <div class="overlap-wrapper">
