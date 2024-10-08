@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/styleCarros.css">
+    <script src="assets/js/pagina_inicial_pesquisa.js" defer></script>
 </head>
 
 <body>
@@ -13,7 +14,7 @@
         <div class="header">
             <div class="logo">Logo</div>
             <div class="nav-buttons">
-                <a href="#home">Home</a>
+                <a href="pagina_inicial.php">Home</a>
                 <a href="#vehicles">Nossos veículos</a>
                 <a href="#about">Sobre nós</a>
             </div>
@@ -26,7 +27,7 @@
         <div class="overlap-wrapper">
             <div class="overlap">
                 <div class="overlap-group">
-                    <input type="text" class="input-field-local" placeholder="Local de retirada">
+                    <input type="text" class="input-field-local" id='local-retirada' placeholder="Local de retirada">
                 </div>
 
                 <!-- Campos de Data e Hora de Retirada -->
