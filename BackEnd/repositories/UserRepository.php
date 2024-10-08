@@ -37,7 +37,7 @@ class UserRepository{
         if (!$result) {
             // Lidar com erro de consulta
             echo "<script>
-            alert('Usuário incorreto');
+            alert('Usuario ou Senha incorreto')
             window.location.href = '../../FrontEnd/Login.php';
           </script>";
             exit();
@@ -48,7 +48,7 @@ class UserRepository{
         if(!$user){
             
             echo "<script>
-                alert('Senha incorreta');
+                alert('Usuario ou Senha incorreto');
                 window.location.href = '../../FrontEnd/Login.php';
               </script>";
             exit();
@@ -56,7 +56,7 @@ class UserRepository{
         if($user['senha'] != $senha) {
             // Lidar com erro de consulta
             echo "<script>
-            alert('Senha incorreta');
+            alert('Usuario ou Senha incorreto');
             window.location.href = '../../FrontEnd/Login.php';
           </script>";
             exit();

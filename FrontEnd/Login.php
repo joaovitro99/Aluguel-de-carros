@@ -19,13 +19,13 @@
 
             <div class="form_login">
                 <label for="senha">Senha:</label>
-                <input type="text" id="senha_mail" name="senha" required>
+                <input type="password" id="senha_mail" name="senha" required>
             </div>
 
             <button type="submit">Entrar</button>
         </form>
 
-        <button id="cadastro">Ainda não sou cadastrado</button>
+        <a href="Cadastro.php"><button id="cadastro">Ainda não sou cadastrado</button></a>
     </div>
     <script></script>
 </body>

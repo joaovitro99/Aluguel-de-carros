@@ -12,9 +12,9 @@
     <div class="header">
     <div class="retangulo-azul">
         
-        <div class="home">Home</div>
-        <div class="nossos-veiculos">Nossos veículos</div>
-        <div class="sobre-nos">Sobre-nós</div>
+        <a href="pagina_inicial.php"><div class="home" href="pagina_inicial.php">Home</div></a>
+        <a href="BuscaCarros.php"><div class="nossos-veiculos">Nossos veículos</div></a>
+        <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
         <div class="retangulo-laranja">
     <form action="../BackEnd/admin/Logout.php" method="post" style="margin: 0;">
         <button type="submit" style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;">

@@ -13,6 +13,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+#container > a {
+    text-decoration: none;
+}
+
 /* Estilos para o container principal */
 #container {
     background-color: white;

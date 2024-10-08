@@ -85,6 +85,10 @@ button {
     margin-bottom: 10px;
 }
 
+.retangulo-azul > a {
+    text-decoration: none;
+}
+
 #titulo_hist {
     margin: 10px 0; /* Espaçamento entre os elementos */
     padding: 15px; /* Espaçamento interno */
@@ -93,7 +97,8 @@ button {
     text-align: center; /* Centralizar texto */
     margin: 30px 0;
     font-size: 1.5rem;
-    color: #007bff;
+    color: #fff;
+    background-color: #ff851bdc;
 }
 
 #dashboard_alugueis {
