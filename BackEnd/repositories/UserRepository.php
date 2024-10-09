@@ -28,40 +28,42 @@ class UserRepository{
         
     }
     public function getUserLogin($nome_usuario, $senha){
-        $sql_getUser = "SELECT id_usuario,nome_usuario, senha, tipo_usuario FROM usuarios WHERE nome_usuario = ? AND senha = ?";
-        $stmt = $this->data_provider->prepare($sql_getUser);
-        $stmt->bind_param("ss", $nome_usuario, $senha);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $sql_login = "SELECT senha FROM usuarios WHERE nome_usuario = ?";
+$stmt_login = $this->data_provider->prepare($sql_login);
+$stmt_login->bind_param("s", $nome_usuario);
+$stmt_login->execute();
+$result_login = $stmt_login->get_result();
+$row = '';
+
+if ($result_login->num_rows > 0) {
+    $row = $result_login->fetch_assoc();
+    $hashed_senha = $row['senha'];
+
+    // Verifica a senha
+    if (password_verify($senha, $hashed_senha)) {
+        // Senha correta
+        return $row;
         
-        if (!$result) {
-            // Lidar com erro de consulta
-            echo "<script>
-            alert('Usuario ou Senha incorreto')
+    } else {
+        // Senha incorreta
+        echo "<script>
+            alert('senha incorreta')
             window.location.href = '../../FrontEnd/Login.php';
           </script>";
-            exit();
-        }
-        
-        $user = $result->fetch_assoc();
-        
-        if(!$user){
-            
-            echo "<script>
-                alert('Usuario ou Senha incorreto');
-                window.location.href = '../../FrontEnd/Login.php';
-              </script>";
-            exit();
-        }
-        if($user['senha'] != $senha) {
-            // Lidar com erro de consulta
-            echo "<script>
-            alert('Usuario ou Senha incorreto');
+          exit();
+    }
+} else {
+    // Usuário não encontrado
+    echo "<script>
+            alert('Usuario incorreto')
             window.location.href = '../../FrontEnd/Login.php';
           </script>";
-            exit();
-        }
-        return $user;
+          exit();
+}
+        
+
+        
+       
 
     }
     public function getAll()
