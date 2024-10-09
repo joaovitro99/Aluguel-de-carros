@@ -25,14 +25,15 @@ function preencherDados(){
         var dateReturn=document.getElementById('date-return')
         var timeReturn=document.getElementById('time-return')
         localPicker.value=localStorage.getItem('local_retirada')
-        datePicker.value=localStorage.getItem('data_retirada')
+        datePicker.value = new Date(localStorage.getItem('data_retirada')).toISOString().substring(0, 10);
         timePicker.value=localStorage.getItem('hora_retirada')
         dateReturn.value=localStorage.getItem('data_devolucao')
         timeReturn.value=localStorage.getItem('hora_devolucao')
 
     
     
-   
+        
+
     
 }
 preencherDados();
