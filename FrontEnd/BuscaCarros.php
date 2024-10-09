@@ -32,16 +32,16 @@
                 <!-- Campos de Data e Hora de Retirada -->
                 <div class="div">
                     <div class="input-group">
-                        <input type="date" id="date-picker" class="input-field left" placeholder="Data de retirada">
-                        <input type="time" id="time-picker" class="input-field right" placeholder="Hora de retirada">
+                        <input type="text" id="date-picker" class="input-field left" placeholder="Data de retirada">
+                        <input type="text" id="time-picker" class="input-field right" placeholder="Hora de retirada">
                     </div>
                 </div>
 
                 <!-- Campos de Data e Hora de Devolução -->
                 <div class="overlap-2">
                     <div class="input-group">
-                        <input type="date" id="date-return" class="input-field left" placeholder="Data de devolução">
-                        <input type="time" id="time-return" class="input-field right" placeholder="Hora de devolução">
+                        <input type="text" id="date-return" class="input-field left" placeholder="Data de devolução">
+                        <input type="text" id="time-return" class="input-field right" placeholder="Hora de devolução">
                     </div>
                 </div>
 
