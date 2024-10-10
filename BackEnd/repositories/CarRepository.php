@@ -27,17 +27,19 @@ class CarRepository{
     {
         
     }
-    public function getCar(){
-        $sql_getCar = "SELECT marca, modelo, ano,valor_diaria FROM veiculos ";
-        $result = $this->data_provider->query($sql_getCar);
-
-        if (!$result) {
-            // Lidar com erro de consulta
-            throw new Exception("Erro na execução da consulta: " . $this->data_provider->error);
+    public function getCar($id) {
+        $sql = "SELECT * FROM veiculos WHERE id_veiculo = ?";
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        // Verifica se algum carro foi encontrado
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc(); // Retorna um array associativo
+        } else {
+            return null; // Retorna null se não encontrou
         }
-        return $result;
-
-
     }
     public function getAll()
     {

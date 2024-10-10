@@ -37,7 +37,7 @@
                             $conn = new MySqlDataProvider($config);
                             
                           
-                            $id_veiculo = 1; // Substitua pelo ID do veículo que deseja exibir
+                            $id_veiculo = $_GET['id']; // Substitua pelo ID do veículo que deseja exibir
                             
                            
                             $sql = "SELECT imagem FROM imagens_veiculo WHERE id_veiculo = ?";

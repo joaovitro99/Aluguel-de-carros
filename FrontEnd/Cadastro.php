@@ -9,9 +9,9 @@
 <body>
 
     <div class="retangulo-azul">
-        <a href="#" class="home">Home</a>
-        <a href="#" class="nossos-veiculos">Nossos Veículos</a>
-        <a href="#" class="sobre-nos">Sobre Nós</a>
+        <a href="pagina_inicial.php" class="home">Home</a>
+        <a href="BuscaCarros.php" class="nossos-veiculos">Nossos Veículos</a>
+        <a href="pagina_inicial.php" class="sobre-nos">Sobre Nós</a>
     </div>
    
     <div class="container">
