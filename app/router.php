@@ -22,3 +22,7 @@ class Router {
         }
     }
 }
+
+// Adicionando a nova rota para BuscaCarros
+$router = new Router();
+$router->addRoute('/buscacaros', 'CarController', 'index'); // Rota para busca de carros

@@ -65,7 +65,7 @@
                                             <input type="time" name="hora_devolucao" id="hora-devolucao" placeholder="Hora de devolução">
                       </div>
                   </div>
-                  <button onclick="pesquisaRapida()"> Continuar</button>
+                  <a href="../app/views/BuscaCarrosview.php"> Continuar </button></a> 
 
                   
                 

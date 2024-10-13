@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../app/router.php'; // Importa a classe Router
 require_once __DIR__ . '/../app/controllers/HomeController.php'; // Importa o controlador padrão
+require_once __DIR__ . '/../app/controllers/CarController.php'; // Importa o CarController
 
 // Configuração do roteador
 $router = new Router();
