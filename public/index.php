@@ -6,7 +6,7 @@ require_once __DIR__ . '/../app/controllers/CarController.php'; // Importa o Car
 
 // Configuração do roteador
 $router = new Router();
-
+$router->addRoute('/buscacaros', 'CarController', 'index');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 
@@ -17,7 +17,8 @@ $route = $router->resolve($uri); // Busca a rota correspondente à URI
 $controllerName = $route['controller']; // Obtém o nome do controlador
 $action = $route['action']; // Obtém a ação a ser chamada
 
-require_once __DIR__ . '/../app/controllers/' . $controllerName . '.php'; // Importa o controlador correspondente
+// Importa o controlador correspondente
+require_once __DIR__ . '/../app/controllers/' . $controllerName . '.php';
 $controller = new $controllerName(); // Cria uma nova instância do controlador
 
 // Chama a ação do controlador
@@ -27,3 +28,8 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
     http_response_code(404); // Define o código de resposta HTTP para 404
     echo "404 Not Found"; // Exibe uma mensagem de erro
 }
+
+// Verifica se a rota é a de busca de carros
+$carController = new CarController($db_conection); // Instancia o CarController
+$carController->index(); // Chama a ação index() do CarController
+

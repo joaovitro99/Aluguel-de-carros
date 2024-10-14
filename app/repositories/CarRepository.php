@@ -46,45 +46,48 @@ class CarRepository{
         
     }
 
-    public function getFilteredCars($filters) {
-        $sql = "SELECT v.*, i.imagem FROM veiculos v LEFT JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo WHERE 1=1";
-        $params = [];
-        $types = "";
-
-        if (!empty($filters['concessionarias'])) {
-            $concessionariasList = "'" . implode("', '", $filters['concessionarias']) . "'";
-            $sql .= " AND v.marca IN ($concessionariasList)";
+    public function getFilteredCars($concessionarias, $num_malas, $min_price, $max_price) {
+        $conditions = [];
+        if (!empty($concessionarias)) {
+            $concessionariasList = "'" . implode("', '", $concessionarias) . "'";
+            $conditions[] = "v.marca IN ($concessionariasList)";
         }
-
-        if (!empty($filters['num_malas'])) {
-            list($min_malas, $max_malas) = explode('-', $filters['num_malas']);
+    
+        // Lógica para lidar com o número de malas
+        if (!empty($num_malas)) {
+            list($min_malas, $max_malas) = explode('-', $num_malas);
             $litros_por_mala = 70; // Cada mala ocupa 70 litros
             $capacidade_necessaria_min = $min_malas * $litros_por_mala;
             $capacidade_necessaria_max = $max_malas * $litros_por_mala;
-
-            $sql .= " AND v.capacidade_bagageiro BETWEEN $capacidade_necessaria_min AND $capacidade_necessaria_max";
+            $conditions[] = "v.capacidade_bagageiro BETWEEN $capacidade_necessaria_min AND $capacidade_necessaria_max";
         }
-
-        if (!empty($filters['min_price'])) {
-            $sql .= " AND v.valor_diaria >= ?";
-            $params[] = $filters['min_price'];
-            $types .= "d"; // Tipo double
+    
+        if (!empty($min_price)) {
+            $conditions[] = "v.valor_diaria >= $min_price";
         }
-
-        if (!empty($filters['max_price'])) {
-            $sql .= " AND v.valor_diaria <= ?";
-            $params[] = $filters['max_price'];
-            $types .= "d"; // Tipo double
+        if (!empty($max_price)) {
+            $conditions[] = "v.valor_diaria <= $max_price";
         }
-
-        $stmt = $this->data_provider->prepare($sql);
-        if ($types) {
-            $stmt->bind_param($types, ...$params);
+    
+        // Monta a consulta SQL
+        $sql = "SELECT v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem 
+                FROM veiculos v 
+                LEFT JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
+    
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(" AND ", $conditions);
         }
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    
+        // Preparação e execução da consulta
+        $stmt = $this->data_provider->query($sql);
+    
+        $cars = [];
+        if ($stmt->num_rows > 0) {
+            while ($row = $stmt->fetch_assoc()) {
+                $cars[] = $row; // Adiciona os veículos encontrados em um array
+            }
+        }
+        return $cars;
+    }    
 
 }

@@ -1,30 +1,23 @@
 <?php
-require_once 'db.php';
-require_once(__DIR__ . '/../repositories/CarRepository.php');
-require_once __DIR__ . '/../../config/config.php'; // Corrigido para o caminho correto
+
+require_once __DIR__ . '/../repositories/CarRepository.php';
 
 class CarController {
     private $carRepository;
 
-    public function __construct() {
-        $conn = new MySqlDataProvider($GLOBALS['config']);
-        $this->carRepository = new CarRepository($conn);
+    public function __construct($dataProvider) {
+        $this->carRepository = new CarRepository($dataProvider);
     }
 
     public function index() {
-        $concessionarias = $_POST['concessionarias'] ?? [];
-        $num_malas = $_POST['num_malas'] ?? '';
-        $min_price = $_POST['min_price'] ?? '';
-        $max_price = $_POST['max_price'] ?? '';
+        $concessionarias = isset($_POST['concessionarias']) ? $_POST['concessionarias'] : [];
+        $num_malas = isset($_POST['num_malas']) ? $_POST['num_malas'] : '';
+        $min_price = isset($_POST['min_price']) ? $_POST['min_price'] : '';
+        $max_price = isset($_POST['max_price']) ? $_POST['max_price'] : '';
 
-        $filters = [
-            'concessionarias' => $concessionarias,
-            'num_malas' => $num_malas,
-            'min_price' => $min_price,
-            'max_price' => $max_price,
-        ];
-
-        $cars = $this->carRepository->getFilteredCars($filters);
-        require '../public/views/BuscaCarrosView.php';
+        $cars = $this->carRepository->getFilteredCars($concessionarias, $num_malas, $min_price, $max_price);
+        
+        // Renderiza a view e passa os dados
+        require_once __DIR__ . '/../views/buscacarrosview.php';
     }
 }
