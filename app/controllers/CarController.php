@@ -5,8 +5,9 @@ require_once __DIR__ . '/../repositories/CarRepository.php';
 class CarController {
     private $carRepository;
 
-    public function __construct($dataProvider) {
-        $this->carRepository = new CarRepository($dataProvider);
+    public function __construct() {
+        global $db_conection;
+        $this->carRepository = new CarRepository($db_conection);
     }
 
     public function index() {

@@ -30,6 +30,6 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
 }
 
 // Verifica se a rota é a de busca de carros
-$carController = new CarController($db_conection); // Instancia o CarController
-$carController->index(); // Chama a ação index() do CarController
+//$carController = new CarController($db_conection); // Instancia o CarController
+//$carController->index(); // Chama a ação index() do CarController
 
