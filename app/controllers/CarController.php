@@ -19,6 +19,6 @@ class CarController {
         $cars = $this->carRepository->getFilteredCars($concessionarias, $num_malas, $min_price, $max_price);
         
         // Renderiza a view e passa os dados
-        require_once __DIR__ . '/../views/buscacarrosview.php';
+        require_once __DIR__ . '/../views/buscacarros.php';
     }
 }
