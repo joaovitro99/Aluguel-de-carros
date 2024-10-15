@@ -13,7 +13,7 @@ function pesquisaRapida() {
    localStorage.setItem("hora_retirada",horaRetirada.value)
    localStorage.setItem("data_devolucao",dataDevolucao.value)
    localStorage.setItem("hora_devolucao",horaDevolucao.value)
-   window.location.href = 'BuscaCarros.php';
+   window.location.href = 'car/index';
    
 }
 
@@ -25,7 +25,7 @@ function preencherDados(){
         var dateReturn=document.getElementById('date-return')
         var timeReturn=document.getElementById('time-return')
         localPicker.value=localStorage.getItem('local_retirada')
-        datePicker.value = new Date(localStorage.getItem('data_retirada')).toISOString().substring(0, 10);
+        datePicker.value = localStorage.getItem('data_retirada')
         timePicker.value=localStorage.getItem('hora_retirada')
         dateReturn.value=localStorage.getItem('data_devolucao')
         timeReturn.value=localStorage.getItem('hora_devolucao')
