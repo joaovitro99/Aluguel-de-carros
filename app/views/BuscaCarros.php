@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca de Carros</title>
-    <link rel="stylesheet" href="http://localhost/AlugueldeCarros/aluguel-de-carros/app/views/assets/css/styleCarros.css">
+    <link rel="stylesheet" href="../../public/assets/css/styleCarros.css">
 </head>
 
 <body>
@@ -53,7 +53,7 @@
             <div class="filter-header" id="filter-header">
                 <h2>Filtros de busca</h2>
                 <div class="toggle-icon" id="toggle-icon">
-                    <img src="http://localhost/AlugueldeCarros/aluguel-de-carros/app/views/assets/images/icons/arrow-icon.svg" alt="Toggle Icon">
+                    <img src="../../public/assets/images/icons/arrow-icon.svg" alt="Toggle Icon">
                 </div>
             </div>
             <form method="POST" id="filter-form">
@@ -129,6 +129,6 @@
         </div>
     </div>
 
-    <script src="http://localhost/AlugueldeCarros/aluguel-de-carros/app/views/assets/js/script.js"></script>
+    <script src="../../public/assets/js/script.js"></script>
 </body>
 </html>

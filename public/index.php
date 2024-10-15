@@ -6,11 +6,16 @@ require_once __DIR__ . '/../app/controllers/CarController.php'; // Importa o Car
 
 // Configuração do roteador
 $router = new Router();
-$router->addRoute('/buscacaros', 'CarController', 'index');
+$router->addRoute('car/index', 'CarController', 'index');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
-
 // Resolve a rota
+
+$base_path = '/aluguel-de-carros/public/';
+if (strpos($uri, $base_path) === 0) {
+    $uri = substr($uri, strlen($base_path));
+}
+ 
 $route = $router->resolve($uri); // Busca a rota correspondente à URI
 
 // Instancia o controlador
@@ -29,7 +34,5 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
     echo "404 Not Found"; // Exibe uma mensagem de erro
 }
 
-// Verifica se a rota é a de busca de carros
-//$carController = new CarController($db_conection); // Instancia o CarController
-//$carController->index(); // Chama a ação index() do CarController
+
 

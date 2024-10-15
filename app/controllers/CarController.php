@@ -20,5 +20,6 @@ class CarController {
         
         // Renderiza a view e passa os dados
         require_once __DIR__ . '/../views/buscacarros.php';
+        
     }
 }

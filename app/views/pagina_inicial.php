@@ -1,13 +1,16 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     
-    <link rel="stylesheet" href="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/css/pagina_inicial.css" />
-    <link rel="stylesheet" href="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/css/pagina_inicial.scss"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/js/pagina_inicial.js" defer></script>
-    <script src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/css/pagina_inicial_pesquisa.js" defer></script>
+    <link rel="stylesheet" href="assets/css/pagina_inicial.css" />
+    <link rel="stylesheet" href="assets/css/pagina_inicial.scss"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+      <script src="assets/js/pagina_inicial.js" defer></script>
+    <script src="" defer></script>
   </head>
   <body>
     <main>
@@ -79,7 +82,7 @@
                   <span id="estilo-texto-vermelho">melhor preço</span>
                   <span class="text-wrapper-12">.</span>
                 </p>
-                <img src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/images/SAVE.png" alt="" srcset="" id="img-carro">
+                <img src="assets/images/SAVE.png" alt="" srcset="" id="img-carro">
               </div>
             </div>
          
@@ -95,7 +98,7 @@
                     <p id="marca_modelo"><?= $carro['marca'] .' '. $carro['modelo'] ?></p>
                     <p id="ano"><?= $carro['ano'] ?></p>
                     
-                      <img class="slider-single-image" src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/images/SAVE.png" />
+                      <img class="slider-single-image" src="assets/images/SAVE.png" />
 
                      <button><a href="ficha_veiculo.php?id=<?= $carro["id"]?>" style="text-decoration: none; color:black
                      ">Mais detalhes</a></button>
@@ -113,7 +116,7 @@
           
       </div>
       <div id="btn-carrossel">
-        <a href="BuscaCarros.php"><button> Confira todos os modelos </button></a>
+        <a href="car/index"><button> Confira todos os modelos </button></a>
         
       </div>
       
@@ -143,7 +146,7 @@
           
             <div class="bloco-de-comentario">
 
-              <img src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/images/image2.png" alt="" class="imagem-coment">
+              <img src="assets/images/image2.png" alt="" class="imagem-coment">
               <div class="comentario">
                 <h4>Carlos</h4>
                 <p>Excelente serviço! O processo de reserva foi rápido e fácil, e o carro estava em ótimas condições. A equipe foi muito atenciosa e me ajudou a encontrar a melhor opção para minha viagem. Com certeza alugarei novamente com eles.</p>
@@ -151,7 +154,7 @@
             </div>
             <div class="bloco-de-comentario">
 
-              <img src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/images/image.png" alt="" class="imagem-coment">
+              <img src="assets/images/image.png" alt="" class="imagem-coment">
               <div class="comentario">
                 <h4>Mariana</h4>
                 <p>Gostei bastante da experiência. O atendimento foi super cordial e os preços são acessíveis. O único ponto que poderia melhorar é o tempo de espera para retirar o carro, mas de resto, tudo perfeito. Recomendo!</p>
@@ -159,7 +162,7 @@
             </div>
             <div class="bloco-de-comentario">
 
-              <img src="http://localhost/testeAluguelCarros/teste2/aluguel-de-carros/app/views/assets/images/image1.png" alt="" class="imagem-coment">
+              <img src="assets/images/image1.png" alt="" class="imagem-coment">
               <div class="comentario">
                 <h4>Renato</h4>
                 <p>Fiquei muito satisfeito com o aluguel. O carro era novinho e extremamente confortável. O atendimento foi impecável, tanto na retirada quanto na devolução. Me senti muito seguro e tranquilo durante todo o processo.</p>

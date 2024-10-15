@@ -23,5 +23,4 @@ class Router {
     }
 
 }
-$router = new Router();
-$router->addRoute('/buscacaros', 'CarController', 'index'); // Rota para busca de carros
+
