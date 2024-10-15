@@ -3,10 +3,12 @@
 require_once __DIR__ . '/../app/router.php'; // Importa a classe Router
 require_once __DIR__ . '/../app/controllers/HomeController.php'; // Importa o controlador padrão
 require_once __DIR__ . '/../app/controllers/CarController.php'; // Importa o CarController
+require_once __DIR__ . '/../app/controllers/IncomeController.php';
 
 // Configuração do roteador
 $router = new Router();
 $router->addRoute('car/index', 'CarController', 'index');
+$router->addRoute('rendimento/index', 'IncomeController', 'index');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota
