@@ -37,4 +37,16 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
 }
 
 
+include '../controllers/VehicleController.php';
+include '../app/config.php';
+
+$id_veiculo = isset($_GET['id']) ? $_GET['id'] : null;
+
+if ($id_veiculo) {
+    $controller = new VehicleController($conn);
+    $controller->showVehicle($id_veiculo);
+} else {
+    echo "ID do veículo não informado.";
+}
+
 

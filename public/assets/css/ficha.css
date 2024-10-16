@@ -1,0 +1,404 @@
+
+body,html{
+    background: #93E2F3;
+    
+        height: 100%; /* Garante que o body ocupe 100% da altura da janela */
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
+
+}
+body{
+    line-height: 1.6;
+}
+.retangulo-azul{
+    position: fixed;
+    top: 0px; /* Ajuste a distância do topo conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1331px;
+    height: 88px;
+    border-radius: 16px;
+    border: 1px solid #747171;
+    background-color: #007b95;
+}
+
+/* Estilo do retângulo laranja */
+.retangulo-laranja {
+    top: 17px;
+    left: 1000px;
+    width: 266px;
+    height: 44px;
+    border-radius: 48px;
+    position :absolute;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    background-color: #e67e22;
+    border-radius: 48px;
+    padding: 5px 20px;
+    gap: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilo do link Inscrever-se */
+.inscrever-se {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Ícone para Inscrever-se */
+.icon-person {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Barra entre os links */
+.barra-vertical {
+    background-color: white;
+    width: 1px;
+    height: 30px;
+}
+
+/* Estilo do link Entrar */
+
+.home {
+    width: 100px;
+    height: 39px;
+    flex-shrink: 0;
+    color: #ffffff;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position:absolute;
+    top: 30px;
+    left: 100px;
+    gap: 0px;
+    opacity: 0px;
+
+}
+.nossos-veiculos{
+    width: 206px;
+    height: 39px;
+    flex-shrink: 0;
+    color: #ffffff;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position:relative;
+    top: 30px;
+    left: 300px;
+    gap: 0px;
+    opacity: 0px;
+}
+.entrar {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.sobre-nos{
+    width: 206px;
+    height: 39px;
+    flex-shrink: 0;
+    color: #ffffff;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position:absolute;
+    top: 30px;
+    left: 600px;
+    gap: 0px;
+    opacity: 0px;
+}
+.image-container {
+    width: 910px;
+    height: 331px;
+    border: 1px solid #0066cc;
+    border-radius: 5px;
+    background-color: #007c9500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+    top: 111px;
+    left:50%;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.car-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.carousel {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 1px;
+}
+
+.next {
+    right: 1px;
+}
+.retangulo-status{
+    width: 360px;
+    height: auto;
+    top: 460px;
+    left: 48%;
+    padding: 20px;
+    flex-shrink: 0;
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 2px solid #0066cc; /* Azul chamativo para o contorno */
+    background: rgba(255, 255, 255, 0.90); /* Fundo branco com leve transparência */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidade */
+    position: absolute;
+    color: #333; /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 1; /* Visível */
+    transition: all 0.3s ease-in-out; /* Transição suave para animações */
+}
+@keyframes lights {
+    0% {
+      color: hsl(39, 100%, 49%);
+      text-shadow:
+        0 0 1em hsla(39, 100%, 50%, 0.842),    
+        0 0 0.125em hsla(39, 100%, 51%, 0.842),    
+        -1em -0.125em 0.5em hsla(39, 100%, 52%, 0.842),    
+        1em 0.125em 0.5em hsla(39, 100%, 53%, 0.842),    
+    }
+    
+    30% { 
+      color: hsla(39, 100%, 50%, 0.842),    ;
+      text-shadow:
+       0 0 1em hsla(39, 100%, 50%, 0.842),  
+        0 0 0.125em hsla(216, 100%, 50%, 0.5),
+        -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    40% { 
+      color: hsla(39, 100%, 50%, 0.842),  ;
+      text-shadow:
+        0 0 1em hsla(39, 100%, 50%, 0.842),  
+        0 0 0.125em hsla(0, 0%, 0%, 0.5),
+        -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+        0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    70% {
+      color: hsla(39, 100%, 50%, 0.842)  ;
+      text-shadow:
+        0 0 1em hsla(39, 100%, 50%, 0.842),  
+        0 0 0.125em hsla(0, 0%, 0%, 0.5),
+        0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    100% {
+      color: hsla(39, 100%, 48%);  
+      text-shadow:
+        0 0 1em hsla(39, 100%, 50%, 0.842),  
+        0 0 0.125em hsla(0, 0%, 0%, 0.5),
+        1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        -1em 0.125em 0.5em hsla(39, 100%, 61%, 0),  ;
+    }
+    
+  }
+  
+.retangulo-status p {
+    margin: auto;
+    font-size:16px ;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+  }
+.retangulo-status p2 {
+    margin: auto;
+    font-size:22px ;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+}
+.retangulo-status h2 {
+    color: #ff6600; /* Laranja chamativo para o título */
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 1px;
+    position:left;
+    
+}
+
+
+
+/* Destaque das informações chave 
+.retangulo-status p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+*/
+.retangulo-status strong2{
+    color: #141318fd;
+}
+.retangulo-status strong {
+    color: #ff6600; /* Laranja chamativo para o título */
+    font-size:18px ;
+  
+}
+
+.retangulo-status:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.retangulo-dados {
+    width: 360px;
+    height: auto; /* Permite que o conteúdo se ajuste automaticamente */
+    top: 460px;
+    left: 15%;
+    padding: 20px;
+    flex-shrink: 0;
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 2px solid #0066cc; /* Azul chamativo para o contorno */
+    background: rgba(255, 255, 255, 0.90); /* Fundo branco com leve transparência */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidade */
+    position: absolute;
+    color: #333; /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 1; /* Visível */
+    transition: all 0.3s ease-in-out; /* Transição suave para animações */
+}
+
+/* Títulos para destacar seções */
+.retangulo-dados h2 {
+    color: #ff6600; /* Laranja chamativo para o título */
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    position: center;
+}
+
+/* Destaque das informações chave */
+.retangulo-dados p {
+    font-size: 22px;
+    color: #000000;
+    margin: auto;
+    
+}
+
+.retangulo-dados strong {
+    color: #ff6600; /* Laranja chamativo para o título */
+
+}
+.retangulo-dados strong2 {
+    color: #002bff;
+}
+
+/* Adiciona um pequeno efeito hover */
+.retangulo-dados:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background: #ff6600;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: block; /* Centraliza o botão dentro do retângulo */
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: ff6600;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
