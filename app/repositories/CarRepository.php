@@ -19,8 +19,20 @@ class CarRepository{
 
 
     }
-    public function removeCar()
+    public function removeCar($id_veiculo)
     {
+        $query = "DELETE FROM veiculos WHERE id_veiculo = ?";
+        $stmt = $this->data_provider->prepare($query);
+    
+        if ($stmt) {
+            // Vincule o parâmetro e execute a query
+            $stmt->bind_param("i", $id_veiculo);
+            $stmt->execute();
+    
+            // Feche o statement
+            $stmt->close();
+            
+        }
         
     }
     public function updateCar()

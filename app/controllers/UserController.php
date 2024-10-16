@@ -17,17 +17,14 @@ class UserController {
     }
 
     public function delete() {
-        if ($this->userRepository->deleteUsuario($_POST['id_cliente'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_cliente = $_POST['id_cliente'];
+            
+            // Remova o carro usando o método do repositório
+            $this->userRepository->deleteUsuario($id_cliente);
+            
+            // Envie uma resposta de sucesso
             header("Location: /usuarios");
-            exit();
-        } else {
-            echo "Erro ao excluir usuário.";
         }
     }
-}
-
-// Tratamento de POST para exclusão
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_cliente'])) {
-    $controller = new UserController($GLOBALS['db_conection']);
-    $controller->delete($_POST['id_cliente']);
 }

@@ -14,6 +14,7 @@ $router->addRoute('car/listar', 'CarController', 'listarCarros');
 $router->addRoute('car/add', 'CarController', 'addCarro');
 $router->addRoute('usuarios/index', 'UserController', 'index');
 $router->addRoute('user/delete', 'UserController', 'delete');
+$router->addRoute('car/delete', 'CarController', 'deleteCarro');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota
@@ -40,5 +41,18 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
     http_response_code(404); // Define o código de resposta HTTP para 404
     echo "404 Not Found"; // Exibe uma mensagem de erro
 }
+
+
+/*include '../controllers/CarController.php';
+include '../app/config.php';
+
+$id_veiculo = isset($_GET['id']) ? $_GET['id'] : null;
+
+if ($id_veiculo) {
+    $controller = new VehicleController($conn);
+    $controller->showVehicle($id_veiculo);
+} else {
+    echo "ID do veículo não informado.";
+}*/
 
 
