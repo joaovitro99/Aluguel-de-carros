@@ -9,6 +9,8 @@ require_once __DIR__ . '/../app/controllers/IncomeController.php';
 $router = new Router();
 $router->addRoute('car/index', 'CarController', 'index');
 $router->addRoute('rendimento/index', 'IncomeController', 'index');
+$router->addRoute('car/listar', 'CarController', 'listarCarros');
+$router->addRoute('car/add', 'CarController', 'addCarro');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota
