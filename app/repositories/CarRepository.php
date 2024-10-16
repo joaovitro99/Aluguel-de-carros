@@ -43,8 +43,17 @@ class CarRepository{
     }
     public function getAll()
     {
-        
+        $sql = "SELECT * FROM veiculos";
+        $stmt = $this->data_provider->prepare($sql);
+
+        if ($stmt) {
+            $stmt->execute();
+            return $stmt->get_result();
+        } else {
+            return false;
+        }
     }
+    
 
     public function getFilteredCars($concessionarias, $num_malas, $min_price, $max_price) {
         $conditions = [];
