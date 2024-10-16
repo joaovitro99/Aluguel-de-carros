@@ -128,11 +128,24 @@ class CarController {
         } 
 
     
-}
-  function deleteCarro(){
-    //implementar metodo ....
-  }
+}}
+public function deleteCarro() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $idVeiculo = $_POST['id_veiculo'];
+        
+        // Remova o carro usando o método do repositório
+        $this->carRepository->removeCar($idVeiculo);
+        
+        // Envie uma resposta de sucesso
+        echo json_encode(['status' => 'success', 'message' => 'Carro removido com sucesso']);
+        return;
     }
+
+    // Envie uma resposta de erro se `id_veiculo` não for fornecido
+    echo json_encode(['status' => 'error', 'message' => 'ID do veículo não foi fornecido']);
+}
+
+    
     public function listarCarros(){
         $veiculos = $this->carRepository->getAll();
 

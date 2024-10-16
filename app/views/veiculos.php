@@ -80,12 +80,12 @@
             </table>
         </div>
     </div>
-    <script>
+    <script defer>
         document.querySelectorAll('.delete-form').forEach(form => {
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 const formData = new FormData(this);
-                fetch('../BackEnd/admin/DeleteVeiculo.php', {
+                fetch('/aluguel-de-carros/public/car/delete', {
                     method: 'POST',
                     body: formData
                 })
