@@ -4,6 +4,7 @@ require_once __DIR__ . '/../app/router.php'; // Importa a classe Router
 require_once __DIR__ . '/../app/controllers/HomeController.php'; // Importa o controlador padrão
 require_once __DIR__ . '/../app/controllers/CarController.php'; // Importa o CarController
 require_once __DIR__ . '/../app/controllers/IncomeController.php';
+require_once __DIR__ . '/../app/controllers/UserController.php';
 
 // Configuração do roteador
 $router = new Router();
@@ -11,6 +12,8 @@ $router->addRoute('car/index', 'CarController', 'index');
 $router->addRoute('rendimento/index', 'IncomeController', 'index');
 $router->addRoute('car/listar', 'CarController', 'listarCarros');
 $router->addRoute('car/add', 'CarController', 'addCarro');
+$router->addRoute('usuarios/index', 'UserController', 'index');
+$router->addRoute('user/delete', 'UserController', 'delete');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota
@@ -36,19 +39,6 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
 } else {
     http_response_code(404); // Define o código de resposta HTTP para 404
     echo "404 Not Found"; // Exibe uma mensagem de erro
-}
-
-
-include '../controllers/VehicleController.php';
-include '../app/config.php';
-
-$id_veiculo = isset($_GET['id']) ? $_GET['id'] : null;
-
-if ($id_veiculo) {
-    $controller = new VehicleController($conn);
-    $controller->showVehicle($id_veiculo);
-} else {
-    echo "ID do veículo não informado.";
 }
 
 
