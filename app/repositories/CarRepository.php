@@ -111,4 +111,12 @@ class CarRepository{
         return $cars;
     }    
 
+    public function getUserCars($userId) {
+        $sql = "SELECT * FROM alugueis WHERE id_cliente = ?";
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
