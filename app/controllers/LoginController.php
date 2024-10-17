@@ -1,66 +1,69 @@
 <?php
 session_start();
-require(__DIR__."/../app/app.php");
+require_once __DIR__ . '/../repositories/UserRepository.php';
+require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../repositories/ClientRepository.php';
+require_once __DIR__ . '/../repositories/CarRepository.php';
 
-$nome_usuario = '';
-$senha = '';
-$errors = [];
-$status_bag;
+class LoginController {
+    private $carRepository;
+    private $userRepository;
+    private $clienteRepository;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-
-    if (!empty($_POST['nome_usuario'])) {
-        $nome_usuario = trim($_POST['nome_usuario']);
-    } else {
-        $errors[] = "O nome de usuário é obrigatório.";
+    public function __construct($db_connection) {
+        $this->carRepository = new CarRepository($db_connection);
+        $this->userRepository = new UserRepository($db_connection); // Instancia o UserRepository
     }
 
-    if (!empty($_POST['senha'])) {
-        $senha = trim($_POST['senha']);
-    } else {
-        $errors[] = "A senha é obrigatória.";
-    }
+    public function verificarLogin() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
+            $nome_usuario = isset($_POST['nome_usuario']) ? trim($_POST['nome_usuario']) : null;
+            $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
 
-    if (empty($errors)) {
-        $user = $user_repository->getUserLogin($nome_usuario, $senha);
-        $_SESSION['id_usuario'] = $user['id_usuario'];
-    
-        if ($user) {
-            $direcao = '';
-            if ($user['tipo_usuario'] == 'cliente') {
-                $direcao = '../../FrontEnd/perfil.php';
-            } else {
-                $direcao = '../../FrontEnd/veiculos.php';
+            // Validação
+            if (empty($nome_usuario)) {
+                $errors[] = "O nome de usuário é obrigatório.";
             }
-            echo "<script>
-                alert('Login feito com sucesso!');
-                window.location.href = '$direcao';
-              </script>";
-            exit();
-        } else {
-            echo "<script>
-                alert('Usuário ou senha incorretos');
-                window.location.href = '../../FrontEnd/Login.php';
-              </script>";
-            exit();
-        }
-    } else {
-        // Exibir erros
-        foreach ($errors as $error) {
-            echo "<script>
-                alert($error);
-                window.location.href = '../../FrontEnd/Login.php';
-              </script>";
-            exit();
+            if (empty($senha)) {
+                $errors[] = "A senha é obrigatória.";
+            }
+
+            // Se não houver erros, tenta realizar o login
+            if (empty($errors)) {
+                $user = $this->userRepository->getUserLogin($nome_usuario, $senha);
+
+                if ($user) {
+                    $_SESSION['id_usuario'] = $user['id_usuario'];
+                    $direcao = ($user['tipo_usuario'] === 'cliente') ? '../../views/perfil.php' : '../../views/veiculos.php';
+                    echo "<script>
+                        alert('Login feito com sucesso!');
+                        window.location.href = '$direcao';
+                      </script>";
+                    exit();
+                } else {
+                    echo "<script>
+                        alert('Usuário ou senha incorretos');
+                        window.location.href = '../../views/Login.php';
+                      </script>";
+                    exit();
+                }
+            } else {
+                // Exibir erros
+                foreach ($errors as $error) {
+                    echo "<script>
+                        alert('$error');
+                        window.location.href = '../../views/Login.php';
+                      </script>";
+                    exit();
+                }
+            }
         }
     }
-
-
-
-
-
-// Redirecionar para o próximo arquivo
-header('Location: ../../FrontEnd/perfil.php');
-exit();
 }
+
+
+
+
+
+

@@ -13,20 +13,20 @@
             <a href="BuscaCarros.php"><div class="nossos-veiculos">Nossos veículos</div></a>
             <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
             <div class="retangulo-laranja">
-                <form action="../BackEnd/admin/Logout.php" method="post" style="margin: 0;">
-                    <button type="submit" style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;">
-                        <strong>Deslogar</strong>
-                    </button>
-                </form>
+            <form action="logout" method="post" style="margin: 0;">
+    <button type="submit" style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;">
+        <strong>Deslogar</strong>
+    </button>
+</form>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div id="info_cliente">
-            <h2>Nome: <?= $user['nome'] ?></h2>
-            <h2>Email: <?= $user['email'] ?></h2>
-            <h2>Telefone: <?= $user['telefone'] ?></h2>
+            <h2>Nome: <?= $cliente['nome'] ?></h2>
+            <h2>Email: <?= $cliente['email'] ?></h2>
+            <h2>Telefone: <?= $cliente['telefone'] ?></h2>
         </div>
 
         <div id="titulo_hist">Histórico de Aluguéis</div>

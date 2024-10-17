@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../repositories/UserRepository.php';
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../repositories/ClientRepository.php';
+require_once __DIR__ . '/../repositories/CarRepository.php';
 
 class UserController {
     private $userRepository;
@@ -30,7 +32,7 @@ class UserController {
         $cliente = $this->clienteRepository->getClient($_SESSION['id_usuario']);
         
         // Obtém os veículos do cliente
-        $cars = $this->carRepository->getUserCars($_SESSION['id_usuario']);
+        $rentalHistory = $this->carRepository->getUserCars($_SESSION['id_usuario']);
 
         // Carrega a view
         require '../app/views/perfil.php';

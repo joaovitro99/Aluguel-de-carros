@@ -11,20 +11,19 @@
 <body>
     <div id="container">
         <h2>Login</h2>
-        <form action="../BackEnd/admin/VerificarLogin.php" method="POST" id="Login">
-            <div class="form_login">
-                <label for="nome_usuario">Nome do usuário:</label>
-                <input type="text" id="nome_usuario" name="nome_usuario" required>
-            </div> 
+        <form action="login/verificar" method="POST" id="Login">
+    <div class="form_login">
+        <label for="nome_usuario">Nome do usuário:</label>
+        <input type="text" id="nome_usuario" name="nome_usuario" required>
+    </div> 
 
-            <div class="form_login">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha_mail" name="senha" required>
-            </div>
+    <div class="form_login">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+    </div>
 
-            <button type="submit">Entrar</button>
-        </form>
-
+    <button type="submit">Entrar</button>
+</form>
         <a href="Cadastro.php"><button id="cadastro">Ainda não sou cadastrado</button></a>
     </div>
     <script></script>
