@@ -32,6 +32,7 @@ class LoginController {
             // Se não houver erros, tenta realizar o login
             if (empty($errors)) {
                 $user = $this->userRepository->getUserLogin($nome_usuario, $senha);
+                require_once __DIR__ . '/../views/usuarios.php';
 
                 if ($user) {
                     $_SESSION['id_usuario'] = $user['id_usuario'];
