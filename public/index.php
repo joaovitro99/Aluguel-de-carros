@@ -19,7 +19,9 @@ $router->addRoute('usuarios/index', 'UserController', 'index');
 $router->addRoute('user/delete', 'UserController', 'delete');
 $router->addRoute('car/delete', 'CarController', 'deleteCarro');
 $router->addRoute('login/verificar', 'LoginController', 'verificarLogin');
+$router->addRoute('login/index', 'LoginController', 'index');
 $router->addRoute('user/showProfile', 'UserController', 'showProfile');
+$router->addRoute('user/signup', 'ClientController', 'index');
 $router->addRoute('logout', 'LogoutController', 'logout');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição

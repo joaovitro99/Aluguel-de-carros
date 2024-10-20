@@ -1,8 +1,8 @@
 <?php
-include '../models/Client.php';
-include '../repositories/ClientRepository.php';
-include '../data/MySqlDataProvider.php';
-include '../app/config.php';
+require_once __DIR__.'/../models/Cliente.php';
+require_once __DIR__.'/../repositories/ClientRepository.php';
+require_once __DIR__.'/MySqlDataProvider.php';
+require_once __DIR__.'/../../config/config.php';
 
 class ClientController {
     private $clientRepository;
@@ -10,6 +10,9 @@ class ClientController {
     public function __construct() {
         $dataProvider = new MySqlDataProvider($GLOBALS['config']);
         $this->clientRepository = new ClientRepository($dataProvider);
+    }
+    public function index(){
+        require_once __DIR__.'/../views/Cadastro.php';
     }
 
     public function register() {

@@ -4,15 +4,20 @@ require_once __DIR__ . '/../repositories/UserRepository.php';
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../repositories/ClientRepository.php';
 require_once __DIR__ . '/../repositories/CarRepository.php';
+require_once("db.php");
 
 class LoginController {
     private $carRepository;
     private $userRepository;
     private $clienteRepository;
 
-    public function __construct($db_connection) {
-        $this->carRepository = new CarRepository($db_connection);
-        $this->userRepository = new UserRepository($db_connection); // Instancia o UserRepository
+    public function __construct(/*$db_connection*/) {
+        global $db_conection;
+        $this->carRepository = new CarRepository($db_conection);
+        $this->userRepository = new UserRepository($db_conection); // Instancia o UserRepository
+    }
+    public function index(){
+        require __DIR__."/../views/Login.php";
     }
 
     public function verificarLogin() {
