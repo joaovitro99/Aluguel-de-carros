@@ -14,9 +14,27 @@
             <h1>Alucarros</h1>
         </div>
         <ul class="menu">
-            <li><a href="usuarios.php">Usuários</a></li>
-            <li><a href="veiculos.php" class="active">Veículos</a></li>
-            <li><a href="rendimento.php">Rendimento</a></li>
+            <?php
+            session_start();
+
+            // Verifica se o usuário está logado
+            if (!isset($_SESSION['user'])) {
+                header('Location: Login.php');
+                exit();
+            }
+            
+            // Acessa os dados do usuário logado
+            $user = $_SESSION['user'];
+            
+            if($user['tipo_usuario'] === 'admin'){
+           echo '<li><a href="usuarios.php">Usuários</a></li>';
+           echo '<li><a href="veiculos.php" class="active">Veículos</a></li>';
+           echo '<li><a href="rendimento.php">Rendimento</a></li>';
+            }
+            else{
+                echo '<li><a href="veiculos.php" class="active">Veículos</a></li>';
+            }
+            ?>
         </ul>
     </div>
 
@@ -27,7 +45,7 @@
         </div>
 
         <div class="content">
-            <h2>Olá, admin!</h2>
+            <h2>Olá, seja Bem-Vindo!</h2>
 
             <!-- Tabela de Veículos -->
             <table class="vehicles-table">

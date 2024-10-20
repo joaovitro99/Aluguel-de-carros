@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/Login.css">
+    <link rel="stylesheet" href="../../public/assets/css/Login.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 
     <button type="submit">Entrar</button>
 </form>
-        <a href="Cadastro.php"><button id="cadastro">Ainda não sou cadastrado</button></a>
+        <a href="/aluguel-de-carros/public/user/signup"><button id="cadastro">Ainda não sou cadastrado</button></a>
     </div>
     <script></script>
 </body>
