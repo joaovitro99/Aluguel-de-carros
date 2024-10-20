@@ -35,3 +35,23 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+}
+
+.filter-form label {
+    margin-right: 8px;
+}
+
+.styled-select {
+    border-radius: 12px;
+}

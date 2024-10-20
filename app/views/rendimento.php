@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualização de Vendas</title>
+    <title>Visualização de alugueis</title>
     <link rel="stylesheet" href="../../public/assets/css/style.css">
     <link rel="stylesheet" href="../../public/assets/css/rendimento.css">
 
@@ -24,39 +24,58 @@
     </div>
 
     <div class="main-content">
-        <div class="search-bar-container">
-            <input type="text" class="search-bar" placeholder="Buscar...">
-        </div>
+        <div class="search-bar-container"></div>
 
         <div class="content">
-            <h2>Visualização de Vendas</h2>
+            <div class="content-header">
+                <h2>Visualização de aluguéis</h2>
+                <form method="GET" class="filter-form">
+                    <label for="intervalo">Filtrar por:</label>
+                    <div class="styled-select">
+                        <select name="intervalo" id="intervalo" onchange="this.form.submit()">
+                            <option value="">Selecionar</option>
+                            <option value="1">Último mês</option>
+                            <option value="3">Últimos 3 meses</option>
+                            <option value="6">Últimos 6 meses</option>
+                            <option value="12">Último ano</option>
+                            <option value="tudo">Todos os períodos</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
             <table class="sales-table">
                 <thead>
                     <tr>
                         <th>Informações do veículo</th>
-                        <th>Vendas</th>
-                        <th>Região</th>
-                        <th>Valor</th>
+                        <th>Quantidade de aluguéis</th>
+                        <th>Valor da diária</th>
+                        <th>Valor total por veículo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <div class="vehicle-info">
-                                <img src="../../public/assets/images/SAVE.png" alt="Veículo 1" class="vehicle-image">
-                                <div>
-                                    <p>Nome do Veículo</p>
-                                    <p>Modelo</p>
-                                    <p>Combustível</p>
-                                    <p>Câmbio</p>
+                    <?php foreach ($rendimentos as $rendimento): ?>
+                        <tr>
+                            <td>
+                                <div class="vehicle-info">
+                                    <img 
+                                        src="data:image/jpeg;base64,<?= base64_encode($rendimento['imagem']) ?>" 
+                                        alt="Veículo" 
+                                        class="vehicle-image"
+                                    >
+                                    <div>
+                                        <p><?= $rendimento['marca'] ?></p>
+                                        <p><?= $rendimento['modelo'] ?></p>
+                                        <p><?= $rendimento['combustivel'] ?></p>
+                                        <p><?= $rendimento['cambio'] ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>10</td>
-                        <td>Região 1</td>
-                        <td>R$0,00</td>
-                    </tr>
-                    <!-- Adicionar mais linhas conforme necessário -->
+                            </td>
+                            <td><?= $rendimento['quantidade'] ?></td>
+                            <td>R$<?= number_format($rendimento['valor_diaria'], 2, ',', '.') ?></td>
+                            <td>R$<?= number_format($rendimento['total_por_carro'], 2, ',', '.') ?></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

@@ -14,7 +14,7 @@
             <div class="logo">Logo</div>
             <div class="nav-buttons">
                 <a href="/aluguel-de-carros/public/">Home</a>
-                <a href="#vehicles">Nossos veículos</a>
+                <a href="#vehicles" onclick="return false;">Nossos veículos</a>
                 <a href="pagina_inicial.php">Sobre nós</a>
             </div>
             <div class="auth-buttons">

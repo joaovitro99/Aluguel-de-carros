@@ -1,8 +1,8 @@
 <?php
-include '../models/Client.php';
-include '../repositories/ClientRepository.php';
-include '../data/MySqlDataProvider.php';
-include '../app/config.php';
+require_once __DIR__ . '/../models/Cliente.php';
+require_once __DIR__ . '/../repositories/ClientRepository.php';
+require_once __DIR__ . '/mySqlDataProvider.php';
+require_once __DIR__ . '/../../config/config.php';
 
 class ClientController {
     private $clientRepository;

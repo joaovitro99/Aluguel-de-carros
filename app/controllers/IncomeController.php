@@ -5,16 +5,19 @@ require_once("db.php");
 class IncomeController {
     private $rentalRepository;
 
-    public function __construct()
-    {
+    public function __construct() {
         global $db_conection;
         $this->rentalRepository = new RentalRepository($db_conection);
     }
 
-    // Ação padrão para exibir a página de rendimento
     public function index() {
+        $meses = isset($_GET['intervalo']) ? $_GET['intervalo'] : 'tudo';
+        $rendimentos = $this->rentalRepository->getRendimentos($meses);
 
-        // Renderiza a view e passa os dados de rendimento
+        if ($rendimentos === false) {
+            $rendimentos = [];
+        }
+
         require_once __DIR__ . '/../views/rendimento.php';
     }
 }
