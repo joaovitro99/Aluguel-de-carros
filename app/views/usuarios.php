@@ -14,8 +14,8 @@
         </div>
         <ul class="menu">
             <li><a href="/usuarios" class="active">Usuários</a></li>
-            <li><a href="/veiculos">Veículos</a></li>
-            <li><a href="/rendimento">Rendimento</a></li>
+            <li><a href="/aluguel-de-carros/public/car/listar">Veículos</a></li>
+            <li><a href="/aluguel-de-carros/public/rendimento/index">Rendimento</a></li>
         </ul>
     </div>
 

@@ -17,8 +17,8 @@
             <h1>Alucarros</h1>
         </div>
         <ul class="menu">
-            <li><a href="usuarios.php">Usuários</a></li>
-            <li><a href="veiculos.php">Veículos</a></li>
+            <li><a href="/aluguel-de-carros/public/usuarios/index">Usuários</a></li>
+            <li><a href="/aluguel-de-carros/public/car/listar">Veículos</a></li>
             <li><a href="rendimento.php" class="active">Rendimento</a></li>
         </ul>
     </div>

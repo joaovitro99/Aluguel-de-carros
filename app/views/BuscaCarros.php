@@ -15,12 +15,12 @@
             <div class="nav-buttons">
                 <a href="/aluguel-de-carros/public/">Home</a>
                 <a href="#vehicles" onclick="return false;">Nossos veículos</a>
-                <a href="pagina_inicial.php">Sobre nós</a>
+                <a href="/aluguel-de-carros/public/">Sobre nós</a>
             </div>
             <div class="auth-buttons">
-                <a href="Cadastro.php" class="button">Inscrever-se</a>
+                <a href="/aluguel-de-carros/public/user/signup" class="button">Inscrever-se</a>
                 <div class="separator"></div>
-                <a href="Login.php" class="button">Entrar</a>
+                <a href="/aluguel-de-carros/public/login/index" class="button">Entrar</a>
             </div>
         </div>
         <div class="overlap-wrapper">
