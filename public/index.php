@@ -23,6 +23,8 @@ $router->addRoute('login/index', 'LoginController', 'index');
 $router->addRoute('user/showProfile', 'UserController', 'showProfile');
 $router->addRoute('user/signup', 'ClientController', 'index');
 $router->addRoute('logout', 'LogoutController', 'logout');
+$router->addRoute('car/details', 'CarController', 'showDetailCar');
+
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota

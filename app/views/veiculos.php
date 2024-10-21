@@ -15,7 +15,7 @@
         </div>
         <ul class="menu">
             <?php
-            session_start();
+            //session_start();
 
             // Verifica se o usuário está logado
             if (!isset($_SESSION['user'])) {

@@ -37,11 +37,12 @@ class LoginController {
             // Se não houver erros, tenta realizar o login
             if (empty($errors)) {
                 $user = $this->userRepository->getUserLogin($nome_usuario, $senha);
-                require_once __DIR__ . '/../views/usuarios.php';
+                //require_once __DIR__ . '/../views/usuarios.php';
 
                 if ($user) {
                     $_SESSION['id_usuario'] = $user['id_usuario'];
-                    $direcao = ($user['tipo_usuario'] === 'cliente') ? '../../views/perfil.php' : '../../views/veiculos.php';
+                    $_SESSION['user']= $user;
+                    $direcao = ($user['tipo_usuario'] === 'cliente') ? '../../views/perfil.php' : '/aluguel-de-carros/public/car/listar';
                     echo "<script>
                         alert('Login feito com sucesso!');
                         window.location.href = '$direcao';
@@ -50,7 +51,7 @@ class LoginController {
                 } else {
                     echo "<script>
                         alert('Usuário ou senha incorretos');
-                        window.location.href = '../../views/Login.php';
+                        window.location.href = '/aluguel-de-carros/public/login/index';
                       </script>";
                     exit();
                 }

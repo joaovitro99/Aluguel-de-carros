@@ -11,7 +11,7 @@
 <body>
     <div id="container">
         <h2>Login</h2>
-        <form action="login/verificar" method="POST" id="Login">
+        <form action="/aluguel-de-carros/public/login/verificar" method="POST" id="Login">
     <div class="form_login">
         <label for="nome_usuario">Nome do usuário:</label>
         <input type="text" id="nome_usuario" name="nome_usuario" required>

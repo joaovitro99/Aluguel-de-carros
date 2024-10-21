@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../repositories/CarRepository.php';
+require_once __DIR__ .'/db.php';
 
 class CarController {
     private $carRepository;
@@ -151,5 +152,19 @@ public function deleteCarro() {
 
         // Renderiza a view e passa os dados
         require_once __DIR__ . '/../views/veiculos.php';
+    }
+    public function showDetailCar(){
+        global $db_conection;
+        $id_veiculo = isset($_GET['id']) ? $_GET['id'] : null;
+        $controller = new CarRepository($db_conection);
+
+        if ($id_veiculo) {
+            $controller->getCar($id_veiculo);
+        } else {
+            echo "ID do veículo não informado.";
+        }
+
+        require_once __DIR__ .'/../views/DetalhesVeiculos.php';
+
     }
 }

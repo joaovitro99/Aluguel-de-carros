@@ -100,7 +100,7 @@
                     
                       <img class="slider-single-image" src="/aluguel-de-carros/public/assets/images/SAVE.png" />
 
-                     <button><a href="ficha_veiculo.php?id=<?= $carro["id"]?>" style="text-decoration: none; color:black
+                     <button><a href="car/details?id=<?= $carro["id"]?>" style="text-decoration: none; color:black
                      ">Mais detalhes</a></button>
 
                       <div class="info-carro">
