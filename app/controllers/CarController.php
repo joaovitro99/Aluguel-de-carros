@@ -12,17 +12,16 @@ class CarController {
     }
 
     public function index() {
-        $concessionarias = isset($_POST['concessionarias']) ? $_POST['concessionarias'] : [];
-        $num_malas = isset($_POST['num_malas']) ? $_POST['num_malas'] : '';
-        $min_price = isset($_POST['min_price']) ? $_POST['min_price'] : '';
-        $max_price = isset($_POST['max_price']) ? $_POST['max_price'] : '';
-
+        $concessionarias = isset($_GET['concessionarias']) ? $_GET['concessionarias'] : [];
+        $num_malas = isset($_GET['num_malas']) ? $_GET['num_malas'] : '';
+        $min_price = isset($_GET['min_price']) ? $_GET['min_price'] : '';
+        $max_price = isset($_GET['max_price']) ? $_GET['max_price'] : '';
+    
         $cars = $this->carRepository->getFilteredCars($concessionarias, $num_malas, $min_price, $max_price);
-        
-        // Renderiza a view e passa os dados
+    
         require_once __DIR__ . '/../views/buscacarros.php';
-        
     }
+    
     public function addCarro(){
             
     $marca = '';

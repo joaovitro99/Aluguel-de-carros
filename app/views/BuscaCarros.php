@@ -56,7 +56,7 @@
                     <img src="../../public/assets/images/icons/arrow-icon.svg" alt="Toggle Icon">
                 </div>
             </div>
-            <form method="POST" id="filter-form">
+            <form method="GET" id="filter-form">
                 <div class="filter-panel" id="filter-panel">
                     <div class="filter-group-labels">
                         <div class="filter-label1">Tipo de Concessionária:</div>
