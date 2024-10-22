@@ -27,9 +27,9 @@
             $user = $_SESSION['user'];
             
             if($user['tipo_usuario'] === 'admin'){
-           echo '<li><a href="usuarios.php">Usuários</a></li>';
-           echo '<li><a href="veiculos.php" class="active">Veículos</a></li>';
-           echo '<li><a href="rendimento.php">Rendimento</a></li>';
+           echo '<li><a href="/aluguel-de-carros/public/usuarios/index">Usuários</a></li>';
+           echo '<li><a href="/aluguel-de-carros/public/car/listar" class="active">Veículos</a></li>';
+           echo '<li><a href="/aluguel-de-carros/public/rendimento/index">Rendimento</a></li>';
             }
             else{
                 echo '<li><a href="veiculos.php" class="active">Veículos</a></li>';
