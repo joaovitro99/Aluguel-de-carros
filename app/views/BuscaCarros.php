@@ -106,6 +106,7 @@
                     </div>
                 </div>
             </form>
+            <button type="button" class="clear-button" onclick="clearFilters()">Limpar filtro</button>
 
         </div>
 

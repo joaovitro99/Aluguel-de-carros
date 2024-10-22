@@ -700,3 +700,27 @@ body {
 .car-card .btn-alugar:hover {
     background-color: #218838; /* Cor de fundo verde escuro ao passar o mouse */
 }
+/* Estilo para a área do botão de filtros */
+.filter-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Mantendo o estilo minimalista do botão */
+.clear-button {
+    background: none;
+    border: none;
+    color: #333; /* Cor escura para o texto */
+    font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
+    cursor: pointer;
+    padding: 0;
+    margin-top: 9px;
+    text-decoration: underline; /* Para parecer um link */
+    margin-left: 1070px;
+}
+
+/* Hover para o botão */
+.clear-button:hover {
+    color: #555; /* Cor ligeiramente mais clara ao passar o mouse */
+}
