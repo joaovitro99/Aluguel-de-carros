@@ -6,6 +6,30 @@ class UserRepository {
     public function __construct($dataProvider) {
         $this->dataProvider = $dataProvider;
     }
+    
+    public function insertFuncionario($nome,$senha) {
+        // Transação para garantir que as duas tabelas (clientes e usuarios) sejam atualizadas de forma consistente
+        $this->dataProvider->begin_transaction();
+
+        try {
+
+            // Inserindo o usuário correspondente na tabela `usuarios`
+            $sql_usuario = "INSERT INTO usuarios (nome_usuario, senha, tipo_usuario) VALUES (?, ?, 'funcionario')";
+            $stmt_usuario = $this->dataProvider->prepare($sql_usuario);
+            $hashed_senha = password_hash($senha, PASSWORD_DEFAULT); // Criptografando a senha
+            $stmt_usuario->bind_param("ss", $nome, $hashed_senha);
+            $stmt_usuario->execute();
+
+            // Commit na transação
+            $this->dataProvider->commit();
+
+
+        } catch (Exception $e) {
+            // Rollback em caso de erro
+            $this->dataProvider->rollback();
+            throw new Exception("Erro ao inserir o funcionario: " . $e->getMessage());
+        }
+    }
 
     public function getAllUsuarios() {
         $sql = "SELECT * FROM clientes";
