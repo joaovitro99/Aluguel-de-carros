@@ -650,13 +650,13 @@ body {
 #grid {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
     gap: 20px; /* Espaçamento entre os itens */
     padding: 20px;
     width: 80%; /* Ocupa 80% da largura do body */
     margin: 0 auto; /* Centraliza a grid horizontalmente */
     box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
-    align-items: center;
+    align-items: stretch;
 }
 
 #car-card {
@@ -723,4 +723,9 @@ body {
 /* Hover para o botão */
 .clear-button:hover {
     color: #555; /* Cor ligeiramente mais clara ao passar o mouse */
+}
+
+.car-image {
+    width: 100%; /* A imagem ocupará toda a largura do card */
+    height: auto; /* Mantém a proporção da imagem */
 }

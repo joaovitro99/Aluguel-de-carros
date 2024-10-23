@@ -115,7 +115,7 @@
                 <?php foreach ($cars as $car): ?>
                     <div id="car-card">
                         <?php if ($car['imagem']): ?>
-                            <img src="data:image/jpeg;base64,<?= base64_encode($car['imagem']) ?>" alt="Imagem do Veículo">
+                            <img src="data:image/jpeg;base64,<?= base64_encode($car['imagem']) ?>" alt="Imagem do Veículo" class="car-image">
                         <?php endif; ?>
                         <h3>Marca: <?= $car['marca'] ?></h3>
                         <p>Modelo: <?= $car['modelo'] ?></p>
