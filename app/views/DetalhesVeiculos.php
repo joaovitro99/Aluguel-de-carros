@@ -2,9 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-    <title>Informações do Veículo</title>
-    <link rel="stylesheet" href="../assets/css/ficha.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/assets/css/ficha.css" />
 </head>
 <body>
     <div class="retangulo-azul">
@@ -22,37 +21,53 @@
     <div class="image-container">
         <div class="carousel">
             <div class="slides">
-                <?php foreach ($vehicleImages as $image): ?>
-                    <div class="slide">
-                        <img src="data:image/jpeg;base64,<?= base64_encode($image) ?>" alt="Imagem do Veículo">
-                    </div>
-                <?php endforeach; ?>
+                <?php if (!empty($vehicleImages)): ?>
+                    <?php foreach ($vehicleImages as $image): ?>
+                        <div class="slide">
+                            <img src="data:image/jpeg;base64,<?= base64_encode($image) ?>" alt="Imagem do Veículo">
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Nenhuma imagem disponível para este veículo.</p>
+                <?php endif; ?>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </div>
     </div>
 
-    <!-- Exibir informações do veículo -->
+    <!-- Exibir detalhes do veículo -->
     <div class="retangulo-status">
-        <h2>Status</h2>
-        <strong>Disponibilidade: </strong><p2><?= htmlspecialchars($vehicleInfo['status']) ?></p2>
-        <h2>Valor Diário: </h2><p2>R$ <?= htmlspecialchars($vehicleInfo['valor_diaria']) ?></p2>
-        <h2>Informações adicionais</h2>
-        <strong>Câmbio: </strong><p><?= htmlspecialchars($vehicleInfo['cambio']) ?></p>
-        <strong>Passageiros: </strong><p><?= htmlspecialchars($vehicleInfo['capacidade_pessoas']) ?></p>
-        <strong>Combustível: </strong><p><?= htmlspecialchars($vehicleInfo['combustivel']) ?></p>
-        <strong>Bagageiro: </strong><p><?= htmlspecialchars($vehicleInfo['capacidade_bagageiro']) ?> Litros</p>
+        <?php if (!empty($vehicleInfo)): ?>
+            <h2>Status</h2>
+            <p><strong>Disponibilidade:</strong> <?= htmlspecialchars($vehicleInfo['status']) ?></p>
+
+            <h2>Valor Diário</h2>
+            <p>R$ <?= htmlspecialchars($vehicleInfo['valor_diaria']) ?></p>
+
+            <h2>Informações Adicionais</h2>
+            <p><strong>Câmbio:</strong> <?= htmlspecialchars($vehicleInfo['cambio']) ?></p>
+            <p><strong>Capacidade de Passageiros:</strong> <?= htmlspecialchars($vehicleInfo['capacidade_pessoas']) ?></p>
+            <p><strong>Combustível:</strong> <?= htmlspecialchars($vehicleInfo['combustivel']) ?></p>
+            <p><strong>Bagageiro:</strong> <?= htmlspecialchars($vehicleInfo['capacidade_bagageiro']) ?> Litros</p>
+        <?php else: ?>
+            <p>Informações do veículo não encontradas.</p>
+        <?php endif; ?>
     </div>
 
     <div class="retangulo-dados">
-        <h2>Informações do Veículo</h2>
-        <p><strong>Marca:</strong> <?= htmlspecialchars($vehicleInfo['marca']) ?></p>
-        <p><strong>Modelo:</strong> <?= htmlspecialchars($vehicleInfo['modelo']) ?></p>
-        <p><strong>Ano:</strong> <?= htmlspecialchars($vehicleInfo['ano']) ?></p>
-        <p><strong>Placa:</strong> <?= htmlspecialchars($vehicleInfo['placa']) ?></p>
-        <h2>Alugar</h2>
-        <button class="glow-on-hover">Clique Aqui</button>
+        <?php if (!empty($vehicleInfo)): ?>
+            <h2>Informações do Veículo</h2>
+            <p><strong>Marca:</strong> <?= htmlspecialchars($vehicleInfo['marca']) ?></p>
+            <p><strong>Modelo:</strong> <?= htmlspecialchars($vehicleInfo['modelo']) ?></p>
+            <p><strong>Ano:</strong> <?= htmlspecialchars($vehicleInfo['ano']) ?></p>
+            <p><strong>Placa:</strong> <?= htmlspecialchars($vehicleInfo['placa']) ?></p>
+
+            <h2>Alugar</h2>
+            <button class="glow-on-hover">Clique Aqui</button>
+        <?php else: ?>
+            <p>Informações adicionais não disponíveis.</p>
+        <?php endif; ?>
     </div>
 
     <script>

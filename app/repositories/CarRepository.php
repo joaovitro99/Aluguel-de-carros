@@ -39,10 +39,10 @@ class CarRepository{
     {
         
     }
-    public function getCar($id) {
+    public function getCar($id_veiculo) {
         $sql = "SELECT * FROM veiculos WHERE id_veiculo = ?";
         $stmt = $this->data_provider->prepare($sql);
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("i", $id_veiculo);
         $stmt->execute();
         $result = $stmt->get_result();
     
@@ -111,6 +111,19 @@ class CarRepository{
         return $cars;
     }    
 
+    public function getVehicleImages($id_veiculo) {
+        $sql = "SELECT imagem FROM imagens_veiculo WHERE id_veiculo = ?";
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("i", $id_veiculo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $images = [];
+        while ($row = $result->fetch_assoc()) {
+            $images[] = $row['imagem'];
+        }
+        return $images;
+    }
     public function getUserCars($userId) {
         $sql = "SELECT * FROM alugueis WHERE id_cliente = ?";
         $stmt = $this->data_provider->prepare($sql);

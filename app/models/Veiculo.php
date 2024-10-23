@@ -19,6 +19,34 @@ class Vehicle {
         }
         return null;
     }
+    public function getVehicleImages($id_veiculo) {
+        $sql = "SELECT imagem FROM imagens_veiculo WHERE id_veiculo = ?";
+        $stmt = $this->conn->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param('i', $id_veiculo);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $images = [];
+            while ($row = $result->fetch_assoc()) {
+                $images[] = $row['imagem'];
+            }
+            return $images;
+        }
+        return null;
+    }
+
+    // Método para obter detalhes de um veículo
+    public function getVehicleDetails($id_veiculo) {
+        $sql = "SELECT status, valor_diaria, cambio, capacidade_bagageiro, capacidade_pessoas, combustivel, marca, modelo, ano, placa FROM veiculos WHERE id_veiculo = ?";
+        $stmt = $this->conn->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param('i', $id_veiculo);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_assoc();
+        }
+        return null;
+    }
 }
 
 ?>
