@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../models/CarRepository.php';
-require_once __DIR__ . '/../app/config.php';
+require_once __DIR__ . '/../repositories/CarRepository.php';
+require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ .'/db.php';
 
 class VehicleController {

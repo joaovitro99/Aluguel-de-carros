@@ -59,7 +59,7 @@
                             <td>
                                 <div class="vehicle-info">
                                     <img 
-                                        src="data:image/jpeg;base64,<?= base64_encode($rendimento['imagem']) ?>" 
+                                        src="data:image/jpeg;base64,<?=base64_encode($rendimento['imagem']) ?>" 
                                         alt="Veículo" 
                                         class="vehicle-image"
                                     >
