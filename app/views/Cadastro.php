@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alucarros - Formulário de Cadastro</title>
-    <link rel="stylesheet" href="../assets/css/cadastrados.css" />
+    <link rel="stylesheet" href="../../public/assets/css/cadastrados.css" />
 </head>
 <body>
 

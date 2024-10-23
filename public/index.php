@@ -8,7 +8,8 @@ require_once __DIR__ . '/../app/controllers/UserController.php';
 require_once __DIR__ . '/../app/controllers/LoginController.php';
 require_once __DIR__ . '/../app/controllers/LogoutController.php';
 require_once __DIR__ . '/../app/controllers/ClientController.php';
-
+require_once __DIR__ . '/../controllers/VehicleController.php';
+require_once __DIR__ . '/../app/config.php';
 // Configuração do roteador
 $router = new Router();
 $router->addRoute('car/index', 'CarController', 'index');
@@ -53,16 +54,17 @@ if (method_exists($controller, $action)) { // Verifica se a ação existe no con
 }
 
 
-/*include '../controllers/CarController.php';
-include '../app/config.php';
+require_once __DIR__ . '/../controllers/VehicleController.php';
+require_once __DIR__ . '/../app/config.php';
 
+// Verifica se o ID do veículo foi passado pela URL
 $id_veiculo = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($id_veiculo) {
-    $controller = new VehicleController($conn);
-    $controller->showVehicle($id_veiculo);
+    // Inicializa o controlador e exibe os detalhes do veículo
+    $vehicleController = new VehicleController($conn);
+    $vehicleController->showVehicleDetails($id_veiculo);
 } else {
-    echo "ID do veículo não informado.";
-}*/
-
+    echo "<p>ID do veículo não informado.</p>";
+}
 
