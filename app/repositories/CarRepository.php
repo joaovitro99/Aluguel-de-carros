@@ -125,7 +125,7 @@ class CarRepository{
         return $images;
     }
     public function getUserCars($userId) {
-        $sql = "SELECT * FROM alugueis WHERE id_cliente = ?";
+        $sql = "SELECT * FROM locacoes WHERE id_cliente = ?";
         $stmt = $this->data_provider->prepare($sql);
         $stmt->bind_param("i", $userId);
         $stmt->execute();

@@ -34,15 +34,13 @@
     <?php if (!empty($rentalHistory)): ?>
         <?php foreach ($rentalHistory as $rental): ?>
             <div class="rental-card">
-                <?php if ($rental['imagem']): ?>
-                    <img src="data:image/jpeg;base64,<?= base64_encode($rental['imagem']) ?>" alt="Imagem do Veículo">
-                <?php endif; ?>
-                <h3>Marca: <?= $rental['marca'] ?></h3>
-                <p>Modelo: <?= $rental['modelo'] ?></p>
-                <p>Ano: <?= $rental['ano'] ?></p>
-                <p>Data de Início: <?= $rental['data_inicio'] ?></p>
-                <p>Data de Fim: <?= $rental['data_fim'] ?></p>
-                <p>Valor Total: R$ <?= $rental['valor_total'] ?></p>
+           
+                <h3>Marca:</h3>
+                <p>Modelo: </p>
+                <p>Ano: </p>
+                <p>Data de Início: </p>
+                <p>Data de Fim: </p>
+                <p>Valor Total: R$ </p>
             </div>
         <?php endforeach; ?>
     <?php else: ?>

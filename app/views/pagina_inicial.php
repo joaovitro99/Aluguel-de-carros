@@ -25,9 +25,9 @@
                     
                 </div>
                 <div id="nav-2">
-                    <p><a href="user/signup">Inscrever-se</a></p>
+                    <p><a href="/aluguel-de-carros/public/user/signup">Inscrever-se</a></p>
                     <div id="barra-divisão"></div>
-                    <p><a href="login/index">Entrar</a></p>
+                    <p><a href="/aluguel-de-carros/public/login/index">Entrar</a></p>
                 </div>
               </nav>
               <div id="pesquisa">

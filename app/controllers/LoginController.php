@@ -42,7 +42,7 @@ class LoginController {
                 if ($user) {
                     $_SESSION['id_usuario'] = $user['id_usuario'];
                     $_SESSION['user']= $user;
-                    $direcao = ($user['tipo_usuario'] === 'cliente') ? '../../views/perfil.php' : '/aluguel-de-carros/public/car/listar';
+                    $direcao = ($user['tipo_usuario'] === 'cliente') ? '/aluguel-de-carros/public/user/showProfile' : '/aluguel-de-carros/public/car/listar';
                     echo "<script>
                         alert('Login feito com sucesso!');
                         window.location.href = '$direcao';

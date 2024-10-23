@@ -10,7 +10,7 @@ try {
     // Loop para inserir imagens de 1 a 10
     for ($id_veiculo = 1; $id_veiculo <= 10; $id_veiculo++) {
         // Define o caminho da imagem com base no ID do veículo
-        $imagePath = 'C:/xampp/htdocs/aluguel-de-carros/public/assets/images/imagens' . $id_veiculo . '.png';
+        $imagePath = 'C:\wamp64\www\Aluguel-de-carros\public\assets\images\imagens' . $id_veiculo . '.png';
 
         if (file_exists($imagePath)) {
             // Lê o conteúdo da imagem

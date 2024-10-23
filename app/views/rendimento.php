@@ -58,11 +58,19 @@
                         <tr>
                             <td>
                                 <div class="vehicle-info">
-                                    <img 
-                                        src="data:image/jpeg;base64,<?=base64_encode($rendimento['imagem']) ?>" 
-                                        alt="Veículo" 
-                                        class="vehicle-image"
-                                    >
+                                    <?php if (!empty($rendimento['imagem'])): ?>
+                                        <img 
+                                            src="data:image/jpeg;base64,<?= base64_encode($rendimento['imagem']) ?>" 
+                                            alt="Veículo" 
+                                            class="vehicle-image"
+                                        >
+                                    <?php else: ?>
+                                        <img 
+                                            src="/aluguel-de-carros/public/assets/img/no-image.png" 
+                                            alt="Imagem não disponível" 
+                                            class="vehicle-image"
+                                        >
+                                    <?php endif; ?>
                                     <div>
                                         <p><?= $rendimento['marca'] ?></p>
                                         <p><?= $rendimento['modelo'] ?></p>
