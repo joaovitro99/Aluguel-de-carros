@@ -9,6 +9,7 @@ require_once __DIR__ . '/../app/controllers/LoginController.php';
 require_once __DIR__ . '/../app/controllers/LogoutController.php';
 require_once __DIR__ . '/../app/controllers/ClientController.php';
 require_once __DIR__ . '/../app/controllers/VehicleController.php';
+require_once __DIR__ . '/../app/controllers/NotificacaoController.php';
 require_once __DIR__ . '/../config/config.php';
 // Configuração do roteador
 $router = new Router();
@@ -25,7 +26,10 @@ $router->addRoute('user/showProfile', 'UserController', 'showProfile');
 $router->addRoute('user/signup', 'ClientController', 'index');
 $router->addRoute('logout', 'LogoutController', 'logout');
 $router->addRoute('car/details', 'CarController', 'showDetailCar');
+$router->addRoute('car/details', 'CarController', 'showDetailCar');
 
+$router->addRoute('notificacao/criar', 'CarController', 'createNotification');
+$router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota
