@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/../models/Aluguel.php';
 class RentalRepository {
 
     private $data_provider;
@@ -56,4 +56,34 @@ class RentalRepository {
 
         return $rentalData;
     }
+
+    public function getAll() {
+        $sql = "SELECT * FROM locacoes";
+        $result = $this->data_provider->query($sql);
+
+        $alugueis = [];
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $aluguel = new Aluguel(
+                    $row['id_locacao'],
+                    $row['id_cliente'],
+                    $row['id_veiculo'],
+                    $row['data_inicio'],
+                    $row['data_fim'],
+                    $row['valor_total']
+                );
+                $alugueis[] = $aluguel; // Adiciona o objeto Aluguel ao array
+            }
+        } else {
+            // Tratar erros na consulta
+            echo "Erro na consulta: " . $this->data_provider->error;
+        }
+
+        return $alugueis; // Retorna a lista de aluguéis
+    }
+
+
+
+
 }

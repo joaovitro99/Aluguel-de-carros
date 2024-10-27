@@ -9,8 +9,9 @@ require_once __DIR__ . '/../app/controllers/LoginController.php';
 require_once __DIR__ . '/../app/controllers/LogoutController.php';
 require_once __DIR__ . '/../app/controllers/ClientController.php';
 require_once __DIR__ . '/../app/controllers/VehicleController.php';
-require_once __DIR__ . '/../app/controllers/NotificacaoController.php';
+//require_once __DIR__ . '/../app/controllers/NotificacaoController.php';
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__."/../vendor/autoload.php";
 // Configuração do roteador
 $router = new Router();
 $router->addRoute('car/index', 'CarController', 'index');
@@ -38,24 +39,38 @@ $base_path = '/aluguel-de-carros/public/';
 if (strpos($uri, $base_path) === 0) {
     $uri = substr($uri, strlen($base_path));
 }
- 
-$route = $router->resolve($uri); // Busca a rota correspondente à URI
 
-// Instancia o controlador
-$controllerName = $route['controller']; // Obtém o nome do controlador
-$action = $route['action']; // Obtém a ação a ser chamada
 
-// Importa o controlador correspondente
-require_once __DIR__ . '/../app/controllers/' . $controllerName . '.php';
-$controller = new $controllerName(); // Cria uma nova instância do controlador
+if($uri === "notification/send" && $_SERVER['REQUEST_METHOD']=='POST'){
+    require_once __DIR__."/../notificationsAPI/public/index.php";
+   
+   
 
-// Chama a ação do controlador
-if (method_exists($controller, $action)) { // Verifica se a ação existe no controlador
-    $controller->$action(); // Chama a ação correspondente
-} else {
-    http_response_code(404); // Define o código de resposta HTTP para 404
-    echo "404 Not Found"; // Exibe uma mensagem de erro
 }
+else
+{
+
+
+    $route = $router->resolve($uri); // Busca a rota correspondente à URI
+
+    // Instancia o controlador
+    $controllerName = $route['controller']; // Obtém o nome do controlador
+    $action = $route['action']; // Obtém a ação a ser chamada
+    
+    // Importa o controlador correspondente
+    require_once __DIR__ . '/../app/controllers/' . $controllerName . '.php';
+    $controller = new $controllerName(); // Cria uma nova instância do controlador
+    
+    // Chama a ação do controlador
+    if (method_exists($controller, $action)) { // Verifica se a ação existe no controlador
+        $controller->$action(); // Chama a ação correspondente
+    } else {
+        http_response_code(404); // Define o código de resposta HTTP para 404
+        echo "404 Not Found"; // Exibe uma mensagem de erro
+    }
+}
+ 
+
 
 
 /*require_once __DIR__ . '/../controllers/VehicleController.php';
