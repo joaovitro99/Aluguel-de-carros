@@ -29,7 +29,7 @@ class EmailService {
     public function send($recipient, $message) {
         try {
             // Remetente e destinatário
-            $this->mail->setFrom('', '');
+            $this->mail->setFrom('', 'Empresa de Aluguel de carros');
             $this->mail->addAddress($recipient); // Adiciona o destinatário
 
             // Conteúdo do e-mail
