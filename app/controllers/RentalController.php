@@ -87,7 +87,28 @@ class RentalController{
         
 
     }
+    
+    public function enviarManualmente() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];
+            $nome = $_POST['nome'];
+            $mensagem = $_POST['mensagem'];
 
+            // Envia a notificação
+            $cliente_info = [
+                'email' => $email,
+                'nome' => $nome
+            ];
+            
+            $response = $this->enviarNotificacao($cliente_info, $mensagem, 'email');
 
+            // Exibir a resposta
+            if ($response !== 'Erro ao fazer a requisição.') {
+                echo "Notificação enviada para: " . $cliente_info['email'] . "\n";
+            } else {
+                echo "Falha ao enviar notificação para: " . $cliente_info['email'] . "\n";
+            }
+        }
+    }
 
 }
