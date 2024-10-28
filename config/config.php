@@ -1,5 +1,4 @@
 <?php
-
 $config= [
     "host" => "localhost",
         "username" => "root",
