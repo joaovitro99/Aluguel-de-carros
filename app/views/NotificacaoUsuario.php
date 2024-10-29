@@ -86,8 +86,9 @@
 
             // Verifica se o usuário está logado
             if (!isset($_SESSION['user'])) {
-                echo "Erro ao processar notifcações.";
-                header('Location: perfil.php');
+                echo "<script>
+                alert('erro nas notificacoes');
+              </script>";
                 exit();
             }
             
@@ -102,7 +103,7 @@
         async function fetchNotifications() {
             const clientId = document.getElementById('clientId').value;
             if (!clientId) {
-                alert("Por favor, insira um ID do Cliente.");
+                alert("erro no ID do cliente");
                 return;
             }
 
