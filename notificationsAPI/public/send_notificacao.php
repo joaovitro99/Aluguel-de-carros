@@ -1,12 +1,3 @@
-<?php
-require_once __DIR__ . '/../../app/controllers/RentalController.php';
-
-$rentalController = new RentalController(); // Instancia a classe
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $rentalController->enviarManualmente(); // Chama o método de envio manual
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -14,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Envio Manual de Email</title>
-    <link rel="stylesheet" href="assets/css/style.css"> <!-- Incluindo o CSS -->
+    <link rel="stylesheet" href="/../Aluguel-de-carros/notificationsAPI/public/assets/css/style.css"> <!-- Incluindo o CSS -->
 </head>
 <body>
     <h1>Enviar Email</h1>
@@ -29,6 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <textarea id="mensagem" name="mensagem" required></textarea><br><br>
 
         <input type="submit" value="Enviar Email">
+        <?php if (!empty($_SESSION['statusMessage'])): ?>
+            <div class="status-message <?php echo $_SESSION['statusClass']; ?>">
+                <?php echo $_SESSION['statusMessage']; ?>
+            </div>
+            <?php 
+            // Limpa a mensagem de status da sessão
+            unset($_SESSION['statusMessage']);
+            unset($_SESSION['statusClass']);
+            ?>
+        <?php endif; ?>
     </form>
 </body>
 </html>

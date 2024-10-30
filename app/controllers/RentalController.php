@@ -89,11 +89,13 @@ class RentalController{
     }
     
     public function enviarManualmente() {
+        $statusMessage = '';
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
             $nome = $_POST['nome'];
             $mensagem = $_POST['mensagem'];
-
+    
             // Envia a notificação
             $cliente_info = [
                 'email' => $email,
@@ -101,14 +103,24 @@ class RentalController{
             ];
             
             $response = $this->enviarNotificacao($cliente_info, $mensagem, 'email');
-
+    
             // Exibir a resposta
             if ($response !== 'Erro ao fazer a requisição.') {
-                echo "Notificação enviada para: " . $cliente_info['email'] . "\n";
+                $_SESSION['statusMessage'] = "Notificação enviada com sucesso para: " . $cliente_info['email'];
+                $_SESSION['statusClass'] = 'success';
             } else {
-                echo "Falha ao enviar notificação para: " . $cliente_info['email'] . "\n";
+                $_SESSION['statusMessage'] = "Falha ao enviar notificação para: " . $cliente_info['email'];
+                $_SESSION['statusClass'] = 'error';
             }
-        }
+    
+            // Redireciona para evitar reenvio do formulário
+            header("Location: http://localhost/aluguel-de-carros/public/notificacao/enviarManual");
+            exit;
+        } 
+        include __DIR__ . '/../../notificationsAPI/public/send_notificacao.php';
+
+            // Exibe o formulário HTML para envio manual
     }
+    
 
 }

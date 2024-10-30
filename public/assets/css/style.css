@@ -169,3 +169,39 @@ table th {
     background-color: #0056b3;
 }
 
+/* Adicione estas regras CSS ao seu arquivo style.css */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para o botão */
+.btn-enviar-email {
+    background-color: #D93025;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre a imagem e o texto */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar-email:hover {
+    background-color: #D93025;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para a imagem do ícone */
+.email-icon {
+    width: 22px; /* Ajuste o tamanho conforme necessário */
+    height: 18px;
+}

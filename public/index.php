@@ -9,6 +9,7 @@ require_once __DIR__ . '/../app/controllers/LoginController.php';
 require_once __DIR__ . '/../app/controllers/LogoutController.php';
 require_once __DIR__ . '/../app/controllers/ClientController.php';
 require_once __DIR__ . '/../app/controllers/VehicleController.php';
+require_once __DIR__ . '/../app/controllers/RentalController.php';
 //require_once __DIR__ . '/../app/controllers/NotificacaoController.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__."/../vendor/autoload.php";
@@ -28,6 +29,8 @@ $router->addRoute('user/signup', 'ClientController', 'index');
 $router->addRoute('logout', 'LogoutController', 'logout');
 $router->addRoute('car/details', 'CarController', 'showDetailCar');
 $router->addRoute('car/details', 'CarController', 'showDetailCar');
+$router->addRoute('notificacao/enviarManual', 'RentalController', 'enviarManualmente');
+
 
 $router->addRoute('notificacao/criar', 'CarController', 'createNotification');
 $router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');
