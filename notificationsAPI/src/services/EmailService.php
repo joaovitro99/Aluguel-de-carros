@@ -20,8 +20,8 @@ class EmailService {
         $this->mail->isSMTP();
         $this->mail->Host = 'smtp.gmail.com'; 
         $this->mail->SMTPAuth = true;
-        $this->mail->Username = 'projetoteste825@gmail.com'; //email padrão do envio
-        $this->mail->Password = 'Projetoteste258'; // senha do email padrao
+        $this->mail->Username = ''; //email padrão do envio
+        $this->mail->Password = ''; // senha do email padrao
         $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
         $this->mail->Port = 587; 
     }
@@ -29,7 +29,7 @@ class EmailService {
     public function send($recipient, $message) {
         try {
             // Remetente e destinatário
-            $this->mail->setFrom('projetoteste825@gmail.com', '');
+            $this->mail->setFrom('', '');
             $this->mail->addAddress($recipient); // Adiciona o destinatário
 
             // Conteúdo do e-mail
