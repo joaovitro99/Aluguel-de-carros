@@ -13,6 +13,40 @@
             flex-direction: column;
             margin: 20px;
         }
+        .header {
+    
+    color: white; /* Cor do texto do cabeçalho */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centralizar texto */
+    height: 20vh;
+    
+}
+
+.container {
+    padding: 20px; /* Espaçamento interno da página */
+    display: flex;
+    flex-direction: column; /* Alinhar os elementos em colunas */
+    align-items: center; /* Centralizar elementos horizontalmente */
+    height: 80vh;
+    border-radius: 20%;
+   
+}
+
+.retangulo-azul {
+    border: 1px solid #747171;
+    background-color: #007b95;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.retangulo-azul div {
+    color: white;
+    font-size: 18px;
+    margin-right: 20px;
+    cursor: pointer;
+}
         #notifications {
             margin-top: 20px;
             width: 100%;
@@ -24,6 +58,11 @@
         .notification-item {
             border-bottom: 1px solid #ddd;
             padding: 10px 0;
+            background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
         }
         .notification-item:last-child {
             border-bottom: none;
@@ -32,18 +71,39 @@
 </head>
 <body>
 
-    <h1>Notificações</h1>
-    <label for="clientId">ID do Cliente:</label>
-    <input type="number" id="clientId" placeholder="Digite o ID do Cliente" required>
-    <button onclick="fetchNotifications()">Buscar Notificações</button>
+    <div class="header">
+        <div class="retangulo-azul">
+            <a href="pagina_inicial.php"><div class="home">Home</div></a>
+            <a href="BuscaCarros.php"><div class="nossos-veiculos">Nossos veículos</div></a>
+            <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
+            <a href="perfil.php"><div class="sobre-nos">Perfil</div></a>
+        </div>
+    </div>
 
-    <div id="notifications"></div>
+    <h1>Notificações
+    <?php
+            session_start();
+
+            // Verifica se o usuário está logado
+            if (!isset($_SESSION['user'])) {
+                echo "<script>
+                alert('erro nas notificacoes');
+              </script>";
+                exit();
+            }
+            
+            // Acessa os dados do usuário logado
+            $user = $_SESSION['user'];
+            ?>
+    </h1>
+
+    <input type="hidden" id="clientId" value="<?= htmlspecialchars($user['id']); ?>">
 
     <script>
         async function fetchNotifications() {
             const clientId = document.getElementById('clientId').value;
             if (!clientId) {
-                alert("Por favor, insira um ID do Cliente.");
+                alert("erro no ID do cliente");
                 return;
             }
 
@@ -65,7 +125,7 @@
                         notificationsContainer.appendChild(item);
                     });
                 } else {
-                    notificationsContainer.innerHTML = '<p>Sem notificações encontradas para este cliente.</p>';
+                    notificationsContainer.innerHTML = '<p>Sem notificações encontradas para voce.</p>';
                 }
             } catch (error) {
                 console.error("Erro ao buscar notificações:", error);

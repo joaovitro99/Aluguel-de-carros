@@ -28,6 +28,16 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `clientes`
 --
 
+CREATE TABLE notificacoes (
+    id_notificacao INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    nome_cliente VARCHAR(255),
+    texto_mensagem TEXT,
+    data_envio DATETIME,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
