@@ -24,3 +24,30 @@ class Router {
 
 }
 
+require_once 'controllers/WhatsAppController.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') {
+    session_start();
+    
+    // Verifique se o usuário está logado e pegue as informações de contato do usuário
+    if (isset($_SESSION['userPhone'])) {
+        $userPhone = $_SESSION['userPhone'];
+        
+        // Pegue as informações do veículo do POST
+        $vehicleInfo = [
+            'marca' => $_POST['marca'],
+            'modelo' => $_POST['modelo'],
+            'ano' => $_POST['ano'],
+            'placa' => $_POST['placa']
+        ];
+
+        // Envia a mensagem de tentativa de aluguel
+        $whatsappController = new WhatsAppController();
+        $response = $whatsappController->sendRentalAttemptConfirmation($userPhone, $vehicleInfo);
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Usuário não autenticado']);
+    }
+}

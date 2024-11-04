@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+< lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,10 +64,14 @@
             <p><strong>Placa:</strong> <?= htmlspecialchars($vehicleInfo['placa']) ?></p>
 
             <h2>Alugar</h2>
-            <button class="glow-on-hover">Clique Aqui</button>
+            <button class="glow-on-hover" onclick="rentVehicle()">Clique Aqui</butto>
         <?php else: ?>
             <p>Informações adicionais não disponíveis.</p>
         <?php endif; ?>
+    </div>
+
+    <div class = "botao-alugar">
+        
     </div>
 
     <script>
@@ -80,5 +84,36 @@
             slides.style.transform = `translateX(-${slideIndex * 100}%)`;
         }
     </script>
+    <script>
+function rentVehicle() {
+    const vehicleInfo = {
+        marca: "<?= htmlspecialchars($vehicleInfo['marca']) ?>",
+        modelo: "<?= htmlspecialchars($vehicleInfo['modelo']) ?>",
+        ano: "<?= htmlspecialchars($vehicleInfo['ano']) ?>",
+        placa: "<?= htmlspecialchars($vehicleInfo['placa']) ?>"
+    };
+
+    // Envia a requisição Ajax para alugar o veículo
+    fetch('router.php?action=rentVehicle', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(vehicleInfo)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert("Mensagem de confirmação enviada pelo WhatsApp!");
+        } else {
+            alert("Erro: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert("Ocorreu um erro ao enviar a mensagem.");
+    });
+}
+</script>
 </body>
 </html>
