@@ -23,8 +23,8 @@ class Router {
     }
 
 }
-
 require_once 'controllers/WhatsAppController.php';
+require_once 'controllers/SMSController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') {
     session_start();
@@ -34,16 +34,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') 
         $userPhone = $_SESSION['userPhone'];
         
         // Pegue as informações do veículo do POST
-        $vehicleInfo = [
-            'marca' => $_POST['marca'],
-            'modelo' => $_POST['modelo'],
-            'ano' => $_POST['ano'],
-            'placa' => $_POST['placa']
-        ];
-
-        // Envia a mensagem de tentativa de aluguel
-        $whatsappController = new WhatsAppController();
-        $response = $whatsappController->sendRentalAttemptConfirmation($userPhone, $vehicleInfo);
+        $vehicleInfo = json_decode(file_get_contents('php://input'), true);
+        
+        // Escolhe o método de envio com base no parâmetro "method"
+        $method = $_GET['method'];
+        
+        if ($method === 'whatsapp') {
+            $whatsappController = new WhatsAppController();
+            $response = $whatsappController->sendRentalAttemptConfirmation($userPhone, $vehicleInfo);
+        } else if ($method === 'sms') {
+            $smsController = new SMSController();
+            $response = $smsController->sendSMS($userPhone, "Confirmação de aluguel para o veículo: " . $vehicleInfo['marca'] . " " . $vehicleInfo['modelo']);
+        } else {
+            $response = ['status' => 'error', 'message' => 'Método inválido'];
+        }
 
         header('Content-Type: application/json');
         echo json_encode($response);
