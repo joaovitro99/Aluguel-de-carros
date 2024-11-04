@@ -26,7 +26,13 @@
         </div>
 
         <div class="content">
-            <h2>Olá, admin!</h2>
+            <div class="content-header">
+                <h2>Olá, admin!</h2>
+                <a href="/aluguel-de-carros/public/notificacao/enviarManual" class="btn-enviar-email">
+                    Enviar Email
+                    <img src="/aluguel-de-carros/public/assets/images/icons/imagemdoemail.png" alt="Ícone de email" class="email-icon">
+                </a>
+            </div>
             <table class="users-table">
                 <thead>
                     <tr>
