@@ -36,20 +36,20 @@ $hora_devolucao = $_SESSION['hora_devolucao'] ?? '';
             <form action="/aluguel-de-carros/public/car/buscar" method="POST">
                 <div class="overlap">
                     <div class="overlap-group">
-                    <input type="text" name="local" class="input-field-local" placeholder="Local de retirada" value="<?= htmlspecialchars($local) ?>">
+                    <input type="text" name="local" class="input-field-local" placeholder="Local de retirada" value="<?= htmlspecialchars($local) ?>" required>
                     </div>
 
                     <div class="div">
                         <div class="input-group">
-                        <input type="date" name="data_retirada" id="date-picker" class="input-field left" placeholder="Data de retirada" value="<?= htmlspecialchars($data_retirada) ?>">
-                        <input type="time" name="hora_retirada" id="time-picker" class="input-field right" placeholder="Hora de retirada" value="<?= htmlspecialchars($hora_retirada) ?>">
+                        <input type="date" name="data_retirada" id="date-picker" class="input-field left" placeholder="Data de retirada" value="<?= htmlspecialchars($data_retirada) ?>" required>
+                        <input type="time" name="hora_retirada" id="time-picker" class="input-field right" placeholder="Hora de retirada" value="<?= htmlspecialchars($hora_retirada) ?>" required>
                         </div>
                     </div>
 
                     <div class="overlap-2">
                         <div class="input-group">
-                        <input type="date" name="data_devolucao" id="date-return" class="input-field left" placeholder="Data de devolução" value="<?= htmlspecialchars($data_devolucao) ?>">
-                        <input type="time" name="hora_devolucao" id="time-return" class="input-field right" placeholder="Hora de devolução" value="<?= htmlspecialchars($hora_devolucao) ?>">
+                        <input type="date" name="data_devolucao" id="date-return" class="input-field left" placeholder="Data de devolução" value="<?= htmlspecialchars($data_devolucao) ?>" required>
+                        <input type="time" name="hora_devolucao" id="time-return" class="input-field right" placeholder="Hora de devolução" value="<?= htmlspecialchars($hora_devolucao) ?>" required>
                         </div>
                     </div>
 
@@ -58,7 +58,6 @@ $hora_devolucao = $_SESSION['hora_devolucao'] ?? '';
                     </div>
                 </div>
             </form>
-        </div>
         </div>
         <div class="filter-container">
             <div class="group-selection">Escolha o grupo de carros que melhor te atende</div>

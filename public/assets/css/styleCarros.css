@@ -434,6 +434,11 @@ line-height: normal;
 .continue-button:hover {
     background-color: #d65b00;
 }
+
+.continue-button:active {
+    background-color: #c65200; /* Cor mais escura quando clicado */
+}
+
 .section-title {
     font-size: 24px;
     font-weight: bold;

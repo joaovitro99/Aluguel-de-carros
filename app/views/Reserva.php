@@ -1,5 +1,10 @@
 <?php
 
+//if (!isset($_SESSION['user'])) {
+//    header('Location: /aluguel-de-carros/public/login/index');
+//    exit();
+//}
+
 $local = $_SESSION['local'] ?? '';
 $data_retirada = $_SESSION['data_retirada'] ?? '';
 $hora_retirada = $_SESSION['hora_retirada'] ?? '';
@@ -9,6 +14,7 @@ $hora_devolucao = $_SESSION['hora_devolucao'] ?? '';
 // Formatação das datas e horas
 $dataRetiradaObj = new DateTime($data_retirada . ' ' . $hora_retirada);
 $dataDevolucaoObj = new DateTime($data_devolucao . ' ' . $hora_devolucao);
+
 ?>
 
 <!DOCTYPE html>
