@@ -176,8 +176,8 @@ public function deleteCarro() {
             $carro = $this->carRepository->getCarById($idCarro);
 
             // Calcular a diferença entre a data de retirada e devolução
-            $dataRetirada = new DateTime($_SESSION['data_retirada']);
-            $dataDevolucao = new DateTime($_SESSION['data_devolucao']);
+            $dataRetirada = new DateTime($_SESSION['data_retirada'] ?? '');
+            $dataDevolucao = new DateTime($_SESSION['data_devolucao'] ?? '');
             $intervalo = $dataRetirada->diff($dataDevolucao);
             $diasAlugados = $intervalo->days;
 
