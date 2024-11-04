@@ -1,3 +1,12 @@
+<?php
+
+$local = $_SESSION['local'] ?? '';
+$data_retirada = $_SESSION['data_retirada'] ?? '';
+$hora_retirada = $_SESSION['hora_retirada'] ?? '';
+$data_devolucao = $_SESSION['data_devolucao'] ?? '';
+$hora_devolucao = $_SESSION['hora_devolucao'] ?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -24,29 +33,32 @@
             </div>
         </div>
         <div class="overlap-wrapper">
-            <div class="overlap">
-                <div class="overlap-group">
-                    <input type="text" class="input-field-local" placeholder="Local de retirada">
-                </div>
+            <form action="/aluguel-de-carros/public/car/buscar" method="POST">
+                <div class="overlap">
+                    <div class="overlap-group">
+                    <input type="text" name="local" class="input-field-local" placeholder="Local de retirada" value="<?= htmlspecialchars($local) ?>">
+                    </div>
 
-                <div class="div">
-                    <div class="input-group">
-                        <input type="text" id="date-picker" class="input-field left" placeholder="Data de retirada">
-                        <input type="text" id="time-picker" class="input-field right" placeholder="Hora de retirada">
+                    <div class="div">
+                        <div class="input-group">
+                        <input type="date" name="data_retirada" id="date-picker" class="input-field left" placeholder="Data de retirada" value="<?= htmlspecialchars($data_retirada) ?>">
+                        <input type="time" name="hora_retirada" id="time-picker" class="input-field right" placeholder="Hora de retirada" value="<?= htmlspecialchars($hora_retirada) ?>">
+                        </div>
+                    </div>
+
+                    <div class="overlap-2">
+                        <div class="input-group">
+                        <input type="date" name="data_devolucao" id="date-return" class="input-field left" placeholder="Data de devolução" value="<?= htmlspecialchars($data_devolucao) ?>">
+                        <input type="time" name="hora_devolucao" id="time-return" class="input-field right" placeholder="Hora de devolução" value="<?= htmlspecialchars($hora_devolucao) ?>">
+                        </div>
+                    </div>
+
+                    <div class="div-wrapper">
+                        <button class="continue-button">Continuar</button>
                     </div>
                 </div>
-
-                <div class="overlap-2">
-                    <div class="input-group">
-                        <input type="text" id="date-return" class="input-field left" placeholder="Data de devolução">
-                        <input type="text" id="time-return" class="input-field right" placeholder="Hora de devolução">
-                    </div>
-                </div>
-
-                <div class="div-wrapper">
-                    <button class="continue-button">Continuar</button>
-                </div>
-            </div>
+            </form>
+        </div>
         </div>
         <div class="filter-container">
             <div class="group-selection">Escolha o grupo de carros que melhor te atende</div>
@@ -121,10 +133,10 @@
                         <p>Modelo: <?= $car['modelo'] ?></p>
                         <p>Ano: <?= $car['ano'] ?></p>
                         <p>Diária: R$ <?= $car['valor_diaria'] ?></p>
-                        <button class="btn-alugar">Alugar</button>
+                        <a class="btn-alugar" href="/aluguel-de-carros/public/car/reserva?id=<?php echo $car['id_veiculo']; ?>">Alugar</a>
                     </div>
                 <?php endforeach; ?>
-            <?php else: ?>
+            <?php else: ?>  
                 <p>Nenhum veículo encontrado.</p>
             <?php endif; ?>
         </div>

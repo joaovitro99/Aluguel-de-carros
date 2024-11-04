@@ -1,0 +1,114 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    color: #333; /* Cor do texto */
+    line-height: 1.6; /* Espaçamento entre linhas */
+}
+
+.resumo-container {
+    max-width: 800px; /* Largura máxima do container */
+    margin: 20px auto; /* Centraliza o container */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #fff; /* Fundo branco */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+h1 {
+    text-align: center; /* Centraliza o título */
+    font-size: 2.5em; /* Tamanho do título */
+    color: #388192; /* Cor do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+h2 {
+    color: #3092a8; /* Cor dos subtítulos */
+    font-size: 1.8em; /* Tamanho dos subtítulos */
+    margin-bottom: 10px; /* Espaçamento abaixo dos subtítulos */
+    border-bottom: 2px solid #3092a8; /* Linha abaixo dos subtítulos */
+    padding-bottom: 5px; /* Espaçamento abaixo da linha */
+}
+
+h3 {
+    color: #333; /* Cor do subtítulo menor */
+    font-size: 1.5em; /* Tamanho do subtítulo menor */
+    margin-top: 15px; /* Espaçamento acima do subtítulo menor */
+}
+
+section {
+    margin-bottom: 20px; /* Espaçamento entre seções */
+    padding: 15px; /* Espaçamento interno das seções */
+    background-color: #f9f9f9; /* Fundo levemente cinza */
+    border-left: 5px solid #3092a8; /* Borda à esquerda */
+    border-radius: 4px; /* Cantos arredondados */
+}
+
+p {
+    margin-bottom: 10px; /* Espaçamento abaixo dos parágrafos */
+}
+
+ul {
+    list-style-type: none; /* Remove marcadores de lista */
+    padding-left: 0; /* Remove espaçamento à esquerda */
+}
+
+strong {
+    color: #3092a8; /* Cor para texto em negrito */
+}
+
+footer {
+    text-align: center; /* Centraliza o conteúdo do rodapé */
+    margin-top: 20px; /* Espaçamento acima do rodapé */
+    font-size: 0.9em; /* Tamanho do texto do rodapé */
+    color: #777; /* Cor do texto do rodapé */
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em; /* Reduz o tamanho do título em telas menores */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Reduz o tamanho dos subtítulos em telas menores */
+    }
+
+    .resumo-container {
+        padding: 10px; /* Reduz o padding em telas menores */
+    }
+
+    section {
+        padding: 10px; /* Reduz o padding das seções em telas menores */
+    }
+}
+
+.btn-confirmar {
+    display: inline-block; /* Para centralizar */
+    background-color: #e67e22; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-size: 1.2em; /* Tamanho da fonte */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: none; /* Remove bordas padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Indica que é clicável */
+    text-align: center; /* Centraliza o texto */
+    text-decoration: none; /* Remove sublinhado */
+    transition: background-color 0.3s, transform 0.2s; /* Efeitos de transição */
+}
+
+.btn-confirmar:hover {
+    background-color: #e67e22; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Aumenta levemente o botão */
+}
+
+.section-botao {
+    border-left: none; /* Remove a borda à esquerda */
+    background-color: transparent; /* Fundo transparente (ou a cor que preferir) */
+}
