@@ -29,14 +29,14 @@ require_once 'controllers/SMSController.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') {
     session_start();
     
-    // Verifique se o usuário está logado e pegue as informações de contato do usuário
+   
     if (isset($_SESSION['userPhone'])) {
         $userPhone = $_SESSION['userPhone'];
         
-        // Pegue as informações do veículo do POST
+       
         $vehicleInfo = json_decode(file_get_contents('php://input'), true);
         
-        // Escolhe o método de envio com base no parâmetro "method"
+      
         $method = $_GET['method'];
         
         if ($method === 'whatsapp') {
