@@ -1,0 +1,96 @@
+/* Reset de algumas propriedades padrão */
+body, h1, form, input, textarea {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo para o corpo da página */
+body {
+    font-family: 'Arial', sans-serif; /* Fonte geral */
+    background-color: #f4f4f4; /* Cor de fundo clara */
+    color: #333; /* Cor do texto */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    padding: 20px; /* Espaçamento interno da página */
+}
+
+/* Estilo do título */
+h1 {
+    text-align: center; /* Centraliza o texto */
+    color: #3A98AC; /* Cor do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+/* Estilo do formulário */
+form {
+    background-color: #fff; /* Fundo branco para o formulário */
+    padding: 20px; /* Espaçamento interno do formulário */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do formulário */
+    max-width: 500px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+}
+
+/* Estilo dos rótulos */
+label {
+    display: block; /* Faz os rótulos ocuparem toda a largura */
+    margin-bottom: 8px; /* Espaçamento abaixo dos rótulos */
+    font-weight: bold; /* Negrito para os rótulos */
+    color: #555; /* Cor dos rótulos */
+}
+
+/* Estilo dos campos de entrada */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 15px; /* Espaçamento abaixo dos campos */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: border-color 0.3s; /* Transição suave na cor da borda */
+}
+
+/* Estilo para campos ao focar */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #3A98AC; /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Estilo do botão de envio */
+input[type="submit"] {
+    background-color: #3A98AC; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border-radius: 4px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s; /* Transição suave na cor de fundo */
+}
+
+/* Estilo do botão ao passar o mouse */
+input[type="submit"]:hover {
+    background-color: #2a757b; /* Cor de fundo do botão ao passar o mouse */
+}
+
+/* Estilo para o textarea */
+textarea {
+    height: 100px; /* Altura fixa para a área de texto */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.status-message {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+}
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}
