@@ -1,4 +1,3 @@
-<!-- views/notifications.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,39 +13,37 @@
             margin: 20px;
         }
         .header {
-    
-    color: white; /* Cor do texto do cabeçalho */
-    padding: 20px; /* Espaçamento interno */
-    text-align: center; /* Centralizar texto */
-    height: 20vh;
-    
-}
+            color: white;
+            padding: 20px;
+            text-align: center;
+            height: 20vh;
+        }
 
-.container {
-    padding: 20px; /* Espaçamento interno da página */
-    display: flex;
-    flex-direction: column; /* Alinhar os elementos em colunas */
-    align-items: center; /* Centralizar elementos horizontalmente */
-    height: 80vh;
-    border-radius: 20%;
-   
-}
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 80vh;
+            border-radius: 20%;
+        }
 
-.retangulo-azul {
-    border: 1px solid #747171;
-    background-color: #007b95;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .retangulo-azul {
+            border: 1px solid #747171;
+            background-color: #007b95;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.retangulo-azul div {
-    color: white;
-    font-size: 18px;
-    margin-right: 20px;
-    cursor: pointer;
-}
+        .retangulo-azul div {
+            color: white;
+            font-size: 18px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
         #notifications {
             margin-top: 20px;
             width: 100%;
@@ -55,21 +52,34 @@
             padding: 10px;
             border-radius: 5px;
         }
+
         .notification-item {
             border-bottom: 1px solid #ddd;
-            padding: 10px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
             background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
         }
+
         .notification-item:last-child {
             border-bottom: none;
         }
     </style>
 </head>
 <body>
+    <?php
+        session_start();
+
+        // Verifica se o usuário está logado
+        if (!isset($_SESSION['id_cliente'])) {
+            echo "<script>alert('Você precisa estar logado para acessar as notificações.'); window.location.href = 'login.php';</script>";
+            exit();
+        }
+
+        // Acessa os dados do usuário logado
+        $id_cliente = $_SESSION['id_cliente'];
+    ?>
 
     <div class="header">
         <div class="retangulo-azul">
@@ -80,59 +90,30 @@
         </div>
     </div>
 
-    <h1>Notificações
-    <?php
-            session_start();
+    <h1>Notificações</h1>
 
-            // Verifica se o usuário está logado
-            if (!isset($_SESSION['user'])) {
-                echo "<script>
-                alert('erro nas notificacoes');
-              </script>";
-                exit();
-            }
-            
-            // Acessa os dados do usuário logado
-            $user = $_SESSION['user'];
-            ?>
-    </h1>
+    <input type="hidden" id="clientId" value="<?= htmlspecialchars((string)$id_cliente, ENT_QUOTES, 'UTF-8'); ?>">
 
-    <input type="hidden" id="clientId" value="<?= htmlspecialchars($user['id']); ?>">
 
-    <script>
-        async function fetchNotifications() {
-            const clientId = document.getElementById('clientId').value;
-            if (!clientId) {
-                alert("erro no ID do cliente");
-                return;
-            }
+    <div id="notifications">
+        <h3>Suas Notificações</h3>
+        <p>Carregando notificações...</p>
+    </div>
 
-            try {
-                const response = await fetch(`../index.php?client_id=${clientId}`);
-                const data = await response.json();
-
-                const notificationsContainer = document.getElementById('notifications');
-                notificationsContainer.innerHTML = '<h3>Suas Notificações</h3>';
-
-                if (data.length > 0) {
-                    data.forEach(notification => {
-                        const item = document.createElement('div');
-                        item.classList.add('notification-item');
-                        item.innerHTML = `
-                            <p><strong>Mensagem:</strong> ${notification.message}</p>
-                            <p><strong>Data:</strong> ${new Date(notification.sent_at).toLocaleString()}</p>
-                        `;
-                        notificationsContainer.appendChild(item);
-                    });
-                } else {
-                    notificationsContainer.innerHTML = '<p>Sem notificações encontradas para voce.</p>';
-                }
-            } catch (error) {
-                console.error("Erro ao buscar notificações:", error);
-                alert("Erro ao buscar notificações.");
-            }
-        }
-    </script>
+    <div id="notifications">
+    <h3>Suas Notificações</h3>
+    <?php if (!empty($notificacoes_cliente)): ?>
+        <?php foreach ($notificacoes_cliente as $notificacao): ?>
+            <div class="notification-item">
+                <p><strong>Mensagem:</strong> <?= htmlspecialchars($notificacao['message'], ENT_QUOTES, 'UTF-8') ?></p>
+                <p><strong>Data:</strong> <?= htmlspecialchars(date("d/m/Y H:i", strtotime($notificacao['data_envio'])), ENT_QUOTES, 'UTF-8') ?></p>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Sem notificações encontradas para você.</p>
+    <?php endif; ?>
+    </div>
 
 </body>
 </html>
+

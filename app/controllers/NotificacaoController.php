@@ -10,20 +10,26 @@ class NotificacaoController {
         $this->notification = new Notification($db_conection);
     }
 
-    public function createNotification($data) {
-        if (isset($data['message']) && isset($data['client_id'])) {
-            $success = $this->notification->create($data['message'], $data['client_id']);
-            return $success ? ["message" => "Notificação criada com sucesso!"] : ["message" => "Erro ao criar notificação."];
-        } else {
-            return ["message" => "Dados incompletos."];
-        }
-    }
+    
 
     public function getNotifications($client_id) {
-        if ($client_id) {
-            return $this->notification->getByClientId($client_id);
-        } else {
-            return ["message" => "ID do cliente não especificado."];
+        header('Content-Type: application/json');
+    
+        if (!$client_id) {
+            echo json_encode(["error" => "ID do cliente não especificado."]);
+            return;
+        }
+    
+        try {
+            $notifications = $this->notification->getByClientId($client_id);
+    
+            if (empty($notifications)) {
+                return json_encode(["message" => "Sem notificações encontradas para o cliente."]);
+            } else {
+                return json_encode($notifications);
+            }
+        } catch (Exception $e) {
+            return json_encode(["error" => "Erro ao buscar notificações: " . $e->getMessage()]);
         }
     }
 }
