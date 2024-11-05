@@ -97,7 +97,7 @@
             ?>
     </h1>
 
-    <input type="hidden" id="clientId" value="<?= htmlspecialchars($user['id']); ?>">
+    <input type="hidden" id="clientId" value="<?= htmlspecialchars($user['id_usuario']); ?>">
 
     <script>
         async function fetchNotifications() {
