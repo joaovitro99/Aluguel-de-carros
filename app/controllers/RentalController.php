@@ -16,6 +16,13 @@ class RentalController{
     }
     public function addAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total)
     {
+
+        $id_cliente=$_POST['id_cliente'];
+        $id_veiculo=$_POST['id_carro'];
+        $data_inicio=$_POST['data_inicio'];
+        $data_fim=$_POST['data_fim'];
+        $valor_total=$_POST['valor_total'];
+        
         $this->rentalRepository->insertAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total);
         $carro=$_SESSION['carroReserva'];
 

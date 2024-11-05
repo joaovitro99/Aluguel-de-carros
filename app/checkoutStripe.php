@@ -21,7 +21,7 @@ $session = \Stripe\Checkout\Session::create([
     'quantity' => 1, // Quantidade
   ]],
   'mode' => 'payment', // Modo de pagamento
-  'success_url' => "http://localhost/aluguel-de-carros/public/rental/add?id_cliente={$carro['id_cliente']}", // URL de sucesso
+  'success_url' => "http://localhost/aluguel-de-carros/public/rental/add?id_cliente='1'&id_carro='1'&data_inicio='10-11-14'&data_fim='10-11-14'&valor_diaria='1000'", // URL de sucesso
   'cancel_url' => 'https://seusite.com/cancelado', // URL de cancelamento
 ]);
 
