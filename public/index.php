@@ -30,7 +30,8 @@ $router->addRoute('logout', 'LogoutController', 'logout');
 $router->addRoute('car/details', 'CarController', 'showDetailCar');
 $router->addRoute('car/details', 'CarController', 'showDetailCar');
 $router->addRoute('notificacao/enviarManual', 'RentalController', 'enviarManualmente');
-
+$router->addRoute('car/reserva', 'CarController', 'showResumoReserva');
+$router->addRoute('car/buscar', 'CarController', 'buscar');
 
 $router->addRoute('notificacao/criar', 'CarController', 'createNotification');
 $router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');

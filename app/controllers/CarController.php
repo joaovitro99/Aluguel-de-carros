@@ -166,4 +166,43 @@ public function deleteCarro() {
         require_once __DIR__ .'/../views/DetalhesVeiculos.php';
 
     }
+
+    public function showResumoReserva() {
+        // Obtenha o ID do carro a partir da URL
+        $idCarro = $_GET['id'] ?? null;
+
+        if ($idCarro) {
+            // Busque as informações do carro pelo ID
+            $carro = $this->carRepository->getCarById($idCarro);
+
+            // Calcular a diferença entre a data de retirada e devolução
+            $dataRetirada = new DateTime($_SESSION['data_retirada'] ?? '');
+            $dataDevolucao = new DateTime($_SESSION['data_devolucao'] ?? '');
+            $intervalo = $dataRetirada->diff($dataDevolucao);
+            $diasAlugados = $intervalo->days;
+
+            require_once __DIR__ . '/../views/Reserva.php'; // Carrega a view
+        } else {
+            echo "ID do veículo não informado.";
+        }
+    }
+    
+    public function buscar() {
+        // Inicia a sessão caso ainda não esteja iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Captura os dados do formulário e os armazena na sessão
+        $_SESSION['local'] = $_POST['local'] ?? '';
+        $_SESSION['data_retirada'] = $_POST['data_retirada'] ?? '';
+        $_SESSION['hora_retirada'] = $_POST['hora_retirada'] ?? '';
+        $_SESSION['data_devolucao'] = $_POST['data_devolucao'] ?? '';
+        $_SESSION['hora_devolucao'] = $_POST['hora_devolucao'] ?? '';
+
+        // Redireciona de volta para a página de busca de carros
+        header('Location: /aluguel-de-carros/public/car/index');
+        
+        exit;
+    }
 }
