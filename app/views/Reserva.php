@@ -1,5 +1,4 @@
 <?php
-
 //if (!isset($_SESSION['user'])) {
 //    header('Location: /aluguel-de-carros/public/login/index');
 //    exit();
@@ -24,6 +23,7 @@ $dataDevolucaoObj = new DateTime($data_devolucao . ' ' . $hora_devolucao);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumo da Reserva</title>
     <link rel="stylesheet" href="../../public/assets/css/resumoReserva.css">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <div class="resumo-container">
@@ -67,12 +67,29 @@ $dataDevolucaoObj = new DateTime($data_devolucao . ' ' . $hora_devolucao);
             <p>Carro não encontrado.</p>
         <?php endif; ?>
 
-        <section class="section-botao">
-            <form action="confirmarReserva.php" method="post">
-                <button type="submit" class="btn-confirmar">Finalizar Reserva</button>
-            </form>
-        </section>
+        
+                <button  class="btn-confirmar" id="checkout-button">Finalizar Reserva</button>
+         
+       
 
     </div>
 </body>
+<script>
+    const stripe = Stripe('pk_test_51Q84E5Fa9ArriDU8g6p1s7bD4Cg9SsFhHsCKBJAxiVxC8BeqdZh6F0VVqwc6iBy8l9HzJCpaD3l4B6ZItaG9muFI00jlHbiGqW'); // 
+
+    document.getElementById('checkout-button').addEventListener('click', async () => {
+      const response = await fetch('http://localhost/Aluguel-de-carros/app/checkoutStripe.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      const { id: sessionId } = await response.json();
+
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        console.error("Erro ao redirecionar para o checkout:", error.message);
+      }
+    });
+  </script>
 </html>
