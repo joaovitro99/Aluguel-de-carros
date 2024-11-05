@@ -1,9 +1,9 @@
 <?php
 
-//if (!isset($_SESSION['user'])) {
-//    header('Location: /aluguel-de-carros/public/login/index');
-//    exit();
-//}
+if (!isset($_SESSION['user'])) {
+    header('Location: /aluguel-de-carros/public/login/index');
+    exit();
+}
 
 $local = $_SESSION['local'] ?? '';
 $data_retirada = $_SESSION['data_retirada'] ?? '';
