@@ -14,7 +14,7 @@ class Notification {
 
     public function EnviarNotificacaoBD($id_cliente,$nome,$mensagem) {
         $query = "INSERT INTO " . $this->table_name . " (id_cliente, nome_cliente, texto_mensagem, data_envio) VALUES (?, ?, ?,NOW())";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->data_provider->prepare($query);
         $stmt->bind_param("iss", $id_cliente,$nome,$mensagem);
 
         return $stmt->execute();
