@@ -10,7 +10,7 @@
     <div class="header">
         <div class="retangulo-azul">
             <a href="pagina_inicial.php"><div class="home">Home</div></a>
-            <a href="BuscaCarros.php"><div class="nossos-veiculos">Nossos veículos</div></a>
+            <a href="/aluguel-de-carros/public/car/index"><div class="nossos-veiculos">Nossos veículos</div></a>
             <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
             <div class="retangulo-laranja">
             <form action="logout" method="post" style="margin: 0;">
