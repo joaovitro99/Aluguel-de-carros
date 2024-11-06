@@ -14,14 +14,14 @@ class RentalController{
         $this->rentalRepository = new RentalRepository($db_conection);
         $this->clientRepository = new ClientRepository($db_conection);
     }
-    public function addAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total)
+    public function addAluguel()
     {
 
-        $id_cliente=$_POST['id_cliente'];
-        $id_veiculo=$_POST['id_carro'];
-        $data_inicio=$_POST['data_inicio'];
-        $data_fim=$_POST['data_fim'];
-        $valor_total=$_POST['valor_total'];
+        $id_cliente=$_GET['id_cliente'];
+        $id_veiculo=$_GET['id_carro'];
+        $data_inicio=$_GET['data_inicio'];
+        $data_fim=$_GET['data_fim'];
+        $valor_total=10;
         
         $this->rentalRepository->insertAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total);
         $carro=$_SESSION['carroReserva'];
@@ -75,6 +75,7 @@ class RentalController{
             return 'Erro ao fazer a requisição.';
         } else {
             return $response;
+            
         }
        
 

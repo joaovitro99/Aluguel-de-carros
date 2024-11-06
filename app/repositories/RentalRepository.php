@@ -10,7 +10,7 @@ class RentalRepository {
     public function insertAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total){
         try {
             // Inserindo o cliente na tabela `clientes`
-            $sql_aluguel = "INSERT INTO locacoes (id_aluguel, id_cliente, id_veiculo, data_inicio, data_fim, valor_total) VALUES (?, ?, ?, ?, ?)";
+            $sql_aluguel = "INSERT INTO locacoes (id_cliente, id_veiculo, data_inicio, data_fim, valor_total) VALUES (?, ?, ?, ?, ?)";
             $sql_aluguel = $this->data_provider->prepare($sql_aluguel);
             $sql_aluguel->bind_param("iissd",$id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total);
             $sql_aluguel->execute();

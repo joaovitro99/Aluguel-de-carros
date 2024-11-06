@@ -25,6 +25,8 @@
     <div class="container">
         <div id="info_cliente">
             <h2>Nome: <?= $cliente['nome'] ?></h2>
+
+            
             <h2>Email: <?= $cliente['email'] ?></h2>
             <h2>Telefone: <?= $cliente['telefone'] ?></h2>
         </div>

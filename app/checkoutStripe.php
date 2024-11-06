@@ -4,7 +4,16 @@ session_start();
 
 \Stripe\Stripe::setApiKey('sk_test_51Q84E5Fa9ArriDU8CBV254ITGpzJlTSA5fJUrGXg07end7vFy9ybsGaU9OKWrtRMHExhLno80N4fImUkqAHRVUjq00NsnYUvds');
 $carro = $_SESSION['reservaCarro'];
+$user=$_SESSION['user']??' ';
+$data_retirada=$_SESSION['data_retirada']??'11-12-13';
+$data_devolucao=$_SESSION['data_devolucao']??'11-12-13';
 $valor = ((int)$carro['valor_diaria']) * ((int)$_SESSION['diasAlugados']) * 1.12;
+$url = "http://localhost/aluguel-de-carros/public/rental/add?id_cliente=" . urlencode($user['id_cliente']) .
+       "&id_carro=" . urlencode($carro['id_veiculo']) .
+       "&data_inicio=" . urlencode($data_retirada) .
+       "&data_fim=" . urlencode($data_devolucao) .
+       "&valor=" . urlencode($valor);
+
 
 // Dados da sessão de checkout
 $session = \Stripe\Checkout\Session::create([
@@ -21,7 +30,7 @@ $session = \Stripe\Checkout\Session::create([
     'quantity' => 1, // Quantidade
   ]],
   'mode' => 'payment', // Modo de pagamento
-  'success_url' => "http://localhost/aluguel-de-carros/public/rental/add?id_cliente='1'&id_carro='1'&data_inicio='10-11-14'&data_fim='10-11-14'&valor_diaria='1000'", // URL de sucesso
+  'success_url' => $url, // URL de sucesso
   'cancel_url' => 'https://seusite.com/cancelado', // URL de cancelamento
 ]);
 
