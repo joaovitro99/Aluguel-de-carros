@@ -8,7 +8,7 @@ $user=$_SESSION['user']??' ';
 $data_retirada=$_SESSION['data_retirada']??'11-12-13';
 $data_devolucao=$_SESSION['data_devolucao']??'11-12-13';
 $valor = ((int)$carro['valor_diaria']) * ((int)$_SESSION['diasAlugados']) * 1.12;
-$url = "http://localhost/aluguel-de-carros/public/rental/add?id_cliente=" . urlencode($user['id_cliente']) .
+$url = "http://localhost/aluguel-de-carros/public/rental/add?id_cliente=" . urlencode($user['id_usuario']) .
        "&id_carro=" . urlencode($carro['id_veiculo']) .
        "&data_inicio=" . urlencode($data_retirada) .
        "&data_fim=" . urlencode($data_devolucao) .
