@@ -16,6 +16,7 @@
             <li><a href="/aluguel-de-carros/public/usuarios/index" class="active">Usuários</a></li>
             <li><a href="/aluguel-de-carros/public/car/listar">Veículos</a></li>
             <li><a href="/aluguel-de-carros/public/rendimento/index">Rendimento</a></li>
+            <li><a href="/aluguel-de-carros/public/alugueis/index">Alugueis</a></li>
         </ul>
     </div>
 

@@ -30,6 +30,7 @@
            echo '<li><a href="/aluguel-de-carros/public/usuarios/index">Usuários</a></li>';
            echo '<li><a href="/aluguel-de-carros/public/car/listar" class="active">Veículos</a></li>';
            echo '<li><a href="/aluguel-de-carros/public/rendimento/index">Rendimento</a></li>';
+           echo '<li><a href="/aluguel-de-carros/public/alugueis/index">Alugueis</a></li>';
             }
             else{
                 echo '<li><a href="veiculos.php" class="active">Veículos</a></li>';
