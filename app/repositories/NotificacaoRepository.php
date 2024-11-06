@@ -1,7 +1,7 @@
 <?php
 // models/Notification.php
 //require_once 'config/Database.php';
-require_once __DIR__ .'/db.php';
+require_once __DIR__ .'/../controllers/db.php';
 class Notification {
     private $conn;
     private $table_name = "notificacoes";

@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__.'/../models/UserController.php';
+
+use Stripe\Terminal\Location;
+
+require_once __DIR__.'/UserController.php';
 require_once __DIR__.'/../repositories/UserRepository.php';
 require_once __DIR__.'/MySqlDataProvider.php';
 require_once __DIR__.'/../../config/config.php';
@@ -25,7 +28,7 @@ class FuncionarioController {
         
             try {
                 $this->FuncionarioRepository->insertFuncionario($nome_usuario,$senha);
-           
+                header("Location:/aluguel-de-carros/public/car/listar");
                 echo "Funcionario Inserido!";
             } catch (Exception $e) {
                 

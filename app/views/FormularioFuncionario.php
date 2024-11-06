@@ -15,7 +15,7 @@
             <h1 class="title">Cadastro de Funcionario</h1>
 
             <!-- Note que o action está direcionando para o Controller -->
-            <form action="../controllers/FuncionarioController.php" method="post">
+            <form action="/aluguel-de-carros/public/admin/add" method="post">
                 <label for="nome_usuario">Nome do Funcionário:</label>
                 <input type="text" id="nome_usuario" name="nome_usuario" 
                        placeholder="Nome de Usuário..." 
