@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/controllers/WhatsAppController.php';
 class Router {
     private $routes = []; // Array para armazenar as rotas
 
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') 
         $method = $_GET['method'];
         
         if ($method === 'whatsapp') {
-            $whatsappController = new WhatsAppController();
+            //$whatsappController = new WhatsAppController();
             $response = $whatsappController->sendRentalAttemptConfirmation($userPhone, $vehicleInfo);
         } else if ($method === 'sms') {
             //$smsController = new SMSController();
