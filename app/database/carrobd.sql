@@ -37,6 +37,17 @@ CREATE TABLE notificacoes (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
+ALTER TABLE notificacoes
+DROP FOREIGN KEY notificacoes_ibfk_1;
+
+-- 2. Renomeie a coluna id_cliente para id_usuario
+ALTER TABLE notificacoes
+CHANGE id_cliente id_usuario INT;
+
+-- 3. Adicione a nova chave estrangeira com o nome atualizado
+ALTER TABLE notificacoes
+ADD CONSTRAINT fk_notificacoes_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
+
 
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
