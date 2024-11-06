@@ -1,4 +1,7 @@
 <?php
+
+use Stripe\Terminal\Location;
+
 require_once("db.php");
 require_once __DIR__."/../repositories/ClientRepository.php";
 require_once __DIR__."/../repositories/RentalRepository.php";
@@ -10,6 +13,29 @@ class RentalController{
         global $db_conection;
         $this->rentalRepository = new RentalRepository($db_conection);
         $this->clientRepository = new ClientRepository($db_conection);
+    }
+    public function addAluguel()
+    {
+
+        $id_cliente=$_GET['id_cliente'];
+        $id_veiculo=$_GET['id_carro'];
+        $data_inicio=$_GET['data_inicio'];
+        $data_fim=$_GET['data_fim'];
+        $valor_total=10;
+        
+        $this->rentalRepository->insertAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total);
+        $carro=$_SESSION['carroReserva'];
+
+        $cliente = $this->clientRepository->getClient($id_cliente);
+        $cliente_info= [
+            'email'=>$cliente['email'],
+            'nome'=>$cliente['nome']
+        ];
+
+        $mensagem= "Caro (a) cliente \n sua reserva do veículo ".$carro['marca']." ".$carro['modelo']." para ".$_SESSION['diasAlugados']." dias foi confirmada com sucesso. Agradecemos sua preferência.";
+       // $this->enviarNotificacao($cliente_info,$mensagem,'email');
+       header("Location: http://localhost/aluguel-de-carros/public/user/showProfile");
+
     }
     
 
@@ -49,6 +75,7 @@ class RentalController{
             return 'Erro ao fazer a requisição.';
         } else {
             return $response;
+            
         }
        
 

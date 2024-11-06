@@ -174,12 +174,14 @@ public function deleteCarro() {
         if ($idCarro) {
             // Busque as informações do carro pelo ID
             $carro = $this->carRepository->getCarById($idCarro);
+            $_SESSION['reservaCarro']=$carro;
 
             // Calcular a diferença entre a data de retirada e devolução
             $dataRetirada = new DateTime($_SESSION['data_retirada'] ?? '');
             $dataDevolucao = new DateTime($_SESSION['data_devolucao'] ?? '');
             $intervalo = $dataRetirada->diff($dataDevolucao);
             $diasAlugados = $intervalo->days;
+            $_SESSION['diasAlugados']=$diasAlugados;
 
             require_once __DIR__ . '/../views/Reserva.php'; // Carrega a view
         } else {
