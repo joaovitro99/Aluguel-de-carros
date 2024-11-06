@@ -36,7 +36,8 @@ $router->addRoute('car/buscar', 'CarController', 'buscar');
 $router->addRoute('notificacao/criar', 'CarController', 'createNotification');
 $router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');
 $router->addRoute('rental/add', 'RentalController', 'addAluguel'); 
-$router->addRoute('whatsapp/add', 'RentalController', 'addAluguel'); 
+$router->addRoute('whatsapp/confirm', 'WhatsAppController', 'sendRentalAttemptConfirmation'); 
+$router->addRoute('whatsapp/confirm', 'WhatsAppController', 'sendRentalAttemptConfirmation'); 
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota
