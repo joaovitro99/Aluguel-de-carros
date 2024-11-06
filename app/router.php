@@ -23,8 +23,8 @@ class Router {
     }
 
 }
-require_once 'controllers/WhatsAppController.php';
-require_once 'controllers/SMSController.php';
+require_once __DIR__.'/controllers/WhatsAppController.php';
+//require_once __DIR__.'/controllers/SMSController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') {
     session_start();
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') 
             $whatsappController = new WhatsAppController();
             $response = $whatsappController->sendRentalAttemptConfirmation($userPhone, $vehicleInfo);
         } else if ($method === 'sms') {
-            $smsController = new SMSController();
-            $response = $smsController->sendSMS($userPhone, "Confirmação de aluguel para o veículo: " . $vehicleInfo['marca'] . " " . $vehicleInfo['modelo']);
+            //$smsController = new SMSController();
+            //$response = $smsController->sendSMS($userPhone, "Confirmação de aluguel para o veículo: " . $vehicleInfo['marca'] . " " . $vehicleInfo['modelo']);
         } else {
             $response = ['status' => 'error', 'message' => 'Método inválido'];
         }

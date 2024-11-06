@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/../models/Aluguel.php';
 class RentalRepository {
 
     private $data_provider;
