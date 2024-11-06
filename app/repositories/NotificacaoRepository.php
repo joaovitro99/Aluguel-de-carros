@@ -1,6 +1,6 @@
 <?php
 // models/Notification.php
-require_once 'config/Database.php';
+//require_once 'config/Database.php';
 
 class Notification {
     private $conn;

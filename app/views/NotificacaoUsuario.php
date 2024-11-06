@@ -72,13 +72,14 @@
         session_start();
 
         // Verifica se o usuário está logado
-        if (!isset($_SESSION['id_cliente'])) {
+        if (!isset($_SESSION['user'])) {
             echo "<script>alert('Você precisa estar logado para acessar as notificações.'); window.location.href = 'login.php';</script>";
             exit();
         }
 
         // Acessa os dados do usuário logado
-        $id_cliente = $_SESSION['id_cliente'];
+        $user = $_SESSION['user'];
+        $id_cliente=$user['id_usuario'];
     ?>
 
     <div class="header">
