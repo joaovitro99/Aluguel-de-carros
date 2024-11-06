@@ -32,8 +32,8 @@ $router->addRoute('car/details', 'CarController', 'showDetailCar');
 $router->addRoute('notificacao/enviarManual', 'RentalController', 'enviarManualmente');
 $router->addRoute('car/reserva', 'CarController', 'showResumoReserva');
 $router->addRoute('car/buscar', 'CarController', 'buscar');
-$router->addRoute('notificacao/criar', 'CarController', 'createNotification');
-$router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');
+$router->addRoute('notificacao/criar', 'NotificacaoController', 'createNotification');
+$router->addRoute('notificacao/pegar', 'NotificacaoController', 'listarNotificacoes');
 $router->addRoute('rental/add', 'RentalController', 'addAluguel');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
@@ -45,7 +45,7 @@ if (strpos($uri, $base_path) === 0) {
 }
 
 
-if($uri === "notification/send" && $_SERVER['REQUEST_METHOD']=='POST'){
+else if($uri === "notification/send" && $_SERVER['REQUEST_METHOD']=='POST'){
     require_once __DIR__."/../notificationsAPI/public/index.php";
    
    

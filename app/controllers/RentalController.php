@@ -5,14 +5,17 @@ use Stripe\Terminal\Location;
 require_once("db.php");
 require_once __DIR__."/../repositories/ClientRepository.php";
 require_once __DIR__."/../repositories/RentalRepository.php";
+require_once __DIR__."/../repositories/NotificacaoRepository.php";
 class RentalController{
     private $rentalRepository;
     private $clientRepository;
+    private $notificacaoRepository;
 
     public function __construct() {
         global $db_conection;
         $this->rentalRepository = new RentalRepository($db_conection);
         $this->clientRepository = new ClientRepository($db_conection);
+        $this->notificacaoRepository = new Notification($db_conection);
     }
     public function addAluguel()
     {
@@ -46,6 +49,7 @@ class RentalController{
 
         $email= $cliente_info['email'];
         $nome= $cliente_info['nome'];
+        $id_cliente= $cliente_info['id_cliente'];
         $mensagem= "Caro cliente ".$nome.", ".$msn;
 
        
@@ -74,6 +78,7 @@ class RentalController{
         if ($response === FALSE) {
             return 'Erro ao fazer a requisição.';
         } else {
+            $this->notificacaoRepository->EnviarNotificacaoBD($id_cliente,$nome,$mensagem);
             return $response;
             
         }
@@ -94,6 +99,7 @@ class RentalController{
             if($mensagem){
                 $cliente = $this->clientRepository->getClient($aluguel->getIdCliente());
                 $cliente_info= [
+                    'id_cliente'=>$cliente['id_cliente'],
                     'email'=>$cliente['email'],
                     'nome'=>$cliente['nome']
                 ];

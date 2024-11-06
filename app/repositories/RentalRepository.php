@@ -23,6 +23,8 @@ class RentalRepository {
         }
     }
 
+    
+
     public function getRendimentos($meses = null) {
         $whereClause = "";
 

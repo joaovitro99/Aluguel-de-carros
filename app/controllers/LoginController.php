@@ -39,9 +39,17 @@ class LoginController {
                 $user = $this->userRepository->getUserLogin($nome_usuario, $senha);
                 //require_once __DIR__ . '/../views/usuarios.php';
 
+                echo "<script>
+                        alert('oiiii');
+                      </script>";
+
                 if ($user) {
                     $_SESSION['id_usuario'] = $user['id_usuario'];
                     $_SESSION['user']= $user;
+
+                    echo "<script>
+                        alert('oi');
+                      </script>";
                     $direcao = ($user['tipo_usuario'] === 'cliente') ? '/aluguel-de-carros/public/user/showProfile' : '/aluguel-de-carros/public/car/listar';
                     echo "<script>
                         alert('Login feito com sucesso!');
@@ -68,7 +76,6 @@ class LoginController {
         }
     }
 }
-
 
 
 

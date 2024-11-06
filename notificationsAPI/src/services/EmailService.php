@@ -40,6 +40,7 @@ class EmailService {
 
             
             $this->mail->send();
+            
             return ["status" => "success", "message" => "E-mail enviado com sucesso!"];
         } catch (Exception $e) {
             return ["status" => "error", "message" => "Erro ao enviar e-mail: " . $this->mail->ErrorInfo];
