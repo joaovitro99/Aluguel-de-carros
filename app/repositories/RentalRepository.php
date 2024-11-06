@@ -8,6 +8,8 @@ class RentalRepository {
         $this->data_provider = $dataProvider;
     }
 
+    
+
     public function getRendimentos($meses = null) {
         $whereClause = "";
 

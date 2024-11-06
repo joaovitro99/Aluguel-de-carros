@@ -15,6 +15,7 @@ class LoginController {
         global $db_conection;
         $this->carRepository = new CarRepository($db_conection);
         $this->userRepository = new UserRepository($db_conection); // Instancia o UserRepository
+        $this->clienteRepository = new ClientRepository($db_conection);
     }
     public function index(){
         require __DIR__."/../views/Login.php";
@@ -37,11 +38,16 @@ class LoginController {
             // Se não houver erros, tenta realizar o login
             if (empty($errors)) {
                 $user = $this->userRepository->getUserLogin($nome_usuario, $senha);
+                $cliente = $this->clienteRepository->getClient($nome_usuario);
                 //require_once __DIR__ . '/../views/usuarios.php';
 
                 if ($user) {
                     $_SESSION['id_usuario'] = $user['id_usuario'];
                     $_SESSION['user']= $user;
+
+                    $_SESSION['id_cliente'] = $cliente['id_cliente'];
+                    $_SESSION['cliente']= $cliente;
+
                     $direcao = ($user['tipo_usuario'] === 'cliente') ? '/aluguel-de-carros/public/user/showProfile' : '/aluguel-de-carros/public/car/listar';
                     echo "<script>
                         alert('Login feito com sucesso!');

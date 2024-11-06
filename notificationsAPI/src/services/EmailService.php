@@ -29,7 +29,7 @@ class EmailService {
     public function send($recipient, $message) {
         try {
             // Remetente e destinatário
-            $this->mail->setFrom('', 'Empresa de Aluguel de carros');
+            $this->mail->setFrom('', '');
             $this->mail->addAddress($recipient); // Adiciona o destinatário
 
             // Conteúdo do e-mail
@@ -40,6 +40,7 @@ class EmailService {
 
             
             $this->mail->send();
+            
             return ["status" => "success", "message" => "E-mail enviado com sucesso!"];
         } catch (Exception $e) {
             return ["status" => "error", "message" => "Erro ao enviar e-mail: " . $this->mail->ErrorInfo];

@@ -12,24 +12,10 @@ class NotificacaoController {
 
     
 
-    public function getNotifications($client_id) {
-        header('Content-Type: application/json');
-    
-        if (!$client_id) {
-            echo json_encode(["error" => "ID do cliente não especificado."]);
-            return;
-        }
-    
-        try {
-            $notifications = $this->notification->getByClientId($client_id);
-    
-            if (empty($notifications)) {
-                return json_encode(["message" => "Sem notificações encontradas para o cliente."]);
-            } else {
-                return json_encode($notifications);
-            }
-        } catch (Exception $e) {
-            return json_encode(["error" => "Erro ao buscar notificações: " . $e->getMessage()]);
-        }
+    public function listarNotificacoes($id_cliente){
+        $notificacoes_cliente = $this->notification->getByClientId($id_cliente);
+
+        // Renderiza a view e passa os dados
+        require_once __DIR__ . '/../views/NotificacaoUsuario.php';
     }
 }
