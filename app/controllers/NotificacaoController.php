@@ -1,6 +1,11 @@
 <?php
 // controllers/NotificationController.php
 require_once 'repositories/NotificacaoRepository.php';
+require_once __DIR__ . '/../repositories/UserRepository.php';
+require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../repositories/ClientRepository.php';
+require_once __DIR__ . '/../repositories/CarRepository.php';
+require_once("db.php");
 
 class NotificacaoController {
     private $notification;
@@ -10,20 +15,12 @@ class NotificacaoController {
         $this->notification = new Notification($db_conection);
     }
 
-    public function createNotification($data) {
-        if (isset($data['message']) && isset($data['client_id'])) {
-            $success = $this->notification->create($data['message'], $data['client_id']);
-            return $success ? ["message" => "Notificação criada com sucesso!"] : ["message" => "Erro ao criar notificação."];
-        } else {
-            return ["message" => "Dados incompletos."];
-        }
-    }
+    
 
-    public function getNotifications($client_id) {
-        if ($client_id) {
-            return $this->notification->getByClientId($client_id);
-        } else {
-            return ["message" => "ID do cliente não especificado."];
-        }
+    public function listarNotificacoes($id_usuario){
+        $notificacoes_cliente = $this->notification->getByClientId($id_usuario);
+
+        // Renderiza a view e passa os dados
+        require_once __DIR__ . '/../views/NotificacaoUsuario.php';
     }
 }

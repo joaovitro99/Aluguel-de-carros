@@ -23,7 +23,7 @@
     <div class="main-content">
         <div class="header">
             <input type="text" class="search-bar" placeholder="Buscar...">
-            <button class="btn-novo-item">+ Novo Item</button>
+            <button class="btn-novo-item"><a href="/aluguel-de-carros/app/views/FormularioFuncionario.php"> Adicionar Funcionario</a></button>
         </div>
 
         <div class="content">

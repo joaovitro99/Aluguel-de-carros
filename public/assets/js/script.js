@@ -21,22 +21,6 @@
                 }
             }
             
-            document.getElementById('date-picker').addEventListener('input', function(e) {
-                e.target.value = formatDate(e.target.value);
-            });
-            
-            document.getElementById('time-picker').addEventListener('input', function(e) {
-                e.target.value = formatTime(e.target.value);
-            });
-            
-            document.getElementById('date-return').addEventListener('input', function(e) {
-                e.target.value = formatDate(e.target.value);
-            });
-            
-            document.getElementById('time-return').addEventListener('input', function(e) {
-                e.target.value = formatTime(e.target.value);
-            });
-            
             document.getElementById('filter-header').addEventListener('click', () => {
                 const filterPanel = document.getElementById('filter-panel');
                 const toggleIcon = document.getElementById('toggle-icon');

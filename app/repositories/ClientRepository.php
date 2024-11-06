@@ -71,10 +71,10 @@ class ClientRepository {
     }
 
     // Função para buscar um cliente específico
-    public function getClient($id_cliente) {
-        $sql = "SELECT * FROM clientes WHERE id_cliente = ?";
+    public function getClient($nome_usuario) {
+        $sql = "SELECT * FROM clientes WHERE $nome_usuario = ?";
         $stmt = $this->data_provider->prepare($sql);
-        $stmt->bind_param("i", $id_cliente);
+        $stmt->bind_param("s", $nome_usuario);
         $stmt->execute();
         $result = $stmt->get_result();
 

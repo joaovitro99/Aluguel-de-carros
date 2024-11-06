@@ -1,4 +1,3 @@
-<!-- views/notifications.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +12,38 @@
             flex-direction: column;
             margin: 20px;
         }
+        .header {
+            color: white;
+            padding: 20px;
+            text-align: center;
+            height: 20vh;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 80vh;
+            border-radius: 20%;
+        }
+
+        .retangulo-azul {
+            border: 1px solid #747171;
+            background-color: #007b95;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .retangulo-azul div {
+            color: white;
+            font-size: 18px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
         #notifications {
             margin-top: 20px;
             width: 100%;
@@ -21,58 +52,69 @@
             padding: 10px;
             border-radius: 5px;
         }
+
         .notification-item {
             border-bottom: 1px solid #ddd;
-            padding: 10px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #fff;
         }
+
         .notification-item:last-child {
             border-bottom: none;
         }
     </style>
 </head>
 <body>
+    <?php
+        session_start();
+
+        // Verifica se o usuário está logado
+        if (!isset($_SESSION['user'])) {
+            echo "<script>alert('Você precisa estar logado para acessar as notificações.'); window.location.href = 'login.php';</script>";
+            exit();
+        }
+
+        // Acessa os dados do usuário logado
+        $user = $_SESSION['user'];
+        $id_cliente=$user['id_usuario'];
+    ?>
+
+    <div class="header">
+        <div class="retangulo-azul">
+            <a href="pagina_inicial.php"><div class="home">Home</div></a>
+            <a href="BuscaCarros.php"><div class="nossos-veiculos">Nossos veículos</div></a>
+            <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
+            <a href="perfil.php"><div class="sobre-nos">Perfil</div></a>
+        </div>
+    </div>
 
     <h1>Notificações</h1>
-    <label for="clientId">ID do Cliente:</label>
-    <input type="number" id="clientId" placeholder="Digite o ID do Cliente" required>
-    <button onclick="fetchNotifications()">Buscar Notificações</button>
 
-    <div id="notifications"></div>
+    <input type="hidden" id="clientId" value="<?= htmlspecialchars((string)$id_cliente, ENT_QUOTES, 'UTF-8'); ?>">
 
-    <script>
-        async function fetchNotifications() {
-            const clientId = document.getElementById('clientId').value;
-            if (!clientId) {
-                alert("Por favor, insira um ID do Cliente.");
-                return;
-            }
 
-            try {
-                const response = await fetch(`../index.php?client_id=${clientId}`);
-                const data = await response.json();
+    <div id="notifications">
+        <h3>Suas Notificações</h3>
+        <p>Carregando notificações...</p>
+    </div>
 
-                const notificationsContainer = document.getElementById('notifications');
-                notificationsContainer.innerHTML = '<h3>Suas Notificações</h3>';
-
-                if (data.length > 0) {
-                    data.forEach(notification => {
-                        const item = document.createElement('div');
-                        item.classList.add('notification-item');
-                        item.innerHTML = `
-                            <p><strong>Mensagem:</strong> ${notification.message}</p>
-                            <p><strong>Data:</strong> ${new Date(notification.sent_at).toLocaleString()}</p>
-                        `;
-                        notificationsContainer.appendChild(item);
-                    });
-                } else {
-                    notificationsContainer.innerHTML = '<p>Sem notificações encontradas para este cliente.</p>';
-                }
-            } catch (error) {
-                console.error("Erro ao buscar notificações:", error);
-                alert("Erro ao buscar notificações.");
-            }
-        }
-    </script>
+    <div id="notifications">
+    <h3>Suas Notificações</h3>
+    <?php if (!empty($notificacoes_cliente)): ?>
+        <?php foreach ($notificacoes_cliente as $notificacao): ?>
+            <div class="notification-item">
+                <p><strong>Mensagem:</strong> <?= htmlspecialchars($notificacao['message'], ENT_QUOTES, 'UTF-8') ?></p>
+                <p><strong>Data:</strong> <?= htmlspecialchars(date("d/m/Y H:i", strtotime($notificacao['data_envio'])), ENT_QUOTES, 'UTF-8') ?></p>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Sem notificações encontradas para você.</p>
+    <?php endif; ?>
+    </div>
 
 </body>
 </html>
+

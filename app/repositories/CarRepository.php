@@ -91,7 +91,7 @@ class CarRepository{
         }
     
         // Monta a consulta SQL
-        $sql = "SELECT v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem 
+        $sql = "SELECT v.id_veiculo, v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem 
                 FROM veiculos v 
                 LEFT JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
     
@@ -132,4 +132,13 @@ class CarRepository{
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCarById($id) {
+        $stmt = $this->data_provider->prepare("SELECT * FROM veiculos WHERE id_veiculo = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+    
 }

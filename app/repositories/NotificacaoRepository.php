@@ -1,7 +1,7 @@
 <?php
 // models/Notification.php
-require_once 'config/Database.php';
-
+//require_once 'config/Database.php';
+require_once __DIR__ .'/db.php';
 class Notification {
     private $conn;
     private $table_name = "notificacoes";
@@ -12,18 +12,18 @@ class Notification {
         $this->data_provider = $dataProvider;
     }
 
-    public function create($message, $client_id) {
-        $query = "INSERT INTO " . $this->table_name . " (message, client_id, sent_at) VALUES (?, ?, NOW())";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("si", $message, $client_id);
+    public function EnviarNotificacaoBD($id_cliente,$nome,$mensagem) {
+        $query = "INSERT INTO " . $this->table_name . " (id_cliente, nome_cliente, texto_mensagem, data_envio) VALUES (?, ?, ?,NOW())";
+        $stmt = $this->data_provider->prepare($query);
+        $stmt->bind_param("iss", $id_cliente,$nome,$mensagem);
 
         return $stmt->execute();
     }
 
-    public function getByClientId($client_id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE client_id = ? ORDER BY sent_at DESC";
+    public function getByClientId($id_cliente) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id_cliente = ? ORDER BY data_envio DESC";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $client_id);
+        $stmt->bind_param("i", $id_cliente);
         $stmt->execute();
         $result = $stmt->get_result();
 

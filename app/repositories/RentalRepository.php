@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__.'/../models/Aluguel.php';
 
 class RentalRepository {
 
@@ -9,12 +8,26 @@ class RentalRepository {
         $this->data_provider = $dataProvider;
     }
 
-    /**
-     * Obtém os rendimentos dos veículos em um período de tempo.
-     * 
-     * @param int|null $meses Número de meses para o cálculo do rendimento, ou 'tudo' para todos os registros.
-     * @return array Dados de rendimento dos veículos.
-     */
+
+    public function insertAluguel($id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total){
+        try {
+            // Inserindo o cliente na tabela `clientes`
+            $sql_aluguel = "INSERT INTO locacoes (id_cliente, id_veiculo, data_inicio, data_fim, valor_total) VALUES (?, ?, ?, ?, ?)";
+            $sql_aluguel = $this->data_provider->prepare($sql_aluguel);
+            $sql_aluguel->bind_param("iissd",$id_cliente, $id_veiculo, $data_inicio, $data_fim, $valor_total);
+            $sql_aluguel->execute();
+
+
+        } catch (Exception $e) {
+            // Rollback em caso de erro
+            $this->data_provider->rollback();
+            throw new Exception("Erro ao inserir o aluguel: " . $e->getMessage());
+        }
+    }
+
+    
+
+
     public function getRendimentos($meses = null) {
         $whereClause = "";
 
