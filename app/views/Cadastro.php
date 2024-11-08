@@ -20,7 +20,7 @@
             <h1 class="title">Cadastro</h1>
 
             <!-- Note que o action está direcionando para o Controller -->
-            <form action="../controllers/ClientController.php" method="post">
+            <form action="/aluguel-de-carros/public/user/register" method="post">
                 <label for="nome_usuario">Nome de Usuário:</label>
                 <input type="text" id="nome_usuario" name="nome_usuario" 
                        placeholder="Nome de Usuário..." 

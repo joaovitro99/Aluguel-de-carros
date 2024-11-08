@@ -49,7 +49,10 @@ class RentalController{
 
         $email= $cliente_info['email'];
         $nome= $cliente_info['nome'];
-        $id_cliente= $cliente_info['id_cliente'];
+        if (isset($cliente_info['id_cliente'])) {
+            $id_cliente= $cliente_info['id_cliente'];
+        }
+
         $mensagem= "Caro cliente ".$nome.", ".$msn;
 
        
@@ -78,7 +81,10 @@ class RentalController{
         if ($response === FALSE) {
             return 'Erro ao fazer a requisição.';
         } else {
-            $this->notificacaoRepository->EnviarNotificacaoBD($id_cliente,$nome,$mensagem);
+            if (isset($cliente_info['id_cliente'])) {
+                $this->notificacaoRepository->EnviarNotificacaoBD($id_cliente,$nome,$mensagem);
+            }
+    
             return $response;
             
         }
@@ -155,5 +161,33 @@ class RentalController{
             // Exibe o formulário HTML para envio manual
     }
     
+    public function enviarEmailRecuperacao($email, $linkParaRedefinirSenha) {
+        // Preparar mensagem de recuperação
+        $mensagem = "Para redefinir sua senha, clique no link abaixo:\n\n"
+        . "$linkParaRedefinirSenha\n\n"
+        . "Se você não solicitou redefinir o seu email, ignore esta mensagem.\n\n";
+
+        // Você pode personalizar o tipo para "email" ou outro que achar necessário
+        $cliente_info = [
+            'email' => $email,
+            'nome' => ' ' // Nome do cliente pode ser recuperado ou preenchido conforme necessário
+        ];
+        
+        // Enviar email de recuperação
+        return $this->enviarNotificacao($cliente_info, $mensagem, 'email');
+
+        // Exibir a resposta
+        if ($response !== 'Erro ao fazer a requisição.') {
+            $_SESSION['statusMessage'] = "Notificação enviada com sucesso para: " . $cliente_info['email'];
+            $_SESSION['statusClass'] = 'success';
+        } else {
+            $_SESSION['statusMessage'] = "Falha ao enviar notificação para: " . $cliente_info['email'];
+            $_SESSION['statusClass'] = 'error';
+        }
+
+        // Redireciona para evitar reenvio do formulário
+        header("Location: http://localhost/aluguel-de-carros/public/user/forgotPassword");
+        exit;
+    }
 
 }
