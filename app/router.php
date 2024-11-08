@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/controllers/WhatsAppController.php';
 class Router {
     private $routes = []; // Array para armazenar as rotas
 
@@ -23,4 +23,35 @@ class Router {
     }
 
 }
+require_once __DIR__.'/controllers/WhatsAppController.php';
+//require_once __DIR__.'/controllers/SMSController.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') {
+    session_start();
+    
+   
+    if (isset($_SESSION['userPhone'])) {
+        $userPhone = $_SESSION['userPhone'];
+        
+       
+        $vehicleInfo = json_decode(file_get_contents('php://input'), true);
+        
+      
+        $method = $_GET['method'];
+        
+        if ($method === 'whatsapp') {
+            //$whatsappController = new WhatsAppController();
+            $response = $whatsappController->sendRentalAttemptConfirmation($userPhone, $vehicleInfo);
+        } else if ($method === 'sms') {
+            //$smsController = new SMSController();
+            //$response = $smsController->sendSMS($userPhone, "Confirmação de aluguel para o veículo: " . $vehicleInfo['marca'] . " " . $vehicleInfo['modelo']);
+        } else {
+            $response = ['status' => 'error', 'message' => 'Método inválido'];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Usuário não autenticado']);
+    }
+}

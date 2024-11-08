@@ -64,7 +64,10 @@
             <p><strong>Placa:</strong> <?= htmlspecialchars($vehicleInfo['placa']) ?></p>
 
             <h2>Alugar</h2>
-            <button class="glow-on-hover">Clique Aqui</button>
+            <!-- Botão para envio por WhatsApp -->
+            <button class="glow-on-hover" onclick="sendWhatsAppMessage()">Enviar pelo WhatsApp</button>
+            <!-- Botão para envio por SMS -->
+            <button class="glow-on-hover" onclick="sendSMS()">Enviar por SMS</button>
         <?php else: ?>
             <p>Informações adicionais não disponíveis.</p>
         <?php endif; ?>
@@ -78,6 +81,64 @@
         function moveSlide(direction) {
             slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
             slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function sendWhatsAppMessage() {
+            const vehicleInfo = {
+                marca: "<?= htmlspecialchars($vehicleInfo['marca']) ?>",
+                modelo: "<?= htmlspecialchars($vehicleInfo['modelo']) ?>",
+                ano: "<?= htmlspecialchars($vehicleInfo['ano']) ?>",
+                placa: "<?= htmlspecialchars($vehicleInfo['placa']) ?>"
+            };
+
+            fetch('router.php?action=rentVehicle&type=whatsapp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(vehicleInfo)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert("Mensagem de confirmação enviada pelo WhatsApp!");
+                } else {
+                    alert("Erro: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("Ocorreu um erro ao enviar a mensagem pelo WhatsApp.");
+            });
+        }
+
+        function sendSMS() {
+            const vehicleInfo = {
+                marca: "<?= htmlspecialchars($vehicleInfo['marca']) ?>",
+                modelo: "<?= htmlspecialchars($vehicleInfo['modelo']) ?>",
+                ano: "<?= htmlspecialchars($vehicleInfo['ano']) ?>",
+                placa: "<?= htmlspecialchars($vehicleInfo['placa']) ?>"
+            };
+
+            fetch('router.php?action=rentVehicle&type=sms', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(vehicleInfo)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert("Mensagem de confirmação enviada por SMS!");
+                } else {
+                    alert("Erro: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("Ocorreu um erro ao enviar a mensagem por SMS.");
+            });
         }
     </script>
 </body>

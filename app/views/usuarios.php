@@ -16,17 +16,24 @@
             <li><a href="/aluguel-de-carros/public/usuarios/index" class="active">Usuários</a></li>
             <li><a href="/aluguel-de-carros/public/car/listar">Veículos</a></li>
             <li><a href="/aluguel-de-carros/public/rendimento/index">Rendimento</a></li>
+            <li><a href="/aluguel-de-carros/public/alugueis/index">Alugueis</a></li>
         </ul>
     </div>
 
     <div class="main-content">
         <div class="header">
             <input type="text" class="search-bar" placeholder="Buscar...">
-            <button class="btn-novo-item">+ Novo Item</button>
+            <button class="btn-novo-item"><a href="/aluguel-de-carros/app/views/FormularioFuncionario.php"> Adicionar Funcionario</a></button>
         </div>
 
         <div class="content">
-            <h2>Olá, admin!</h2>
+            <div class="content-header">
+                <h2>Olá, admin!</h2>
+                <a href="/aluguel-de-carros/public/notificacao/enviarManual" class="btn-enviar-email">
+                    Enviar Email
+                    <img src="/aluguel-de-carros/public/assets/images/icons/imagemdoemail.png" alt="Ícone de email" class="email-icon">
+                </a>
+            </div>
             <table class="users-table">
                 <thead>
                     <tr>
