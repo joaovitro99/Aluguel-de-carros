@@ -98,6 +98,7 @@ class RentalController{
             
             if($mensagem){
                 $cliente = $this->clientRepository->getClient($aluguel->getIdCliente());
+                var_dump($aluguel);
                 $cliente_info= [
                     'id_cliente'=>$cliente['id_cliente'],
                     'email'=>$cliente['email'],
