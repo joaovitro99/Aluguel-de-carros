@@ -123,3 +123,42 @@ form button[type="submit"] {
     background-color: #ffa8a8;
     color: white;
 }
+
+#forgot-password-btn {
+    background-color: white;   /* Fundo branco */
+    color: #58a7b9;            /* Cor do texto */
+    font-size: 14px;           /* Tamanho da fonte */
+    text-decoration: none;     /* Remover sublinhado do link */
+    cursor: pointer;          /* Cursor de ponteiro */
+    padding: 5px 0;            /* Pequeno padding */
+    display: inline-block;     /* Para manter o estilo de texto */
+    border-radius: 5px;        /* Bordas arredondadas */
+    min-width: 200px;
+    transition: color 0.3s;    /* Transição para efeito hover */
+}
+
+#forgot-password-link:hover {
+    color: #27a8e9;            /* Cor ao passar o mouse */
+}
+
+#message {
+    color: #58a7b9; /* Cor padrão, que pode ser alterada pelo JavaScript */
+    font-size: 14px;
+    margin-top: 30px; /* Espaço adicional acima da mensagem */
+    margin-bottom: 20px; /* Espaço abaixo, para separar do próximo elemento */
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.status-message {
+    font-size: 20px; /* Tamanho da fonte maior */
+    font-weight: bold; /* Deixar a mensagem mais destacada */
+    line-height: 1.5; /* Melhorar o espaçamento entre linhas */
+    margin-bottom: 20px; /* Adicionar espaço abaixo da mensagem */
+    text-align: center; /* Centralizar a mensagem */
+}
