@@ -40,6 +40,11 @@ $router->addRoute('whatsapp/confirm', 'WhatsAppController', 'sendRentalAttemptCo
 $router->addRoute('whatsapp/mensagen', 'WhatsAppController', 'sendMessage'); 
 $router->addRoute('admin/add', 'FuncionarioController', 'register');
 $router->addRoute('alugueis/index', 'AluguelController', 'index');
+$router->addRoute('user/register', 'ClientController', 'register');
+$router->addRoute('user/forgotPassword', 'UserController', 'forgotPassword');
+$router->addRoute('user/resetPassword', 'UserController', 'resetPassword');
+$router->addRoute('user/updatePassword', 'UserController', 'updatePassword');
+
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota

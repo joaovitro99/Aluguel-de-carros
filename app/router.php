@@ -26,7 +26,7 @@ class Router {
 require_once __DIR__.'/controllers/WhatsAppController.php';
 //require_once __DIR__.'/controllers/SMSController.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'rentVehicle') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'rentVehicle') {
     session_start();
     
    
