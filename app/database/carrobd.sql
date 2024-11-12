@@ -411,5 +411,5 @@ CREATE TABLE password_reset_tokens (
 );
 
 ALTER TABLE `usuarios`
-  ADD `email` VARCHAR(100) NOT NULL,
+  ADD `email` VARCHAR(100),
   ADD UNIQUE KEY `email` (`email`);

@@ -59,7 +59,6 @@ class UserRepository {
     }
 
     public function getUserLogin($nome_usuario, $senha) {
-        // Aqui você deve implementar a lógica para verificar o usuário e a senha
         $sql = "SELECT id_usuario, tipo_usuario FROM usuarios WHERE nome_usuario = ? AND senha = ?";
         $stmt = $this->dataProvider->prepare($sql);
         $stmt->bind_param("ss", $nome_usuario, $senha);
@@ -68,7 +67,7 @@ class UserRepository {
     }
 
     public function updatePassword($token, $hashedPassword) {
-        // Primeiro, buscamos o email associado ao token
+        // busca o email associado ao token
         $sql = "SELECT c.email 
                 FROM password_reset_tokens prt
                 JOIN clientes c ON prt.email = c.email
