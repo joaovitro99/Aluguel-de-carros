@@ -207,4 +207,21 @@ public function deleteCarro() {
         
         exit;
     }
+    public function buscarAdminFilter(){
+        
+        if (isset($_GET['term'])) {
+            $term = $_GET['term'];
+            $result=$this->carRepository->getCarByterm($term);
+
+            $veiculos = [];
+            while ($row = $result->fetch_assoc()) {
+                $veiculos[] = $row;
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($veiculos);
+           
+        }
+        
+    }
 }

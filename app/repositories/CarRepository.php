@@ -140,5 +140,16 @@ class CarRepository{
 
         return $result->fetch_assoc();
     }
+
+    public function getCarByterm($term){
+        $stmt = $this->data_provider->prepare("SELECT * FROM veiculos WHERE modelo LIKE ? OR marca LIKE ? OR placa LIKE ?");
+        $searchTerm = "%" . $term . "%";
+        $stmt->bind_param("sss", $searchTerm, $searchTerm, $searchTerm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+
+    }
+
     
 }
