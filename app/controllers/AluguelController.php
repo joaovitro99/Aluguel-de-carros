@@ -1,11 +1,10 @@
 <?php
 
 require_once("db.php");
-require_once __DIR__.'/../models/Aluguel.php';
 require_once __DIR__ . "/../repositories/ClientRepository.php";
 require_once __DIR__ . "/../repositories/RentalRepository.php";
 
-class AluguelController {
+class RentalController {
     private $rentalRepository;
     private $clientRepository;
 

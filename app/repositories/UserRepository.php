@@ -66,4 +66,51 @@ class UserRepository {
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
+
+    public function updatePassword($token, $hashedPassword) {
+        // Primeiro, buscamos o email associado ao token
+        $sql = "SELECT c.email 
+                FROM password_reset_tokens prt
+                JOIN clientes c ON prt.email = c.email
+                WHERE prt.token = ? AND prt.expiration > NOW() LIMIT 1";
+        $stmt = $this->dataProvider->prepare($sql);
+        $stmt->bind_param("s", $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            // Se o token for válido, atualizamos a senha na tabela usuarios
+            $row = $result->fetch_assoc();
+            $email = $row['email'];
+    
+            // Atualiza a senha do usuário
+            $updateSql = "UPDATE usuarios SET senha = ? WHERE email = ?";
+            $updateStmt = $this->dataProvider->prepare($updateSql);
+            $updateStmt->bind_param("ss", $hashedPassword, $email);
+            $updateStmt->execute();
+        } else {
+            throw new Exception("Token inválido ou expirado.");
+        }
+    }            
+
+    public function saveResetToken($email, $token, $expiration) {
+        $sql = "INSERT INTO password_reset_tokens (email, token, expiration) VALUES (?, ?, ?)";
+        $stmt = $this->dataProvider->prepare($sql);
+        $stmt->bind_param("sss", $email, $token, $expiration);
+        $stmt->execute();
+    }
+
+    public function isValidToken($token) {
+        $sql = "SELECT * FROM password_reset_tokens WHERE token = ? AND expiration > NOW() LIMIT 1";
+        $stmt = $this->dataProvider->prepare($sql);
+    
+        if ($stmt) {
+            $stmt->bind_param("s", $token);
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            return $result->num_rows > 0;
+        }
+        return false;
+    }
 }

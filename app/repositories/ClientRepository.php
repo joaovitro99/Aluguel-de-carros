@@ -24,10 +24,10 @@ class ClientRepository {
             $id_cliente = $this->data_provider->getInsertId();
 
             // Inserindo o usuário correspondente na tabela `usuarios`
-            $sql_usuario = "INSERT INTO usuarios (nome_usuario, senha, tipo_usuario) VALUES (?, ?, 'cliente')";
+            $sql_usuario = "INSERT INTO usuarios (nome_usuario, senha, tipo_usuario, email) VALUES (?, ?, 'cliente', ?)";
             $stmt_usuario = $this->data_provider->prepare($sql_usuario);
             $hashed_senha = password_hash($senha, PASSWORD_DEFAULT); // Criptografando a senha
-            $stmt_usuario->bind_param("ss", $nome_usuario, $hashed_senha);
+            $stmt_usuario->bind_param("sss", $nome_usuario, $hashed_senha, $email);
             $stmt_usuario->execute();
 
             // Commit na transação
