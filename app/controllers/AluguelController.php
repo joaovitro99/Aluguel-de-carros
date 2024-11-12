@@ -4,7 +4,7 @@ require_once("db.php");
 require_once __DIR__ . "/../repositories/ClientRepository.php";
 require_once __DIR__ . "/../repositories/RentalRepository.php";
 
-class RentalController {
+class AluguelController {
     private $rentalRepository;
     private $clientRepository;
 
