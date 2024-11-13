@@ -34,7 +34,7 @@ $router->addRoute('notificacao/enviarManual', 'RentalController', 'enviarManualm
 $router->addRoute('car/reserva', 'CarController', 'showResumoReserva');
 $router->addRoute('car/buscar', 'CarController', 'buscar');
 $router->addRoute('car/buscarAdmin', 'CarController', 'buscarAdminFilter');
-//$router->addRoute('user/buscaAdmin', 'UserController', 'buscaAdminFilter');
+$router->addRoute('user/buscarAdmin', 'UserController', 'buscarAdminFilter');
 $router->addRoute('notificacao/criar', 'CarController', 'createNotification');
 $router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');
 $router->addRoute('rental/add', 'RentalController', 'addAluguel'); 

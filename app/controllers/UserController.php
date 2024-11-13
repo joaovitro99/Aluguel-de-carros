@@ -126,6 +126,22 @@ class UserController {
             require __DIR__ . '/../views/updatePassword.php'; // Caminho para o arquivo HTML que mostra a mensagem
         }
     }
-    
+    public function buscarAdminFilter(){
+        
+        if (isset($_GET['term'])) {
+            $term = $_GET['term'];
+            $result=$this->userRepository->getUserByterm($term);
+
+            $usuarios = [];
+            while ($row = $result->fetch_assoc()) {
+                $usuarios[] = $row;
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($usuarios);
+           exit();
+        }
+        
+    }
     
 }
