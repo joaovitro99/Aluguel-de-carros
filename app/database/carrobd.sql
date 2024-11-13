@@ -28,26 +28,6 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `clientes`
 --
 
-CREATE TABLE notificacoes (
-    id_notificacao INT PRIMARY KEY AUTO_INCREMENT,
-    id_cliente INT,
-    nome_cliente VARCHAR(255),
-    texto_mensagem TEXT,
-    data_envio DATETIME,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
-);
-
-ALTER TABLE notificacoes
-DROP FOREIGN KEY notificacoes_ibfk_1;
-
--- 2. Renomeie a coluna id_cliente para id_usuario
-ALTER TABLE notificacoes
-CHANGE id_cliente id_usuario INT;
-
--- 3. Adicione a nova chave estrangeira com o nome atualizado
-ALTER TABLE notificacoes
-ADD CONSTRAINT fk_notificacoes_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
-
 
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
@@ -401,6 +381,27 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE notificacoes (
+    id_notificacao INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    nome_cliente VARCHAR(255),
+    texto_mensagem TEXT,
+    data_envio DATETIME,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+ALTER TABLE notificacoes
+DROP FOREIGN KEY notificacoes_ibfk_1;
+
+-- 2. Renomeie a coluna id_cliente para id_usuario
+ALTER TABLE notificacoes
+CHANGE id_cliente id_usuario INT;
+
+-- 3. Adicione a nova chave estrangeira com o nome atualizado
+ALTER TABLE notificacoes
+ADD CONSTRAINT fk_notificacoes_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
+
 
 CREATE TABLE password_reset_tokens (
     id INT AUTO_INCREMENT PRIMARY KEY,
