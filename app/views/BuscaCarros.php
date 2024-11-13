@@ -27,9 +27,16 @@ $hora_devolucao = $_SESSION['hora_devolucao'] ?? '';
                 <a href="/aluguel-de-carros/public/">Sobre nós</a>
             </div>
             <div class="auth-buttons">
-                <a href="/aluguel-de-carros/public/user/signup" class="button">Inscrever-se</a>
-                <div class="separator"></div>
-                <a href="/aluguel-de-carros/public/login/index" class="button">Entrar</a>
+            <?php
+    if (!isset($_SESSION['user'])) {
+        echo '<p><a href="/aluguel-de-carros/public/user/signup">Inscrever-se</a></p>';
+        echo '<div id="barra-divisão"></div>';
+        echo '<p><a href="/aluguel-de-carros/public/login/index">Entrar</a></p>';
+    } else {
+        echo '<p><a href="/aluguel-de-carros/public/user/showProfile">Ver perfil</a></p>';
+        
+    }
+    ?>
             </div>
         </div>
         <div class="overlap-wrapper">

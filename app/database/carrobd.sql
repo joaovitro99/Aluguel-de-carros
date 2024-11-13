@@ -37,6 +37,7 @@ CREATE TABLE notificacoes (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
+-- 1. Primeiro, remova a chave estrangeira existente
 ALTER TABLE notificacoes
 DROP FOREIGN KEY notificacoes_ibfk_1;
 
@@ -199,6 +200,10 @@ CREATE TABLE `usuarios` (
   `senha` varchar(255) NOT NULL,
   `tipo_usuario` enum('admin','cliente') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE usuarios
+  ADD email VARCHAR(100),
+  ADD UNIQUE KEY email (email);
 
 --
 -- Despejando dados para a tabela `usuarios`
@@ -401,15 +406,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-CREATE TABLE password_reset_tokens (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    token VARCHAR(255) NOT NULL,
-    expiration DATETIME NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-ALTER TABLE `usuarios`
-  ADD `email` VARCHAR(100) NOT NULL,
-  ADD UNIQUE KEY `email` (`email`);

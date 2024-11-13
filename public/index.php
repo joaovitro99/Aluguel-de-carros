@@ -44,7 +44,8 @@ $router->addRoute('user/register', 'ClientController', 'register');
 $router->addRoute('user/forgotPassword', 'UserController', 'forgotPassword');
 $router->addRoute('user/resetPassword', 'UserController', 'resetPassword');
 $router->addRoute('user/updatePassword', 'UserController', 'updatePassword');
-
+$router->addRoute('notificacao/indexnotificacoes', 'NotificacaoController', 'index');
+$router->addRoute('notificacao/puxarnotificacoes', 'NotificacaoController', 'listarNotificacoes');
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota

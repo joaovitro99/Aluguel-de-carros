@@ -24,10 +24,20 @@
                     <p>Sobre nós</p>
                     
                 </div>
+                
                 <div id="nav-2">
-                    <p><a href="/aluguel-de-carros/public/user/signup">Inscrever-se</a></p>
-                    <div id="barra-divisão"></div>
-                    <p><a href="/aluguel-de-carros/public/login/index">Entrar</a></p>
+                <?php
+                
+
+    if (!isset($_SESSION['user']) || ($_SESSION['user'] == "" )) {
+        echo '<p><a href="/aluguel-de-carros/public/user/signup">Inscrever-se</a></p>';
+        echo '<div id="barra-divisão"></div>';
+        echo '<p><a href="/aluguel-de-carros/public/login/index">Entrar</a></p>';
+    } else {
+        echo '<p><a href="/aluguel-de-carros/public/user/showProfile">Ver perfil</a></p>';
+        
+    }
+    ?>
                 </div>
               </nav>
               <div id="pesquisa">

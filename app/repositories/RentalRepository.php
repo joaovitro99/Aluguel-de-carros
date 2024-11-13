@@ -135,6 +135,27 @@ class RentalRepository {
         return null;
     }
 
+    public function findByIdcliente($id_cliente) {
+        $sql = "SELECT * FROM locacoes WHERE id_cliente = ?";
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("i", $id_cliente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result && $row = $result->fetch_assoc()) {
+            return new Aluguel(
+                $row['id_locacao'],
+                $row['id_cliente'],
+                $row['id_veiculo'],
+                $row['data_inicio'],
+                $row['data_fim'],
+                $row['valor_total']
+            );
+        }
+
+        return null;
+    }
+
     /**
      * Salva um aluguel no banco de dados (insere ou atualiza).
      * 

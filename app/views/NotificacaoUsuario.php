@@ -10,13 +10,14 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            margin: 20px;
         }
         .header {
             color: white;
             padding: 20px;
             text-align: center;
             height: 20vh;
+            width:80%;
+            align-items: center;
         }
 
         .container {
@@ -69,45 +70,40 @@
 </head>
 <body>
     <?php
-        session_start();
+       
 
         // Verifica se o usuário está logado
-        if (!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['cliente'])) {
             echo "<script>alert('Você precisa estar logado para acessar as notificações.'); window.location.href = 'login.php';</script>";
             exit();
         }
 
         // Acessa os dados do usuário logado
-        $user = $_SESSION['user'];
-        $id_cliente=$user['id_usuario'];
+        $id_cliente = $cliente['id_cliente'];
+        $id_usuario = $_SESSION['id_usuario'];
     ?>
 
     <div class="header">
         <div class="retangulo-azul">
-            <a href="pagina_inicial.php"><div class="home">Home</div></a>
-            <a href="BuscaCarros.php"><div class="nossos-veiculos">Nossos veículos</div></a>
-            <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
-            <a href="perfil.php"><div class="sobre-nos">Perfil</div></a>
+        <a href="/aluguel-de-carros/public/"><div class="home">Home</div></a>
+            <a href="/aluguel-de-carros/public/car/index"><div class="nossos-veiculos">Nossos veículos</div></a>
+            <a href="/aluguel-de-carros/public/user/showProfile"><div class="sobre-nos">Perfil</div></a>
         </div>
     </div>
 
-    <h1>Notificações</h1>
+    <h1>Suas Notificações</h1>
 
-    <input type="hidden" id="clientId" value="<?= htmlspecialchars((string)$id_cliente, ENT_QUOTES, 'UTF-8'); ?>">
+    <input type="hidden" id="clientId" value="<?= htmlspecialchars((string)$id_usuario, ENT_QUOTES, 'UTF-8'); ?>">
 
 
-    <div id="notifications">
-        <h3>Suas Notificações</h3>
-        <p>Carregando notificações...</p>
-    </div>
 
     <div id="notifications">
     <h3>Suas Notificações</h3>
     <?php if (!empty($notificacoes_cliente)): ?>
         <?php foreach ($notificacoes_cliente as $notificacao): ?>
             <div class="notification-item">
-                <p><strong>Mensagem:</strong> <?= htmlspecialchars($notificacao['message'], ENT_QUOTES, 'UTF-8') ?></p>
-                <p><strong>Data:</strong> <?= htmlspecialchars(date("d/m/Y H:i", strtotime($notificacao['data_envio'])), ENT_QUOTES, 'UTF-8') ?></p>
+                <p><strong>Mensagem:</strong> <?= htmlspecialchars($notificacoes_cliente['texto_mensagem'], ENT_QUOTES, 'UTF-8') ?></p>
+                <p><strong>Data:</strong> <?= htmlspecialchars(date("d/m/Y H:i", strtotime($notificacoes_cliente['data_envio'])), ENT_QUOTES, 'UTF-8') ?></p>
             </div>
         <?php endforeach; ?>
     <?php else: ?>

@@ -93,6 +93,21 @@ class RentalController{
 
     }
 
+    public function showAlugueis() {
+        if (!isset($_SESSION['id_cliente'])) {
+            echo "Erro: Usuário não está logado.";
+            exit();
+        }
+
+        // Obtém os dados do cliente
+        
+        // Obtém os veículos do cliente
+        $rentalHistory = $this->rentalRepository->findByIdclient($_SESSION['id_cliente']);
+
+        // Carrega a view
+        require '../app/views/perfil.php';
+    }
+
 
     public function verificarNotificacao(){
     

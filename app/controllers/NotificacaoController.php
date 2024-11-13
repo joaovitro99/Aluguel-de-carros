@@ -15,7 +15,10 @@ class NotificacaoController {
         $this->notification = new Notification($db_conection);
     }
 
-    
+    public function index() {
+        // Renderiza a view principal ou a página inicial de notificações
+        require_once __DIR__ . '/../views/NotificacaoUsuario.php';
+    }
 
     public function listarNotificacoes($id_usuario){
         $notificacoes_cliente = $this->notification->getByClientId($id_usuario);
