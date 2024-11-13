@@ -1,9 +1,14 @@
 <?php
 
-class LogoutController {
+class LogoutController { 
     public function logout() {
         // Inicia a sessão
-        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Limpa todas as variáveis de sessão
+        $_SESSION = [];
 
         // Destroi a sessão
         session_destroy();
