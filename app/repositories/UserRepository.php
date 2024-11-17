@@ -57,13 +57,47 @@ class UserRepository {
         }
         return false;
     }
-
+    /*
     public function getUserLogin($nome_usuario, $senha) {
         $sql = "SELECT id_usuario, tipo_usuario FROM usuarios WHERE nome_usuario = ? AND senha = ?";
         $stmt = $this->dataProvider->prepare($sql);
         $stmt->bind_param("ss", $nome_usuario, $senha);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
+    }
+    */
+    
+    public function getUserLogin($nome_usuario, $senha) {
+        // Seleciona a senha criptografada do usuário, juntamente com o ID e o tipo de usuário
+        $sql = "SELECT id_usuario, tipo_usuario, senha FROM usuarios WHERE nome_usuario = ?";
+        $stmt = $this->dataProvider->prepare($sql);
+        $stmt->bind_param("s", $nome_usuario);
+        $stmt->execute();
+        $user = $stmt->get_result()->fetch_assoc();
+   
+        // Verifica se o usuário foi encontrado e se a senha está correta
+        if ($user) {
+            // Se o usuário é do tipo 'cliente', verifica a senha usando password_verify
+            if ($user['tipo_usuario'] === 'cliente') {
+                if (password_verify($senha, $user['senha'])) {
+                    return [
+                        'id_usuario' => $user['id_usuario'],
+                        'tipo_usuario' => $user['tipo_usuario']
+                    ];
+                }
+            } else {
+                // Para 'admin' e 'funcionario', verifica a senha diretamente
+                if ($senha === $user['senha']) {
+                    return [
+                        'id_usuario' => $user['id_usuario'],
+                        'tipo_usuario' => $user['tipo_usuario']
+                    ];
+                }
+            }
+        } else {
+            // Retorna null se o usuário não foi encontrado ou a senha está incorreta
+            return null;
+        }
     }
 
     public function updatePassword($token, $hashedPassword) {
