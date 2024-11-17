@@ -4,6 +4,7 @@ require_once __DIR__ . '/../repositories/UserRepository.php';
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../repositories/ClientRepository.php';
 require_once __DIR__ . '/../repositories/CarRepository.php';
+require_once __DIR__ . '/RentalController.php';
 require_once("db.php");
 
 class LoginController {
@@ -11,10 +12,15 @@ class LoginController {
     private $userRepository;
     private $clienteRepository;
 
+    private $RentalController;
+
     public function __construct(/*$db_connection*/) {
         global $db_conection;
         $this->carRepository = new CarRepository($db_conection);
-        $this->userRepository = new UserRepository($db_conection); // Instancia o UserRepository
+        $this->userRepository = new UserRepository($db_conection); 
+        $this->clienteRepository = new ClientRepository($db_conection);// Instancia o UserRepository
+
+        $this->RentalController= new RentalController();
     }
     public function index(){
         require __DIR__."/../views/Login.php";
@@ -44,6 +50,15 @@ class LoginController {
                 if ($user) {
                     $_SESSION['id_usuario'] = $user['id_usuario'];
                     $_SESSION['user']= $user;
+
+                    $cliente = $this->clienteRepository->getClientLogin($user['email']);
+                    $_SESSION['cliente']= $cliente;
+
+                    $alugueis = $this->RentalController->showAlugueis($cliente);
+
+                    $_SESSION['rentals'] = $alugueis;
+
+                   // require __DIR__ . '/../views/perfil.php';
 
                    
                     $direcao = ($user['tipo_usuario'] === 'cliente') ? '/aluguel-de-carros/public/user/showProfile' : '/aluguel-de-carros/public/car/listar';

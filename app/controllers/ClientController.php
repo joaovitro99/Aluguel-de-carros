@@ -6,14 +6,17 @@ require_once __DIR__.'/../../config/config.php';
 
 class ClientController {
     private $clientRepository;
+    private $userRepository;
 
     public function __construct() {
         $dataProvider = new MySqlDataProvider($GLOBALS['config']);
+        $this->userRepository = new UserRepository($dataProvider);
         $this->clientRepository = new ClientRepository($dataProvider);
     }
     public function index(){
         require_once __DIR__.'/../views/Cadastro.php';
     }
+
 
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -44,6 +44,9 @@
             margin-right: 20px;
             cursor: pointer;
         }
+        .retangulo-azul > a {
+            text-decoration: none;
+        }   
 
         #notifications {
             margin-top: 20px;
@@ -79,7 +82,8 @@
         }
 
         // Acessa os dados do usuário logado
-        $id_cliente = $cliente['id_cliente'];
+
+        //$id_cliente = $cliente['id_cliente'];
         $id_usuario = $_SESSION['id_usuario'];
     ?>
 
@@ -99,17 +103,20 @@
 
     <div id="notifications">
     <h3>Suas Notificações</h3>
-    <?php if (!empty($notificacoes_cliente)): ?>
-        <?php foreach ($notificacoes_cliente as $notificacao): ?>
-            <div class="notification-item">
-                <p><strong>Mensagem:</strong> <?= htmlspecialchars($notificacoes_cliente['texto_mensagem'], ENT_QUOTES, 'UTF-8') ?></p>
-                <p><strong>Data:</strong> <?= htmlspecialchars(date("d/m/Y H:i", strtotime($notificacoes_cliente['data_envio'])), ENT_QUOTES, 'UTF-8') ?></p>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Sem notificações encontradas para você.</p>
-    <?php endif; ?>
-    </div>
+    <?php if (!isset($_SESSION['notificacao'])): ?>
+    <p>Erro: Sessão de notificações não está configurada.</p>
+<?php elseif (empty($_SESSION['notificacao'])): ?>
+    <p>Sem notificações encontradas para você.</p>
+<?php else: ?>
+    <?php foreach ($_SESSION['notificacao'] as $notificacao): ?>
+        <div class="notification-item">
+            <p><strong>Mensagem:</strong> <?= htmlspecialchars($notificacao['texto_mensagem'], ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>Data:</strong> <?= htmlspecialchars(date("d/m/Y H:i", strtotime($notificacao['data_envio'])), ENT_QUOTES, 'UTF-8') ?></p>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+</div>
 
 </body>
 </html>

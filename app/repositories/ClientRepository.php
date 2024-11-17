@@ -85,6 +85,20 @@ class ClientRepository {
         }
     }
 
+    public function getClientLogin($email) {
+        $sql = "SELECT * FROM clientes WHERE email = ?";
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            throw new Exception("Cliente não encontrado.");
+        }
+    }
+
     // Função para obter todos os clientes
     public function getAllClients() {
         $sql = "SELECT * FROM clientes";

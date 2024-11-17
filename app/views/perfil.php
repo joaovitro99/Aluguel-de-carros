@@ -9,7 +9,7 @@
 <body>
     <div class="header">
         <div class="retangulo-azul">
-            <a href="pagina_inicial.php"><div class="home">Home</div></a>
+            <a href="/aluguel-de-carros/public/"><div class="home">Home</div></a>
             <a href="/aluguel-de-carros/public/car/index"><div class="nossos-veiculos">Nossos veículos</div></a>
             <a href="pagina_inicial.php"><div class="sobre-nos">Sobre-nós</div></a>
 
@@ -32,31 +32,28 @@
     </div>
 
     <div class="container">
-        <div id="info_cliente">
-            <h2>Nome: <?= $cliente['nome'] ?></h2>
-
-            
-            <h2>Email: <?= $cliente['email'] ?></h2>
-            <h2>Telefone: <?= $cliente['telefone'] ?></h2>
-        </div>
+    <div id="info_cliente">
+        <h2>Nome: <?= $_SESSION['cliente']['nome'] ?? 'Não disponível' ?></h2>
+        <h2>Email: <?= $_SESSION['cliente']['email'] ?? 'Não disponível' ?></h2>
+        <h2>Telefone: <?= $_SESSION['cliente']['telefone'] ?? 'Não disponível' ?></h2>
+    </div>
 
         <div id="titulo_hist">Histórico de Aluguéis</div>
         <div id="dashboard_alugueis">
-    <?php if (!empty($rentalHistory)): ?>
-        <?php foreach ($rentalHistory as $rental): ?>
-            <div class="rental-card">
-           
-                <h3>Marca:</h3>
-                <p>Modelo: </p>
-                <p>Ano: </p>
-                <p>Data de Início: </p>
-                <p>Data de Fim: </p>
-                <p>Valor Total: R$ </p>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Nenhum histórico de aluguéis encontrado.</p>
-    <?php endif; ?>
+        <?php if (isset($_SESSION['rentals'])): ?>
+    <?php foreach ($_SESSION['rentals'] as $rental): ?>
+        <div class="rental-card">
+            <h3>Marca: <?= $rental['marca'] ?? 'Não disponível' ?></h3>
+            <p>Modelo: <?= $rental['modelo'] ?? 'Não disponível' ?></p>
+            <p>Ano: <?= $rental['ano'] ?? 'Não disponível' ?></p>
+            <p>Data de Início: <?= $rental['data_inicio'] ?? 'Não disponível' ?></p>
+            <p>Data de Fim: <?= $rental['data_fim']  ?></p>
+            <p>Valor Total: R$ <?= $rental['valor_total'] ?? 'Não disponível' ?></p>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Nenhum aluguel encontrado.</p>
+<?php endif; ?>
 </div>
 
     </div>

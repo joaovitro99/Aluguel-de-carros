@@ -60,7 +60,7 @@ class UserRepository {
 
     public function getUserLogin($nome_usuario, $senha) {
         // Aqui você deve implementar a lógica para verificar o usuário e a senha
-        $sql = "SELECT id_usuario, tipo_usuario FROM usuarios WHERE nome_usuario = ? AND senha = ?";
+        $sql = "SELECT * FROM usuarios WHERE nome_usuario = ? AND senha = ?";
         $stmt = $this->dataProvider->prepare($sql);
         $stmt->bind_param("ss", $nome_usuario, $senha);
         $stmt->execute();
