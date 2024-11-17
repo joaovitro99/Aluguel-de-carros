@@ -112,4 +112,13 @@ class UserRepository {
         }
         return false;
     }
+    public function getUserByterm($term){
+        $stmt = $this->dataProvider->prepare("SELECT * FROM clientes WHERE nome LIKE ? OR cpf LIKE ? OR email LIKE ?");
+        $searchTerm = "%" . $term . "%";
+        $stmt->bind_param("sss", $searchTerm, $searchTerm, $searchTerm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+
+    }
 }
