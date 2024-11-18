@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"ClienteTest::testClientInitialization":0.005,"ClienteTest::testClientInitializationWithMissingData":0,"ImagemTest::testGetVehicleImagesReturnsImages":0.012,"ImagemTest::testGetVehicleImagesReturnsEmptyArrayIfNoImages":0,"ImagemTest::testGetVehicleImagesReturnsNullIfStatementFails":0,"UsuarioTest::testUsuarioInitialization":0}}
