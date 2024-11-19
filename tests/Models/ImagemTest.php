@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+//use App\Models\Image;
 require_once __DIR__ . '/../../app/models/Imagem.php';
 
 class ImagemTest extends TestCase {

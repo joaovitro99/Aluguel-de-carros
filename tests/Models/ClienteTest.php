@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+//use App\Models\Cliente;
 require_once __DIR__ . '/../../app/models/Cliente.php';
 
 class ClienteTest extends TestCase {
