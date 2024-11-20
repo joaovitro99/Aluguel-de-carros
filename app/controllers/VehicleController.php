@@ -1,4 +1,5 @@
 <?php
+use App\Repositories\CarRepository;
 require_once __DIR__ . '/../repositories/CarRepository.php';
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ .'/db.php';

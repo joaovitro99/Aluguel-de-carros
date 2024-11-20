@@ -1,11 +1,14 @@
 <?php
-
+namespace App\Controllers;
 use Stripe\Terminal\Location;
+use App\Repositories\RentalRepository;
+use App\Repositories\ClientRepository;
+//use App\Repositories\Notification;
 
 require_once("db.php");
 require_once __DIR__."/../repositories/ClientRepository.php";
 require_once __DIR__."/../repositories/RentalRepository.php";
-require_once __DIR__."/../repositories/NotificacaoRepository.php";
+//require_once __DIR__."/../repositories/NotificacaoRepository.php";
 class RentalController{
     private $rentalRepository;
     private $clientRepository;
@@ -15,7 +18,7 @@ class RentalController{
         global $db_conection;
         $this->rentalRepository = new RentalRepository($db_conection);
         $this->clientRepository = new ClientRepository($db_conection);
-        $this->notificacaoRepository = new Notification($db_conection);
+        //$this->notificacaoRepository = new Notification($db_conection);
     }
     public function addAluguel()
     {
@@ -102,7 +105,7 @@ class RentalController{
         // Obtém os dados do cliente
         
         // Obtém os veículos do cliente
-        $rentalHistory = $this->rentalRepository->findByIdclient($_SESSION['id_cliente']);
+        $rentalHistory = $this->rentalRepository->findByIdcliente($_SESSION['id_cliente']);
 
         // Carrega a view
         require '../app/views/perfil.php';

@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Repositories;
 class CarRepository{
 
     private $data_provider;

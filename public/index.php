@@ -12,6 +12,7 @@ require_once __DIR__ . '/../app/controllers/VehicleController.php';
 require_once __DIR__ . '/../app/controllers/RentalController.php';
 require_once __DIR__ . '/../app/controllers/NotificacaoController.php';
 require_once __DIR__ . '/../app/controllers/WhatsAppController.php';
+require_once __DIR__ . '/../app/controllers/AluguelController.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__."/../vendor/autoload.php";
 // Configuração do roteador

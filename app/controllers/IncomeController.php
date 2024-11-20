@@ -1,4 +1,5 @@
 <?php
+use App\Repositories\RentalRepository;
 require_once(__DIR__.'/../repositories/RentalRepository.php');
 require_once("db.php");
 

@@ -1,7 +1,7 @@
 <?php
 
 use Stripe\Terminal\Location;
-
+use App\Repositories\UserRepository;
 require_once __DIR__.'/UserController.php';
 require_once __DIR__.'/../repositories/UserRepository.php';
 require_once __DIR__.'/MySqlDataProvider.php';

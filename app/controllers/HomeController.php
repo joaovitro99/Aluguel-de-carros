@@ -2,7 +2,7 @@
 require_once(__DIR__.'/../repositories/CarRepository.php');
 require_once("db.php");
 
-
+use App\Repositories\CarRepository;
 class HomeController {
     private $car_repository;
 

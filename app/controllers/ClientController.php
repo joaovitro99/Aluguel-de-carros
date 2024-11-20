@@ -1,4 +1,5 @@
 <?php
+use App\Repositories\ClientRepository;
 require_once __DIR__.'/../models/Cliente.php';
 require_once __DIR__.'/../repositories/ClientRepository.php';
 require_once __DIR__.'/MySqlDataProvider.php';

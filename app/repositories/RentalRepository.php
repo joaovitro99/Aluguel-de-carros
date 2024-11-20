@@ -1,5 +1,11 @@
 <?php
+namespace App\Repositories;
+use Exception;
+use App\Models\Aluguel;
+
 require_once __DIR__.'/../models/Aluguel.php';
+
+
 class RentalRepository {
 
     private $data_provider;

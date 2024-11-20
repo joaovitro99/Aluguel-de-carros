@@ -1,4 +1,6 @@
 <?php
+
+namespace App\Repositories;
 // models/Notification.php
 //require_once 'config/Database.php';
 require_once __DIR__ .'/../controllers/db.php';

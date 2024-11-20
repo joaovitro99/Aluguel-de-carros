@@ -1,4 +1,6 @@
 <?php
+namespace App\Repositories;
+use FFI\Exception;
 
 class ClientRepository {
 

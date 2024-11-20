@@ -1,5 +1,7 @@
 <?php
 // controllers/NotificationController.php
+
+use App\Repositories\Notification;
 require_once __DIR__.'/../repositories/NotificacaoRepository.php';
 require_once __DIR__ . '/../repositories/UserRepository.php';
 require_once __DIR__ . '/../models/Usuario.php';
