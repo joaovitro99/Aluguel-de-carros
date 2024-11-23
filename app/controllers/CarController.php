@@ -133,15 +133,12 @@ public function deleteCarro() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $idVeiculo = $_POST['id_veiculo'];
         
-        // Remova o carro usando o método do repositório
         $this->carRepository->removeCar($idVeiculo);
         
-        // Envie uma resposta de sucesso
         echo json_encode(['status' => 'success', 'message' => 'Carro removido com sucesso']);
         return;
     }
 
-    // Envie uma resposta de erro se `id_veiculo` não for fornecido
     echo json_encode(['status' => 'error', 'message' => 'ID do veículo não foi fornecido']);
 }
 
@@ -149,7 +146,6 @@ public function deleteCarro() {
     public function listarCarros(){
         $veiculos = $this->carRepository->getAll();
 
-        // Renderiza a view e passa os dados
         require_once __DIR__ . '/../views/veiculos.php';
     }
     public function showDetailCar(){
@@ -168,11 +164,9 @@ public function deleteCarro() {
     }
 
     public function showResumoReserva() {
-        // Obtenha o ID do carro a partir da URL
         $idCarro = $_GET['id'] ?? null;
 
         if ($idCarro) {
-            // Busque as informações do carro pelo ID
             $carro = $this->carRepository->getCarById($idCarro);
             $_SESSION['reservaCarro']=$carro;
 
@@ -183,14 +177,13 @@ public function deleteCarro() {
             $diasAlugados = $intervalo->days;
             $_SESSION['diasAlugados']=$diasAlugados;
 
-            require_once __DIR__ . '/../views/Reserva.php'; // Carrega a view
+            require_once __DIR__ . '/../views/Reserva.php';
         } else {
             echo "ID do veículo não informado.";
         }
     }
     
     public function buscar() {
-        // Inicia a sessão caso ainda não esteja iniciada
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -202,7 +195,6 @@ public function deleteCarro() {
         $_SESSION['data_devolucao'] = $_POST['data_devolucao'] ?? '';
         $_SESSION['hora_devolucao'] = $_POST['hora_devolucao'] ?? '';
 
-        // Redireciona de volta para a página de busca de carros
         header('Location: /aluguel-de-carros/public/car/index');
         
         exit;

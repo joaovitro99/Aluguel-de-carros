@@ -144,7 +144,6 @@ class RentalController{
             
             $response = $this->enviarNotificacao($cliente_info, $mensagem, 'email');
     
-            // Exibir a resposta
             if ($response !== 'Erro ao fazer a requisição.') {
                 $_SESSION['statusMessage'] = "Notificação enviada com sucesso para: " . $cliente_info['email'];
                 $_SESSION['statusClass'] = 'success';
@@ -153,31 +152,26 @@ class RentalController{
                 $_SESSION['statusClass'] = 'error';
             }
     
-            // Redireciona para evitar reenvio do formulário
             header("Location: http://localhost/aluguel-de-carros/public/notificacao/enviarManual");
             exit;
         } 
         include __DIR__ . '/../../notificationsAPI/public/send_notificacao.php';
 
-            // Exibe o formulário HTML para envio manual
     }
     
     public function enviarEmailRecuperacao($email, $linkParaRedefinirSenha) {
-        // Preparar mensagem de recuperação
         $mensagem = "Para redefinir sua senha, clique no link abaixo:\n\n"
         . "$linkParaRedefinirSenha\n\n"
         . "Se você não solicitou redefinir o seu email, ignore esta mensagem.\n\n";
 
-        // Você pode personalizar o tipo para "email" ou outro que achar necessário
         $cliente_info = [
             'email' => $email,
-            'nome' => ' ' // Nome do cliente pode ser recuperado ou preenchido conforme necessário
+            'nome' => ' '
         ];
         
         // Enviar email de recuperação
         return $this->enviarNotificacao($cliente_info, $mensagem, 'email');
 
-        // Exibir a resposta
         if ($response !== 'Erro ao fazer a requisição.') {
             $_SESSION['statusMessage'] = "Notificação enviada com sucesso para: " . $cliente_info['email'];
             $_SESSION['statusClass'] = 'success';
@@ -186,7 +180,6 @@ class RentalController{
             $_SESSION['statusClass'] = 'error';
         }
 
-        // Redireciona para evitar reenvio do formulário
         header("Location: http://localhost/aluguel-de-carros/public/user/forgotPassword");
         exit;
     }

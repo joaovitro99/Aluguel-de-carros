@@ -57,7 +57,6 @@
     <div class="container">
         <p class="status-message <?php echo isset($statusClass) ? $statusClass : ''; ?>">
             <?php
-                // Exibir mensagem com base no status do processo
                 if (isset($statusMessage)) {
                     echo $statusMessage;
                 }

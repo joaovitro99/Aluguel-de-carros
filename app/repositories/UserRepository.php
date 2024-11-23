@@ -95,7 +95,6 @@ class UserRepository {
                 }
             }
         } else {
-            // Retorna null se o usuário não foi encontrado ou a senha está incorreta
             return null;
         }
     }
@@ -112,11 +111,9 @@ class UserRepository {
         $result = $stmt->get_result();
     
         if ($result->num_rows > 0) {
-            // Se o token for válido, atualizamos a senha na tabela usuarios
             $row = $result->fetch_assoc();
             $email = $row['email'];
     
-            // Atualiza a senha do usuário
             $updateSql = "UPDATE usuarios SET senha = ? WHERE email = ?";
             $updateStmt = $this->dataProvider->prepare($updateSql);
             $updateStmt->bind_param("ss", $hashedPassword, $email);

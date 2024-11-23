@@ -34,7 +34,6 @@ class UserController {
         // Obtém os veículos do cliente
         $rentalHistory = $this->carRepository->getUserCars($_SESSION['id_usuario']);
 
-        // Carrega a view
         require '../app/views/perfil.php';
     }
 
@@ -53,21 +52,18 @@ class UserController {
     // Página de solicitação de redefinição de senha
     public function forgotPassword() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];  // Capture the email submitted from the form
+            $email = $_POST['email'];
             
             // Validate the email before processing
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                // Call the sendResetLink method to send the email with the reset token
                 $this->sendResetLink($email);
-                // Redirect to a success page or display a success message
                 header("Location: /aluguel-de-carros/public/user/forgotPassword?success=true");
                 exit;
             } else {
-                echo "E-mail inválido. Tente novamente.";  // Optional error message
+                echo "E-mail inválido. Tente novamente.";
             }
         }
     
-        // Display the ForgotPassword form (initial GET request)
         require __DIR__ . '/../views/ForgotPassword.php';
     }
 
@@ -79,7 +75,6 @@ class UserController {
             exit();
         }
 
-        // Renderiza o formulário para definir a nova senha
         require __DIR__ . '/../views/ResetPassword.php';
     }
 
@@ -88,14 +83,12 @@ class UserController {
     }
     
     public function sendResetLink($email) {
-        // Gere um token e armazene-o no banco de dados com a validade, vinculado ao e-mail
+        // Gera um token e armazena no banco de dados com a validade
         $token = bin2hex(random_bytes(16));
-        $expire = date("Y-m-d H:i:s", strtotime("+1 hour")); // Define uma validade de 1 hora para o token
+        $expire = date("Y-m-d H:i:s", strtotime("+1 hour"));
     
-        // Salve o token e a validade no banco
         $this->userRepository->saveResetToken($email, $token, $expire);
     
-        // Gerar o link de redefinição de senha
         $resetLink = "http://localhost/aluguel-de-carros/public/user/resetPassword?token=$token";
     
         // Instanciar o RentalController para enviar o email
@@ -108,12 +101,10 @@ class UserController {
             $token = $_POST['token'];
             $newPassword = $_POST['new_password'];
     
-            // Inicializar variáveis para mensagem e classe
             $statusMessage = '';
             $statusClass = '';
     
             if ($this->isValidToken($token)) {
-                // Atualizar senha
                 $this->userRepository->updatePassword($token, password_hash($newPassword, PASSWORD_DEFAULT));
                 $statusMessage = "Senha atualizada com sucesso!";
                 $statusClass = 'success';
@@ -122,8 +113,7 @@ class UserController {
                 $statusClass = 'error';
             }
     
-            // Incluir as variáveis no HTML
-            require __DIR__ . '/../views/updatePassword.php'; // Caminho para o arquivo HTML que mostra a mensagem
+            require __DIR__ . '/../views/updatePassword.php';
         }
     }
     public function buscarAdminFilter(){
