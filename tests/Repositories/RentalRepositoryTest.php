@@ -41,11 +41,9 @@ class RentalRepositoryTest extends TestCase
 
     public function testGetRendimentosReturnsData()
     {
-        // Mock do mysqli_result
         $mockResult = $this->createMock(mysqli_result::class);
 
-        // Configura o mock para `fetch_assoc`
-        $mockResult->expects($this->exactly(2)) // Chama duas vezes: uma para o dado e outra para null
+        $mockResult->expects($this->exactly(2))
             ->method('fetch_assoc')
             ->willReturnOnConsecutiveCalls(
                 [
@@ -61,7 +59,6 @@ class RentalRepositoryTest extends TestCase
                 null
             );
 
-        // Mock do mysqli_stmt
         $mockStmt = $this->createMock(mysqli_stmt::class);
         $mockStmt->expects($this->once())
             ->method('execute')
@@ -70,7 +67,6 @@ class RentalRepositoryTest extends TestCase
             ->method('get_result')
             ->willReturn($mockResult);
 
-        // Mock do data_provider para o prepare
         $this->mockDataProvider->expects($this->once())
             ->method('prepare')
             ->willReturn($mockStmt);
@@ -79,7 +75,7 @@ class RentalRepositoryTest extends TestCase
         $data = $this->repository->getRendimentos('tudo');
 
         // Verifica os resultados
-        $this->assertCount(1, $data); // Apenas 1 registro esperado
+        $this->assertCount(1, $data);
         $this->assertEquals('Toyota', $data[0]['marca']);
         $this->assertEquals('Corolla', $data[0]['modelo']);
     }

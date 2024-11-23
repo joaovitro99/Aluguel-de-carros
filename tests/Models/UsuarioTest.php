@@ -17,10 +17,8 @@ class UsuarioTest extends TestCase {
             'email' => 'john.doe@example.com'
         ];
 
-        // Criando o objeto Usuario com os dados fornecidos
         $usuario = new Usuario($data);
 
-        // Testando se o objeto foi inicializado corretamente
         $this->assertEquals(1, $usuario->id);
         $this->assertEquals('John Doe', $usuario->nome);
         $this->assertEquals('123.456.789-00', $usuario->cpf);

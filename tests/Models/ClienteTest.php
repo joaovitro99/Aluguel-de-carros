@@ -18,7 +18,6 @@ class ClienteTest extends TestCase {
             'telefone' => '(11) 99999-9999'
         ];
 
-        // Criando o objeto Client com os dados fornecidos
         $client = new Client(
             $data['nome_usuario'], 
             $data['senha'], 
@@ -40,7 +39,6 @@ class ClienteTest extends TestCase {
     }
 
     public function testClientInitializationWithMissingData() {
-        // Dados de entrada incompletos (faltando alguns dados como telefone)
         $data = [
             'nome_usuario' => 'janedoe',
             'senha' => 'password456',
@@ -51,7 +49,6 @@ class ClienteTest extends TestCase {
             'telefone' => ''
         ];
 
-        // Criando o objeto Client com dados parciais
         $client = new Client(
             $data['nome_usuario'], 
             $data['senha'], 
@@ -69,6 +66,6 @@ class ClienteTest extends TestCase {
         $this->assertEquals('987.654.321-00', $client->cpf);
         $this->assertEquals('jane.doe@example.com', $client->email);
         $this->assertEquals('Rua Exemplo, 456', $client->endereco);
-        $this->assertEquals('', $client->telefone); // O telefone está vazio
+        $this->assertEquals('', $client->telefone);
     }
 }

@@ -21,27 +21,23 @@ class ImagemTest extends TestCase {
         // Simulando um retorno de imagens no banco de dados
         $id_veiculo = 1;
         
-        // Dados simulados (imagens retornadas pelo banco)
         $mockedResult = $this->createMock(mysqli_result::class);
         $mockedResult->method('fetch_assoc')->willReturnOnConsecutiveCalls(
             ['imagem' => 'image1.jpg'],
             ['imagem' => 'image2.jpg'],
-            null // Retorna null no final para encerrar o loop
+            null
         );
 
-        // Configurando o mock para o método prepare, sem mockar bind_param
         $stmtMock = $this->createMock(mysqli_stmt::class);
         $stmtMock->method('bind_param')->willReturn(true);  // Apenas simula a execução de bind_param
         $stmtMock->method('execute')->willReturn(true);
         $stmtMock->method('get_result')->willReturn($mockedResult);
         
-        // Configurando o mock para o método prepare, que retorna o stmtMock
         $this->connMock->method('prepare')->willReturn($stmtMock);
 
         // Chama o método getVehicleImages
         $images = $this->image->getVehicleImages($id_veiculo);
 
-        // Testando se o retorno contém as imagens esperadas
         $this->assertIsArray($images);
         $this->assertCount(2, $images);
         $this->assertEquals('image1.jpg', $images[0]);
@@ -49,12 +45,11 @@ class ImagemTest extends TestCase {
     }
 
     public function testGetVehicleImagesReturnsEmptyArrayIfNoImages() {
-        // Simulando a ausência de imagens no banco de dados
         $id_veiculo = 1;
 
         // Dados simulados (sem imagens retornadas pelo banco)
         $mockedResult = $this->createMock(mysqli_result::class);
-        $mockedResult->method('fetch_assoc')->willReturn(null); // Retorna null para indicar nenhuma imagem
+        $mockedResult->method('fetch_assoc')->willReturn(null);
 
         // Configurando o mock para o método prepare, sem mockar bind_param
         $stmtMock = $this->createMock(mysqli_stmt::class);
@@ -62,28 +57,24 @@ class ImagemTest extends TestCase {
         $stmtMock->method('execute')->willReturn(true);
         $stmtMock->method('get_result')->willReturn($mockedResult);
 
-        // Configurando o mock para o método prepare, que retorna o stmtMock
         $this->connMock->method('prepare')->willReturn($stmtMock);
 
         // Chama o método getVehicleImages
         $images = $this->image->getVehicleImages($id_veiculo);
 
-        // Testando se o retorno é um array vazio
         $this->assertIsArray($images);
-        $this->assertCount(0, $images); // Nenhuma imagem encontrada
+        $this->assertCount(0, $images);
     }
 
     public function testGetVehicleImagesReturnsNullIfStatementFails() {
         // Simulando uma falha no prepare (retorna null quando o prepare falha)
         $id_veiculo = 1;
 
-        // Configurando o mock para o método prepare retornar false (falha)
         $this->connMock->method('prepare')->willReturn(false);
 
         // Chama o método getVehicleImages
         $images = $this->image->getVehicleImages($id_veiculo);
 
-        // Testando se o retorno é null devido à falha na preparação da consulta
         $this->assertNull($images);
     }
 }
