@@ -4,6 +4,7 @@ use PHPUnit\Framework\TestCase;
 use App\Repositories\RentalRepository;
 use App\Repositories\ClientRepository;
 use App\Controllers\RentalController;
+require_once 'C:\wamp64\www\Aluguel-de-carros\config\config.php';
 
 class RentalControllerTest extends TestCase
 {
@@ -13,36 +14,47 @@ class RentalControllerTest extends TestCase
     private $rentalController;
 
     protected function setUp(): void
-    {
-        // Criando o mock da conexão com o banco de dados
-        $this->mockConn = $this->createMock(mysqli::class);
+{
+    // Criando o mock da conexão com o banco de dados
+    $this->mockConn = $this->createMock(mysqli::class);
 
-        // Mock para o RentalRepository, passando o mock da conexão
-        $this->mockRentalRepository = $this->getMockBuilder(RentalRepository::class)
-                                             ->setConstructorArgs([$this->mockConn])  // Passando $mockConn como dependência
-                                             ->getMock();
+    // Criando o mock para o stmt
+    $mockStmt = $this->createMock(mysqli_stmt::class);
+    
+    // Configurando o mock para o método prepare() retornar o mock do stmt
+    $this->mockConn->method('prepare')->willReturn($mockStmt);
 
-        // Mock para o ClientRepository, passando o mock da conexão
-        $this->mockClientRepository = $this->getMockBuilder(ClientRepository::class)
-                                             ->setConstructorArgs([$this->mockConn])  // Passando $mockConn como dependência
-                                             ->getMock();
+    // Mockando os métodos do stmt para simular a execução do SQL
+    $mockStmt->method('bind_param')->willReturn(true);
+    $mockStmt->method('execute')->willReturn(true);
 
-        $this->rentalController = new RentalController($this->mockConn);
-        
+    // Mock para o RentalRepository, passando o mock da conexão
+    $this->mockRentalRepository = $this->getMockBuilder(RentalRepository::class)
+                                         ->setConstructorArgs([$this->mockConn])  // Passando $mockConn como dependência
+                                         ->getMock();
 
-        // Mock para variáveis globais
-        $_GET = [
-            'id_cliente' => 1,
-            'id_carro' => 10,
-            'data_inicio' => '2024-01-01',
-            'data_fim' => '2024-01-10'
-        ];
-        $_SESSION['carroReserva'] = [
-            'marca' => 'Toyota',
-            'modelo' => 'Corolla'
-        ];
-        $_SESSION['diasAlugados'] = 10;
-    }
+    // Mock para o ClientRepository, passando o mock da conexão
+    $this->mockClientRepository = $this->getMockBuilder(ClientRepository::class)
+                                         ->setConstructorArgs([$this->mockConn])  // Passando $mockConn como dependência
+                                         ->getMock();
+
+    $this->rentalController = new RentalController($this->mockConn);
+    
+
+    // Mock para variáveis globais
+    $_GET = [
+        'id_cliente' => 1,
+        'id_carro' => 10,
+        'data_inicio' => '2024-01-01',
+        'data_fim' => '2024-01-10'
+    ];
+    $_SESSION['carroReserva'] = [
+        'marca' => 'Toyota',
+        'modelo' => 'Corolla'
+    ];
+    $_SESSION['diasAlugados'] = 10;
+}
+
 
     public function testAddAluguelInsertsDataAndRedirects()
     {

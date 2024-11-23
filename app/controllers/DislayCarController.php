@@ -1,4 +1,5 @@
 <?php
+use App\Models\Vehicle;
 include_once '../models/Veiculo.php';
 include_once '../models/Imagem.php';
 include_once '../app/config.php';

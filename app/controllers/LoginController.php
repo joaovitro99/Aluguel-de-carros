@@ -1,6 +1,6 @@
 <?php
-
-session_start();
+namespace App\Controllers;
+if (session_status() === PHP_SESSION_NONE) session_start();
 
 use App\Repositories\CarRepository;
 use App\Repositories\UserRepository;
