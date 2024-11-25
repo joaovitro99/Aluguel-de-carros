@@ -5,4 +5,7 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <const name="TEST_ENVIRONMENT" value="true"/>
+    </php>
 </phpunit>
