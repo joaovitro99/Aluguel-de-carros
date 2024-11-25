@@ -19,7 +19,7 @@
 
             // Verifica se o usuário está logado
             if (!isset($_SESSION['user'])) {
-                header('Location: Login.php');
+                header('Location: /aluguel-de-carros/public/login/index');
                 exit();
             }
             
