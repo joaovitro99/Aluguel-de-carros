@@ -12,7 +12,7 @@ class FuncionarioController {
 
     public function __construct() {
         global $db_conection;
-        $this->FuncionarioRepository = new UserRepository($db_conection;);
+        $this->FuncionarioRepository = new UserRepository($db_conection);
     }
     public function index(){
         require_once __DIR__.'/../views/Cadastro.php';
