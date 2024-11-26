@@ -8,8 +8,8 @@ class ClientController {
     private $clientRepository;
 
     public function __construct() {
-        $dataProvider = new MySqlDataProvider($GLOBALS['config']);
-        $this->clientRepository = new ClientRepository($dataProvider);
+        global $db_conection;
+        $this->clientRepository = new ClientRepository($db_conection;);
     }
     public function index(){
         require_once __DIR__.'/../views/Cadastro.php';
