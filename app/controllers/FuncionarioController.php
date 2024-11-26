@@ -11,8 +11,8 @@ class FuncionarioController {
     private $FuncionarioRepository;
 
     public function __construct() {
-        $dataProvider = new MySqlDataProvider($GLOBALS['config']);
-        $this->FuncionarioRepository = new UserRepository($dataProvider);
+        global $db_conection;
+        $this->FuncionarioRepository = new UserRepository($db_conection;);
     }
     public function index(){
         require_once __DIR__.'/../views/Cadastro.php';
