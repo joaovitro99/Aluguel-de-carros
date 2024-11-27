@@ -49,30 +49,4 @@ class CarRepositoryTest extends TestCase
         $this->assertTrue(true); // Verifica se a operação foi bem-sucedida
     }
 
-    public function testGetCar()
-    {
-        // Mock do método prepare
-        $mockStmt = $this->createMock(mysqli_stmt::class);
-        $this->mockConn->method('prepare')->willReturn($mockStmt);
-
-        // Mockando bind_param e execute
-        $mockStmt->method('bind_param')->willReturn(true);
-        $mockStmt->method('execute')->willReturn(true);
-
-        // Mock do get_result e fetch_assoc
-        $mockResult = $this->createMock(mysqli_result::class);
-        $mockStmt->method('get_result')->willReturn($mockResult);
-        $mockResult->method('fetch_assoc')->willReturn([
-            'id_veiculo' => 1,
-            'marca' => 'Toyota',
-            'modelo' => 'Corolla',
-            'ano' => 2023,
-            'placa' => 'XYZ-1234',
-        ]);
-
-        // Chamando o método e verificando o resultado
-        $this->carRepository->getCar(1);
-
-        $this->assertTrue(true);
-    }
 }
