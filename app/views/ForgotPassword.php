@@ -22,7 +22,6 @@
          <div id="message" class="form_login"></div>
     </div>
     <script>
-        // Captura os parâmetros da URL
         const urlParams = new URLSearchParams(window.location.search);
         const messageDiv = document.getElementById('message');
 

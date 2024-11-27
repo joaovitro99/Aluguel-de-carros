@@ -24,7 +24,6 @@
                 <input type="password" name="confirm_password" id="confirm_password" required placeholder="Digite novamente a senha">
             </div>
 
-            <!-- Mensagem de erro -->
             <div id="error-message" class="error-message" style="display:none;">As senhas não coincidem. Por favor, tente novamente.</div>
 
             <button type="submit">Redefinir Senha</button>
@@ -37,15 +36,13 @@
             var senha = document.getElementById("new_password").value;
             var confirmarSenha = document.getElementById("confirm_password").value;
 
-            // Se as senhas não coincidirem, exibe a mensagem de erro e impede o envio do formulário
             if (senha !== confirmarSenha) {
                 document.getElementById("error-message").style.display = "block";
-                return false; // Impede o envio do formulário
+                return false;
             }
 
-            // Caso as senhas coincidam, oculta a mensagem de erro (se houver)
             document.getElementById("error-message").style.display = "none";
-            return true; // Permite o envio do formulário
+            return true;
         }
     </script>
 </body>

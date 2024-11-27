@@ -29,7 +29,6 @@ class CarRepository{
             $stmt->bind_param("i", $id_veiculo);
             $stmt->execute();
     
-            // Feche o statement
             $stmt->close();
             
         }
@@ -48,9 +47,9 @@ class CarRepository{
     
         // Verifica se algum carro foi encontrado
         if ($result->num_rows > 0) {
-            return $result->fetch_assoc(); // Retorna um array associativo
+            return $result->fetch_assoc();
         } else {
-            return null; // Retorna null se não encontrou
+            return null;
         }
     }
     public function getAll()
@@ -77,7 +76,7 @@ class CarRepository{
         // Lógica para lidar com o número de malas
         if (!empty($num_malas)) {
             list($min_malas, $max_malas) = explode('-', $num_malas);
-            $litros_por_mala = 70; // Cada mala ocupa 70 litros
+            $litros_por_mala = 70;
             $capacidade_necessaria_min = $min_malas * $litros_por_mala;
             $capacidade_necessaria_max = $max_malas * $litros_por_mala;
             $conditions[] = "v.capacidade_bagageiro BETWEEN $capacidade_necessaria_min AND $capacidade_necessaria_max";
@@ -90,7 +89,6 @@ class CarRepository{
             $conditions[] = "v.valor_diaria <= $max_price";
         }
     
-        // Monta a consulta SQL
         $sql = "SELECT v.id_veiculo, v.marca, v.modelo, v.ano, v.valor_diaria, i.imagem 
                 FROM veiculos v 
                 LEFT JOIN imagens_veiculo i ON v.id_veiculo = i.id_veiculo";
@@ -99,13 +97,12 @@ class CarRepository{
             $sql .= " WHERE " . implode(" AND ", $conditions);
         }
     
-        // Preparação e execução da consulta
         $stmt = $this->data_provider->query($sql);
     
         $cars = [];
         if ($stmt->num_rows > 0) {
             while ($row = $stmt->fetch_assoc()) {
-                $cars[] = $row; // Adiciona os veículos encontrados em um array
+                $cars[] = $row;
             }
         }
         return $cars;
