@@ -7,14 +7,7 @@ require_once __DIR__ . '/../../app/controllers/LoginController.php';
 require_once __DIR__ . '/../../app/repositories/UserRepository.php';
 
 class LoginControllerTest extends TestCase {
-    /**
-     * @var UserRepository|MockObject
-     */
     private $mockUserRepository;
-
-    /**
-     * @var LoginController
-     */
     private $loginController;
 
     protected function setUp(): void {
@@ -29,7 +22,6 @@ class LoginControllerTest extends TestCase {
     }
 
     public function testVerificarLoginSuccessForCliente() {
-        // Mock do método getUserLogin para retornar um cliente válido
         $mockUser = [
             'id_usuario' => 1,
             'tipo_usuario' => 'cliente',
@@ -46,17 +38,13 @@ class LoginControllerTest extends TestCase {
         $_POST['nome_usuario'] = 'joao';
         $_POST['senha'] = '12345';
 
-        // Capturar saída do método
-        ob_start();
-        $this->loginController->verificarLogin();
-        $output = ob_get_clean();
+        $result = $this->loginController->verificarLogin();
 
-        // Verifica se o redirecionamento para o perfil do cliente ocorreu
-        $this->assertStringContainsString("window.location.href = '/aluguel-de-carros/public/user/showProfile';", $output);
+        $this->assertEquals('success', $result['status']);
+        $this->assertEquals('/aluguel-de-carros/public/user/showProfile', $result['redirect']);
     }
 
     public function testVerificarLoginFailInvalidCredentials() {
-        // Mock do método getUserLogin para retornar null (login inválido)
         $this->mockUserRepository
             ->expects($this->once())
             ->method('getUserLogin')
@@ -67,13 +55,10 @@ class LoginControllerTest extends TestCase {
         $_POST['nome_usuario'] = 'joao';
         $_POST['senha'] = 'wrongpassword';
 
-        // Capturar saída do método
-        ob_start();
-        $this->loginController->verificarLogin();
-        $output = ob_get_clean();
+        $result = $this->loginController->verificarLogin();
 
-        // Verifica se o alerta de credenciais incorretas foi exibido
-        $this->assertStringContainsString("alert('Usuário ou senha incorretos');", $output);
+        $this->assertEquals('error', $result['status']);
+        $this->assertContains('Usuário ou senha incorretos', $result['errors']);
     }
 
     public function testVerificarLoginWithMissingFields() {
@@ -81,12 +66,10 @@ class LoginControllerTest extends TestCase {
         $_POST['nome_usuario'] = '';
         $_POST['senha'] = '';
 
-        // Capturar saída do método
-        ob_start();
-        $this->loginController->verificarLogin();
-        $output = ob_get_clean();
+        $result = $this->loginController->verificarLogin();
 
-        // Verifica se os alertas de campos obrigatórios foram exibidos
-        $this->assertStringContainsString("alert('O nome de usuário é obrigatório.');", $output);
+        $this->assertEquals('error', $result['status']);
+        $this->assertContains('O nome de usuário é obrigatório.', $result['errors']);
+        $this->assertContains('A senha é obrigatória.', $result['errors']);
     }
 }
