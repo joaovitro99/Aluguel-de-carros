@@ -1,16 +1,14 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use App\Repositories\NotificacaoRepository;
-use App\Controllers\NotificacaoController;
-use Src\Controllers\NotificationController;
-require_once 'C:\wamp64\www\Aluguel-de-carros\config\config.php';
+require_once __DIR__ . '/../../app/controllers/NotificacaoController.php';
+require_once __DIR__ . '/../../app/repositories/NotificacaoRepository.php';
 
 class NotificacaoControllerTest extends TestCase {
     private $mockNotificationRepository;
     private $notificacaoController;
 
     protected function setUp(): void {
-        $this->mockNotificationRepository = $this->createMock(NotificationController::class);
+        $this->mockNotificationRepository = $this->createMock(NotificacaoController::class);
 
     
         global $db_conection;
@@ -18,7 +16,6 @@ class NotificacaoControllerTest extends TestCase {
 
       
         $this->notificacaoController = new NotificacaoController();
-        $this->notificacaoController->notification = $this->mockNotificationRepository;
     }
 
     public function testIndexRendersView() {

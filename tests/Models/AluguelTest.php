@@ -14,7 +14,7 @@ class AluguelTest extends TestCase {
             101,        // id_cliente
             202,        // id_veiculo
             '2024-11-10',// data_inicio
-            '2024-11-20',// data_fim
+            '2024-11-29',// data_fim
             500         // valor_total
         );
     }
@@ -25,7 +25,7 @@ class AluguelTest extends TestCase {
         $this->assertEquals(101, $this->aluguel->getIdCliente());
         $this->assertEquals(202, $this->aluguel->getIdVeiculo());
         $this->assertEquals('2024-11-10', $this->aluguel->getDataInicio());
-        $this->assertEquals('2024-11-20', $this->aluguel->getDataFim());
+        $this->assertEquals('2024-11-29', $this->aluguel->getDataFim());
         $this->assertEquals(500, $this->aluguel->getValorTotal());
     }
 
@@ -34,27 +34,27 @@ class AluguelTest extends TestCase {
         $prazo = $this->aluguel->calcular_prazo();
         
         // A data atual(17/11/2024) - DataFim , portanto, o prazo deve ser 2 dias
-        $this->assertEquals(7, $prazo);
+        $this->assertEquals(1, $prazo);
     }
     public function testNotificarCliente() {
         // Testando a notificação quando o prazo estiver próximo do fim
-        $this->aluguel->setDataFim('2024-11-20'); // Data próxima do fim
+        $this->aluguel->setDataFim('2024-11-29'); // Data próxima do fim
 
         $notificacao = $this->aluguel->notificar_cliente();
-        $this->assertEquals('O aluguel encerrará em 2 dias', $notificacao);
+        $this->assertEquals('O aluguel encerrará em 1 dias', $notificacao);
 
         // Testando quando não há necessidade de notificação
-        $this->aluguel->setDataFim('2024-11-25'); // Data distante do fim
+        $this->aluguel->setDataFim('2024-12-10'); // Data distante do fim
         $this->assertFalse($this->aluguel->notificar_cliente());
     }
 
     public function testAtualizarPrazoAoAlterarData() {
         // Testando se o prazo é recalculado ao alterar as datas
-        $this->aluguel->setDataFim('2024-11-12'); // Alterando a data de fim
-        $this->assertEquals(5, $this->aluguel->getPrazoAluguel()); // Prazo deve ser 2 dias
+        $this->aluguel->setDataFim('2024-12-10'); // Alterando a data de fim
+        $this->assertEquals(12, $this->aluguel->getPrazoAluguel()); // Prazo deve ser 2 dias
 
-        $this->aluguel->setDataFim('2024-11-10'); // Alterando novamente a data de fim
-        $this->assertEquals(7, $this->aluguel->getPrazoAluguel()); // Prazo deve ser 0 dias
+        $this->aluguel->setDataFim('2024-12-20'); // Alterando novamente a data de fim
+        $this->assertEquals(22, $this->aluguel->getPrazoAluguel()); // Prazo deve ser 0 dias
     }
     
 }
