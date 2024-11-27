@@ -10,7 +10,7 @@ require_once __DIR__ . '/../repositories/CarRepository.php';
 require_once("db.php");
 
 class NotificacaoController {
-    private $notification;
+    protected $notification;
 
     public function __construct() {
         global $db_conection;
@@ -27,5 +27,8 @@ class NotificacaoController {
 
         // Renderiza a view e passa os dados
         require_once __DIR__ . '/../views/NotificacaoUsuario.php';
+    }
+    public function setNotificationRepository($notification) {
+        $this->notification = $notification;
     }
 }
