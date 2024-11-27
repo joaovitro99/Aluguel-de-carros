@@ -48,45 +48,33 @@
                 </tr>
             </thead>
             <tbody id="rentalTableBody">
-                <!-- Dados dos aluguéis serão inseridos aqui dinamicamente -->
+                <?php if (!empty($alugueis)): ?>
+                    <?php foreach ($alugueis as $aluguel): ?>
+                        <tr id="rental-<?= htmlspecialchars($aluguel->getId(), ENT_QUOTES, 'UTF-8'); ?>">
+                            <td><?= htmlspecialchars($aluguel->getId(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getIdCliente(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getIdVeiculo(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getDataInicio(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getDataFim(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td>R$ <?= number_format($aluguel->getValorTotal(), 2, ',', '.'); ?></td>
+                            <td>
+                                <button onclick="deleteRental(<?= htmlspecialchars($aluguel->getId(), ENT_QUOTES, 'UTF-8'); ?>)"class='btn-delete'>Excluir</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7">Nenhum aluguel encontrado.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
+
         </table>
     </div>
 </body>
 </html>
 
 <script>
-    // Função para carregar aluguéis da API
-    function loadRentals() {
-        fetch('/aluguel-de-carros/public/api/alugueis')
-            .then(response => response.json())
-            .then(alugueis => {
-                const rentalTableBody = document.getElementById('rentalTableBody');
-                rentalTableBody.innerHTML = ''; // Limpa a tabela antes de preencher
-                if (alugueis.length === 0) {
-                    rentalTableBody.innerHTML = '<tr><td colspan="7">Nenhum aluguel encontrado.</td></tr>';
-                } else {
-                    alugueis.forEach(aluguel => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${aluguel.id}</td>
-                            <td>${aluguel.id_cliente}</td>
-                            <td>${aluguel.id_veiculo}</td>
-                            <td>${aluguel.data_inicio}</td>
-                            <td>${aluguel.data_fim}</td>
-                            <td>R$ ${aluguel.valor_total.toFixed(2).replace('.', ',')}</td>
-                            <td>
-                                <a href="/aluguel-de-carros/public/aluguel/show/${aluguel.id}" class="btn-view">Ver</a>
-                                <a href="/aluguel-de-carros/public/aluguel/edit/${aluguel.id}" class="btn-edit">Editar</a>
-                                <button class="btn-delete" onclick="deleteRental(${aluguel.id})">Excluir</button>
-                            </td>
-                        `;
-                        rentalTableBody.appendChild(row);
-                    });
-                }
-            })
-            .catch(error => console.error('Erro ao carregar aluguéis:', error));
-    }
 
     // Função para excluir um aluguel
     function deleteRental(id) {
