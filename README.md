@@ -19,10 +19,10 @@ Site para aluguel de carros feito para disciplina de engenharia de software
 ## Visão Geral:
 LoCar é uma plataforma online projetada para atender diversos perfis de clientes, como turistas, moradores locais e empresas. O objetivo principal é oferecer uma solução intuitiva e eficiente para o aluguel de carros, permitindo aos usuários realizar atividades específicas de acordo com seus papéis no sistema: cliente, funcionário ou administrador.
 
-- **[Acesse aqui a Landing Page do projeto](https://link.com)**
-- **[Acesse aqui o vídeo de apresentação ](https://link.com)**
-- **[Acesse aqui a Apresentação final](https://link.com)**
-- **[Instalar versão final do projeto](https://link.com)**
+- **[Acesse aqui a Landing Page do projeto](https://#.com)**
+- **[Acesse aqui o vídeo de apresentação ](https://#.com)**
+- **[Acesse aqui a Apresentação final](https://#.com)**
+- **[Instalar versão final do projeto](https://#.com)**
 
 ## Funcionalidades Principais:
 
