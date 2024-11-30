@@ -15,6 +15,7 @@ class LoginController {
         global $db_conection;
         $this->carRepository = new CarRepository($db_conection);
         $this->userRepository = new UserRepository($db_conection); // Instancia o UserRepository
+        $this->clienteRepository = new ClientRepository($db_conection);
     }
     public function index(){
         require __DIR__."/../views/Login.php";
@@ -36,13 +37,20 @@ class LoginController {
 
             // Se não houver erros, tenta realizar o login
             if (empty($errors)) {
+                echo($nome_usuario);
+                echo($senha);
+                
                 $user = $this->userRepository->getUserLogin($nome_usuario, $senha);
+                
                 //require_once __DIR__ . '/../views/usuarios.php';
 
 
 
                 if ($user) {
+                    
+                    $client= $this->clienteRepository->getClientByEmail($user['email']);
                     $_SESSION['id_usuario'] = $user['id_usuario'];
+                    $_SESSION['id_cliente'] = $client['id_cliente'];
                     $_SESSION['user']= $user;
 
                    

@@ -69,7 +69,7 @@ class UserRepository {
     
     public function getUserLogin($nome_usuario, $senha) {
         // Seleciona a senha criptografada do usuário, juntamente com o ID e o tipo de usuário
-        $sql = "SELECT id_usuario, tipo_usuario, senha FROM usuarios WHERE nome_usuario = ?";
+        $sql = "SELECT id_usuario, tipo_usuario, senha, email FROM usuarios WHERE nome_usuario = ?";
         $stmt = $this->dataProvider->prepare($sql);
         $stmt->bind_param("s", $nome_usuario);
         $stmt->execute();
@@ -82,7 +82,8 @@ class UserRepository {
                 if (password_verify($senha, $user['senha'])) {
                     return [
                         'id_usuario' => $user['id_usuario'],
-                        'tipo_usuario' => $user['tipo_usuario']
+                        'tipo_usuario' => $user['tipo_usuario'],
+                        'email' => $user['email']
                     ];
                 }
             } else {

@@ -10,7 +10,7 @@
 <body>
     <div class="sidebar">
         <div class="logo">
-            <h1>Alucarros</h1>
+            <h1>LoCar</h1>
         </div>
         <ul class="menu">
             <li><a href="/aluguel-de-carros/public/usuarios/index" class="active">Usuários</a></li>

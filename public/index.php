@@ -27,7 +27,7 @@ $router->addRoute('login/verificar', 'LoginController', 'verificarLogin');
 $router->addRoute('login/index', 'LoginController', 'index');
 $router->addRoute('user/showProfile', 'UserController', 'showProfile');
 $router->addRoute('user/signup', 'ClientController', 'index');
-$router->addRoute('logout', 'LogoutController', 'logout');
+$router->addRoute('user/logout', 'LogoutController', 'logout');
 
 $router->addRoute('car/details', 'VehicleController', 'showVehicleDetails');
 $router->addRoute('notificacao/enviarManual', 'RentalController', 'enviarManualmente');

@@ -27,10 +27,10 @@ class UserController {
             echo "Erro: Usuário não está logado.";
             exit();
         }
-
+    
         // Obtém os dados do cliente
-        $cliente = $this->clienteRepository->getClient($_SESSION['id_usuario']);
-        
+        $cliente = $this->clienteRepository->getClientById($_SESSION['id_cliente']);
+       
         // Obtém os veículos do cliente
         $rentalHistory = $this->carRepository->getUserCars($_SESSION['id_usuario']);
 
