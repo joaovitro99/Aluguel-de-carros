@@ -8,6 +8,8 @@
 
 # LoCar
 Site para aluguel de carros feito para disciplina de engenharia de software 
+![Logo do Projeto](docs\logo\LogoLoCar.jpeg)
+
 
 
 
