@@ -45,8 +45,8 @@ LoCar é uma plataforma online projetada para atender diversos perfis de cliente
 
 # Sprints
 
-- [Sprint 1](docs/sprints/Sprint_1_Gerenciamento_da_frota_de_ve%C3%ADculos_(1).pdf)
-- [Sprint 2](docs/sprints/Sprint%202%20Permitir%20acesso%20de%20usu%C3%A1rios%20e%20busca%20avan%C3%A7ada%20de%20ve%C3%ADculos%20(1).pdf)
+- [Sprint 1](docs/sprints/Sprint_1.pdf)
+- [Sprint 2](docs/sprints/Sprint%202.pdf)
 - [Sprint 3](docs/sprints/Sprint%203%20(1).pdf)
 - [Sprint 4](docs/sprints/Sprint%204.pdf)
 - [Sprint 5](docs/sprints/Sprint%205.pdf)
