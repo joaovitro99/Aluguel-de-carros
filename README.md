@@ -19,6 +19,11 @@ Site para aluguel de carros feito para disciplina de engenharia de software
 ## Visão Geral:
 LoCar é uma plataforma online projetada para atender diversos perfis de clientes, como turistas, moradores locais e empresas. O objetivo principal é oferecer uma solução intuitiva e eficiente para o aluguel de carros, permitindo aos usuários realizar atividades específicas de acordo com seus papéis no sistema: cliente, funcionário ou administrador.
 
+- **[Acesse aqui a Landing Page do projeto](https://link.com)**
+- **[Acesse aqui o vídeo de apresentação ](https://link.com)**
+- **[Acesse aqui a Apresentação final](https://link.com)**
+- **[Instalar versão final do projeto](https://link.com)**
+
 ## Funcionalidades Principais:
 
 ### Para Clientes:
@@ -55,4 +60,35 @@ LoCar é uma plataforma online projetada para atender diversos perfis de cliente
 
  
 # User Stories
+
+![User Story - Busca](docs/user_stories/user%20stories%20busca.png)  
+![User Story - Editar Perfil](docs/user_stories/user%20stories%20editar%20perfil.png)  
+![User Story - Histórico](docs/user_stories/user%20stories%20historico.png)  
+![User Story - Inicial](docs/user_stories/user%20stories%20inicial.png)  
+![User Story - Moderação de Perfil](docs/user_stories/user%20stories%20moderar%20perfil.png)  
+![User Story - Moderação de Veículos - Funcionário](docs/user_stories/user%20stories%20moderar%20veiculos%20funcionario.png)  
+![User Story - Moderação de Veículos](docs/user_stories/user%20stories%20moderar%20veiculos.png)  
+![User Story - Rendimentos](docs/user_stories/user%20stories%20rendimentos.png)  
+![User Story](docs/user_stories/user%20stories.png)
+## Como rodar o projeto
+
+Siga os passos abaixo para configurar e executar o projeto:
+
+1. **Clone o repositório localmente:**
+   ```bash
+   git clone https://github.com/joaovitro99/Aluguel-de-carros.git
+2. **Navegue até o diretório do projeto e instale as dependências:**
+- No terminal, execute:
+    ```bash
+    composer install
+- Depois, gere o autoload:
+  ```bash
+    composer dump-autoload
+4. **Configure as credenciais do banco de dados:**
+- Edite o arquivo config.php e insira as informações de acesso ao seu banco de dados.
+5. **Configure as credenciais SMTP para notificações por e-mail:**
+- No arquivo notificationsAPI/src/services/EmailService.php, ajuste as configurações SMTP com as credenciais apropriadas.
+6. **Execute o projeto:**
+- Certifique-se de que o servidor web (como o WAMP ou XAMPP) e o banco de dados estão em execução. Acesse o projeto através do navegador no endereço configurado.
+
 
