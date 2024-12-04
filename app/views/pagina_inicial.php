@@ -25,9 +25,21 @@
                     
                 </div>
                 <div id="nav-2">
-                    <p><a href="/aluguel-de-carros/public/user/signup">Inscrever-se</a></p>
-                    <div id="barra-divisão"></div>
-                    <p><a href="/aluguel-de-carros/public/login/index">Entrar</a></p>
+                <?php
+// Inicie a sessão no início do código
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user'])) {
+    echo '<p><a href="/aluguel-de-carros/public/user/signup">Inscrever-se</a></p>';
+    echo '<div id="barra-divisão"></div>';
+    echo '<p><a href="/aluguel-de-carros/public/login/index">Entrar</a></p>';
+} else {
+    echo '<p><a href="/aluguel-de-carros/public/user/showProfile">Ver perfil</a></p>';
+}
+?>
                 </div>
               </nav>
               <div id="pesquisa">

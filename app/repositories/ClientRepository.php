@@ -21,19 +21,19 @@ class ClientRepository {
             $stmt_cliente->execute();
 
             // Pegando o último id_cliente inserido
-            $id_cliente = $this->data_provider->getInsertId();
+            //$id_cliente = $this->data_provider->getInsertId();
 
             // Inserindo o usuário correspondente na tabela `usuarios`
-            $sql_usuario = "INSERT INTO usuarios (nome_usuario, senha, tipo_usuario) VALUES (?, ?, 'cliente')";
+            $sql_usuario = "INSERT INTO usuarios (nome_usuario, senha, tipo_usuario, email) VALUES (?, ?, 'cliente', ?)";
             $stmt_usuario = $this->data_provider->prepare($sql_usuario);
             $hashed_senha = password_hash($senha, PASSWORD_DEFAULT); // Criptografando a senha
-            $stmt_usuario->bind_param("ss", $nome_usuario, $hashed_senha);
+            $stmt_usuario->bind_param("sss", $nome_usuario, $hashed_senha, $email);
             $stmt_usuario->execute();
 
             // Commit na transação
             $this->data_provider->commit();
 
-            return $id_cliente;
+            //return $id_cliente;
 
         } catch (Exception $e) {
             // Rollback em caso de erro
@@ -84,6 +84,36 @@ class ClientRepository {
             throw new Exception("Cliente não encontrado.");
         }
     }
+    // Função para buscar um cliente pelo email
+    public function getClientByEmail($email) {
+        $sql = "SELECT * FROM clientes WHERE email = ?";  // Substitui nome_usuario por email
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("s", $email);  // Usamos "s" para indicar que estamos esperando um valor do tipo string
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();  // Retorna os dados do cliente
+        } else {
+            throw new Exception("Cliente não encontrado.");
+        }
+    }
+
+    // Função para buscar um cliente pelo id
+    public function getClientById($id_cliente) {
+        $sql = "SELECT * FROM clientes WHERE id_cliente = ?";  // Substitui o nome_usuario por id_cliente
+        $stmt = $this->data_provider->prepare($sql);
+        $stmt->bind_param("i", $id_cliente);  // Usamos "i" para indicar que estamos esperando um valor inteiro
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            throw new Exception("Cliente não encontrado.");
+        }
+    }
+
 
     // Função para obter todos os clientes
     public function getAllClients() {

@@ -57,13 +57,100 @@ class UserRepository {
         }
         return false;
     }
-
+    /*
     public function getUserLogin($nome_usuario, $senha) {
-        // Aqui você deve implementar a lógica para verificar o usuário e a senha
         $sql = "SELECT id_usuario, tipo_usuario FROM usuarios WHERE nome_usuario = ? AND senha = ?";
         $stmt = $this->dataProvider->prepare($sql);
         $stmt->bind_param("ss", $nome_usuario, $senha);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
+    }
+    */
+    
+    public function getUserLogin($nome_usuario, $senha) {
+        // Seleciona a senha criptografada do usuário, juntamente com o ID e o tipo de usuário
+        $sql = "SELECT id_usuario, tipo_usuario, senha, email FROM usuarios WHERE nome_usuario = ?";
+        $stmt = $this->dataProvider->prepare($sql);
+        $stmt->bind_param("s", $nome_usuario);
+        $stmt->execute();
+        $user = $stmt->get_result()->fetch_assoc();
+   
+        // Verifica se o usuário foi encontrado e se a senha está correta
+        if ($user) {
+            // Se o usuário é do tipo 'cliente', verifica a senha usando password_verify
+            if ($user['tipo_usuario'] === 'cliente') {
+                if (password_verify($senha, $user['senha'])) {
+                    return [
+                        'id_usuario' => $user['id_usuario'],
+                        'tipo_usuario' => $user['tipo_usuario'],
+                        'email' => $user['email']
+                    ];
+                }
+            } else {
+                // Para 'admin' e 'funcionario', verifica a senha diretamente
+                if ($senha === $user['senha']) {
+                    return [
+                        'id_usuario' => $user['id_usuario'],
+                        'tipo_usuario' => $user['tipo_usuario']
+                    ];
+                }
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public function updatePassword($token, $hashedPassword) {
+        // busca o email associado ao token
+        $sql = "SELECT c.email 
+                FROM password_reset_tokens prt
+                JOIN clientes c ON prt.email = c.email
+                WHERE prt.token = ? AND prt.expiration > NOW() LIMIT 1";
+        $stmt = $this->dataProvider->prepare($sql);
+        $stmt->bind_param("s", $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $email = $row['email'];
+    
+            $updateSql = "UPDATE usuarios SET senha = ? WHERE email = ?";
+            $updateStmt = $this->dataProvider->prepare($updateSql);
+            $updateStmt->bind_param("ss", $hashedPassword, $email);
+            $updateStmt->execute();
+        } else {
+            throw new Exception("Token inválido ou expirado.");
+        }
+    }            
+
+    public function saveResetToken($email, $token, $expiration) {
+        $sql = "INSERT INTO password_reset_tokens (email, token, expiration) VALUES (?, ?, ?)";
+        $stmt = $this->dataProvider->prepare($sql);
+        $stmt->bind_param("sss", $email, $token, $expiration);
+        $stmt->execute();
+    }
+
+    public function isValidToken($token) {
+        $sql = "SELECT * FROM password_reset_tokens WHERE token = ? AND expiration > NOW() LIMIT 1";
+        $stmt = $this->dataProvider->prepare($sql);
+    
+        if ($stmt) {
+            $stmt->bind_param("s", $token);
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            return $result->num_rows > 0;
+        }
+        return false;
+    }
+    public function getUserByterm($term){
+        $stmt = $this->dataProvider->prepare("SELECT * FROM clientes WHERE nome LIKE ? OR cpf LIKE ? OR email LIKE ?");
+        $searchTerm = "%" . $term . "%";
+        $stmt->bind_param("sss", $searchTerm, $searchTerm, $searchTerm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+
     }
 }

@@ -27,12 +27,14 @@ $router->addRoute('login/verificar', 'LoginController', 'verificarLogin');
 $router->addRoute('login/index', 'LoginController', 'index');
 $router->addRoute('user/showProfile', 'UserController', 'showProfile');
 $router->addRoute('user/signup', 'ClientController', 'index');
-$router->addRoute('logout', 'LogoutController', 'logout');
-$router->addRoute('car/details', 'CarController', 'showDetailCar');
-$router->addRoute('car/details', 'CarController', 'showDetailCar');
+$router->addRoute('user/logout', 'LogoutController', 'logout');
+
+$router->addRoute('car/details', 'VehicleController', 'showVehicleDetails');
 $router->addRoute('notificacao/enviarManual', 'RentalController', 'enviarManualmente');
 $router->addRoute('car/reserva', 'CarController', 'showResumoReserva');
 $router->addRoute('car/buscar', 'CarController', 'buscar');
+$router->addRoute('car/buscarAdmin', 'CarController', 'buscarAdminFilter');
+$router->addRoute('user/buscarAdmin', 'UserController', 'buscarAdminFilter');
 $router->addRoute('notificacao/criar', 'CarController', 'createNotification');
 $router->addRoute('notificacao/pegar', 'CarController', 'getNotifications');
 $router->addRoute('rental/add', 'RentalController', 'addAluguel'); 
@@ -40,6 +42,11 @@ $router->addRoute('whatsapp/confirm', 'WhatsAppController', 'sendRentalAttemptCo
 $router->addRoute('whatsapp/mensagen', 'WhatsAppController', 'sendMessage'); 
 $router->addRoute('admin/add', 'FuncionarioController', 'register');
 $router->addRoute('alugueis/index', 'AluguelController', 'index');
+$router->addRoute('user/register', 'ClientController', 'register');
+$router->addRoute('user/forgotPassword', 'UserController', 'forgotPassword');
+$router->addRoute('user/resetPassword', 'UserController', 'resetPassword');
+$router->addRoute('user/updatePassword', 'UserController', 'updatePassword');
+
 // Obtém a URL da requisição
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrai a parte da URI da requisição
 // Resolve a rota

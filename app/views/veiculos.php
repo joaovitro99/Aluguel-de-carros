@@ -11,7 +11,7 @@
 <body>
     <div class="sidebar">
         <div class="logo">
-            <h1>Alucarros</h1>
+            <h1>LoCar</h1>
         </div>
         <ul class="menu">
             <?php
@@ -19,7 +19,7 @@
 
             // Verifica se o usuário está logado
             if (!isset($_SESSION['user'])) {
-                header('Location: Login.php');
+                header('Location: /aluguel-de-carros/public/login/index');
                 exit();
             }
             
@@ -41,7 +41,7 @@
 
     <div class="main-content">
         <div class="header">
-            <input type="text" class="search-bar" placeholder="Buscar...">
+            <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
             <button class="btn-novo-item"><a href="/aluguel-de-carros/app/views/FormularioVeiculo.php">+ Novo Item</a></button>
         </div>
 
@@ -117,6 +117,58 @@
                 });
             });
         });
+        document.getElementById('search-bar').addEventListener('input', debounce(function() {
+            const searchTerm = this.value;
+
+            fetch(`/aluguel-de-carros/public/car/buscarAdmin?term=${encodeURIComponent(searchTerm)}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('.vehicles-table tbody');
+                tbody.innerHTML = ''; // Limpa a tabela
+
+                if (data.length > 0) {
+                    data.forEach(veiculo => {
+                        const row = `
+                            <tr>
+                                <td>${veiculo.id_veiculo}</td>
+                                <td>${veiculo.marca}</td>
+                                <td>${veiculo.modelo}</td>
+                                <td>${veiculo.ano}</td>
+                                <td>${veiculo.placa}</td>
+                                <td>R$ ${veiculo.valor_diaria}</td>
+                                <td>${veiculo.status}</td>
+                                <td>${veiculo.capacidade_pessoas}</td>
+                                <td>${veiculo.capacidade_bagageiro}</td>
+                                <td>${veiculo.combustivel}</td>
+                                <td>${veiculo.cambio}</td>
+                                <td>
+                                    <a href='editor.php?id=${veiculo.id_veiculo}' class='btn-edit'>Editar</a>
+                                    <form class='delete-form' data-id='${veiculo.id_veiculo}' style='display:inline;'>
+                                        <input type='hidden' name='id_veiculo' value='${veiculo.id_veiculo}'>
+                                        <button type='submit' class='btn-delete' onclick='return confirm("Tem certeza que deseja excluir?")'>Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                } else {
+                    tbody.innerHTML = "<tr><td colspan='12'>Nenhum veículo encontrado.</td></tr>";
+                }
+            })
+            .catch(error => console.error('Erro ao buscar veículos:', error));
+        }, 300));
+
+        // Função debounce para evitar muitas requisições
+        function debounce(func, delay) {
+            let debounceTimer;
+            return function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => func.apply(this, arguments), delay);
+            };
+        }
+
     </script>
 </body>
 </html>

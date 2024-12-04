@@ -49,7 +49,10 @@ class RentalController{
 
         $email= $cliente_info['email'];
         $nome= $cliente_info['nome'];
-        $id_cliente= $cliente_info['id_cliente'];
+        if (isset($cliente_info['id_cliente'])) {
+            $id_cliente= $cliente_info['id_cliente'];
+        }
+
         $mensagem= "Caro cliente ".$nome.", ".$msn;
 
        
@@ -78,7 +81,10 @@ class RentalController{
         if ($response === FALSE) {
             return 'Erro ao fazer a requisição.';
         } else {
-            $this->notificacaoRepository->EnviarNotificacaoBD($id_cliente,$nome,$mensagem);
+            if (isset($cliente_info['id_cliente'])) {
+                $this->notificacaoRepository->EnviarNotificacaoBD($id_cliente,$nome,$mensagem);
+            }
+    
             return $response;
             
         }
@@ -138,7 +144,6 @@ class RentalController{
             
             $response = $this->enviarNotificacao($cliente_info, $mensagem, 'email');
     
-            // Exibir a resposta
             if ($response !== 'Erro ao fazer a requisição.') {
                 $_SESSION['statusMessage'] = "Notificação enviada com sucesso para: " . $cliente_info['email'];
                 $_SESSION['statusClass'] = 'success';
@@ -147,14 +152,36 @@ class RentalController{
                 $_SESSION['statusClass'] = 'error';
             }
     
-            // Redireciona para evitar reenvio do formulário
             header("Location: http://localhost/aluguel-de-carros/public/notificacao/enviarManual");
             exit;
         } 
         include __DIR__ . '/../../notificationsAPI/public/send_notificacao.php';
 
-            // Exibe o formulário HTML para envio manual
     }
     
+    public function enviarEmailRecuperacao($email, $linkParaRedefinirSenha) {
+        $mensagem = "Para redefinir sua senha, clique no link abaixo:\n\n"
+        . "$linkParaRedefinirSenha\n\n"
+        . "Se você não solicitou redefinir o seu email, ignore esta mensagem.\n\n";
+
+        $cliente_info = [
+            'email' => $email,
+            'nome' => ' '
+        ];
+        
+        // Enviar email de recuperação
+        return $this->enviarNotificacao($cliente_info, $mensagem, 'email');
+
+        if ($response !== 'Erro ao fazer a requisição.') {
+            $_SESSION['statusMessage'] = "Notificação enviada com sucesso para: " . $cliente_info['email'];
+            $_SESSION['statusClass'] = 'success';
+        } else {
+            $_SESSION['statusMessage'] = "Falha ao enviar notificação para: " . $cliente_info['email'];
+            $_SESSION['statusClass'] = 'error';
+        }
+
+        header("Location: http://localhost/aluguel-de-carros/public/user/forgotPassword");
+        exit;
+    }
 
 }

@@ -1,6 +1,23 @@
 {
     "require": {
-        "phpmailer/phpmailer": "^6.9",
-        "stripe/stripe-php": "^16.2"
+        "stripe/stripe-php": "^16.2",
+        "phpmailer/phpmailer": "^6.8",
+        "twilio/sdk": "^8.3",
+        "doctrine/orm": "^2.15",
+        "myclabs/php-enum": "^1.8",
+        "nikic/php-parser": "^5.1"
+    },
+    "require-dev": {
+        "phar-io/manifest": "^2.0",
+        "phar-io/version": "^3.0",
+        "theseer/tokenizer": "^1.2",
+        "sebastian/comparator": "^6.2",
+        "phpunit/phpunit": "^11.4"
+    },
+    "autoload": {
+    "psr-4": {
+        "App\\": "app/"
     }
+}
+
 }

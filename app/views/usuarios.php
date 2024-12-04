@@ -10,7 +10,7 @@
 <body>
     <div class="sidebar">
         <div class="logo">
-            <h1>Alucarros</h1>
+            <h1>LoCar</h1>
         </div>
         <ul class="menu">
             <li><a href="/aluguel-de-carros/public/usuarios/index" class="active">Usuários</a></li>
@@ -22,7 +22,7 @@
 
     <div class="main-content">
         <div class="header">
-            <input type="text" class="search-bar" placeholder="Buscar...">
+            <input type="text" id='search-bar' class="search-bar" placeholder="Buscar...">
             <button class="btn-novo-item"><a href="/aluguel-de-carros/app/views/FormularioFuncionario.php"> Adicionar Funcionario</a></button>
         </div>
 
@@ -86,6 +86,56 @@
                 });
             });
         });
+
+
+        document.getElementById('search-bar').addEventListener('input', debounce(function() {
+            const searchTerm = this.value;
+
+            fetch(`/aluguel-de-carros/public/user/buscarAdmin?term=${encodeURIComponent(searchTerm)}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('.users-table tbody');
+                tbody.innerHTML = ''; // Limpa a tabela
+
+                if (data.length > 0) {
+                    data.forEach(usuario => {
+                        const row = `
+                            <tr>
+                                <td>${usuario.id}</td>
+                                <td>${usuario.nome}</td>
+                                <td>${usuario.cpf}</td>
+                                <td>${usuario.endereco}</td>
+                                <td>${usuario.telefone}</td>
+                                <td>${usuario.email}</td>
+                                <td>
+                                    <a href='editusuario.php?id=${usuario.id}' class='btn-edit'>Editar</a>
+                                    <form class='delete-form' data-id='${usuario.id}' style='display:inline;'>
+                                        <input type='hidden' name='id_cliente' value='${usuario.id}'>
+                                        <button type='submit' class='btn-delete' onclick='return confirm("Tem certeza que deseja excluir?")'>Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                }
+             else {
+                    tbody.innerHTML = "<tr><td colspan='12'>Nenhum veículo encontrado.</td></tr>";
+                }
+            })
+            .catch(error => console.error('Erro ao buscar veículos:', error));
+        }, 300));
+
+        // Função debounce para evitar muitas requisições
+        function debounce(func, delay) {
+            let debounceTimer;
+            return function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => func.apply(this, arguments), delay);
+            };
+        }
+
     </script>
 </body>
 </html>

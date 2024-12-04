@@ -10,7 +10,7 @@
 <body>
     <div class="sidebar">
         <div class="logo">
-            <h1>Alucarros</h1>
+            <h1>LoCar</h1>
         </div>
         <ul class="menu">
             <li><a href="/aluguel-de-carros/public/usuarios/index">Usuários</a></li>
@@ -47,22 +47,18 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="rentalTableBody">
                 <?php if (!empty($alugueis)): ?>
                     <?php foreach ($alugueis as $aluguel): ?>
-                        <tr>
-                            <td><?= $aluguel->getId() ?></td>
-                            <td><?= $aluguel->getIdCliente() ?></td>
-                            <td><?= $aluguel->getIdVeiculo() ?></td>
-                            <td><?= $aluguel->getDataInicio() ?></td>
-                            <td><?= $aluguel->getDataFim() ?></td>
-                            <td>R$ <?= number_format($aluguel->getValorTotal(), 2, ',', '.') ?></td>
+                        <tr id="rental-<?= htmlspecialchars($aluguel->getId(), ENT_QUOTES, 'UTF-8'); ?>">
+                            <td><?= htmlspecialchars($aluguel->getId(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getIdCliente(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getIdVeiculo(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getDataInicio(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($aluguel->getDataFim(), ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td>R$ <?= number_format($aluguel->getValorTotal(), 2, ',', '.'); ?></td>
                             <td>
-                                <a href="/aluguel-de-carros/public/aluguel/show/<?= $aluguel->getId() ?>" class="btn-view">Ver</a>
-                                <a href="/aluguel-de-carros/public/aluguel/edit/<?= $aluguel->getId() ?>" class="btn-edit">Editar</a>
-                                <form action="/aluguel-de-carros/public/aluguel/delete/<?= $aluguel->getId() ?>" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn-delete" onclick="return confirm('Deseja excluir este aluguel?')">Excluir</button>
-                                </form>
+                                <button onclick="deleteRental(<?= htmlspecialchars($aluguel->getId(), ENT_QUOTES, 'UTF-8'); ?>)"class='btn-delete'>Excluir</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -72,29 +68,35 @@
                     </tr>
                 <?php endif; ?>
             </tbody>
+
         </table>
     </div>
 </body>
 </html>
 
-    <script>
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
-                fetch('/aluguel-de-carros/public/locacoes/delete', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(() => {
+<script>
+
+    // Função para excluir um aluguel
+    function deleteRental(id) {
+        if (confirm('Deseja excluir este aluguel?')) {
+            fetch(`/aluguel-de-carros/public/api/alugueis/${id}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Aluguel excluído com sucesso!');
                     // Remove a linha da tabela
-                    this.closest('tr').remove();
-                })
-                .catch(error => {
-                    console.error('Erro ao processar a solicitação:', error);
-                });
+                    document.querySelector(`#rentalTableBody tr td:first-child:contains(${id})`).parentElement.remove();
+                } else {
+                    alert('Erro ao excluir aluguel');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao excluir aluguel:', error);
             });
-        });
-    </script>
-</body>
-</html>
+        }
+    }
+
+    // Carregar os aluguéis assim que a página for carregada
+    document.addEventListener('DOMContentLoaded', loadRentals);
+</script>
